@@ -13,7 +13,10 @@
 !/log/.keep
 !/tmp/.keep
 
+.DS_Store
 /node_modules
 /yarn-error.log
-
+/public/uploads/*
 .byebug_history
+.env
+coverage
