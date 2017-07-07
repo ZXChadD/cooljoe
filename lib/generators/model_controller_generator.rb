@@ -10,9 +10,9 @@ class ModelControllerGenerator < Rails::Generators::Base
 
     # generate "model", "provider_attach image:string title:string provider:references"
 
-    # generate "model", "job type:string description:text fixture:string num_fixture:integer housing:string job_address:text user:references provider:references status:integer date:string time:string"
-    # generate "controller", "jobs index show new create edit update destroy --skip-routes"
-    # route "resources :jobs"
+    # generate "model", "joblisting type:string description:text fixture:string num_fixture:integer housing:string job_address:text user:references provider:references status:integer date:string time:string"
+    # generate "controller", "joblistings index show new create edit update destroy --skip-routes"
+    # route "resources :joblistings"
 
     # generate "model", "job_attach image:string title:string job:references"
 
