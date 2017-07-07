@@ -4,7 +4,6 @@ class CreateProviders < ActiveRecord::Migration[5.1]
       t.string :firstname, null:false
       t.string :lastname, null:false
       t.string :tel_num, null:false
-      t.string :email, null:false
       t.string :license_num
       t.text :description
       t.string :experience
