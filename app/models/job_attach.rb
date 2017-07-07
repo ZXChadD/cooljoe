@@ -1,3 +1,3 @@
 class JobAttach < ApplicationRecord
-  belongs_to :job
+  belongs_to :joblisting
 end
