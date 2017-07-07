@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+
   devise_for :providers, :controllers => { registrations: 'providers/registrations', sessions: 'providers/sessions', passwords: 'providers/passwords'}
   devise_for :users
 
-  get '/homepage', to: 'users#homepage', as: 'homepage'
-  get '/contact', to: 'users#contact', as: 'contact'
-  get '/about', to: 'users#about', as: 'about'
+  get '/', to: 'pages#homepage'
+  get '/homepage', to: 'pages#homepage', as: 'homepage'
+  get '/contact', to: 'pages#contact', as: 'contact'
+  get '/about', to: 'pages#about', as: 'about'
+
   get '/urgent', to: 'users#urgent', as: 'urgent'
   get '/result', to: 'users#result', as: 'result'
   get '/electricians', to: 'users#electricians', as: 'electricians'

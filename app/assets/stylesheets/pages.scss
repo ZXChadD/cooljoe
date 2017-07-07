@@ -1,0 +1,25 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.homepage {
+  a {
+    background-color: #f26101;
+    color: white;
+    font-size: 200%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  :hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.hompage_link {
+  a {
+    padding: 10px;
+    margin: 10px;
+  }
+}

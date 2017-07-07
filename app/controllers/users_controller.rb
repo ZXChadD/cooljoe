@@ -5,18 +5,14 @@ class UsersController < ApplicationController
   def show
   end
 
-  def contact
-  end
-
-  def about
-  end
-
-  def homepage
-  end
-
   def urgent
   end
 
   def result
   end
+
+  def electricians
+
+  end
+
 end
