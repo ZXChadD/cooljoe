@@ -1,8 +1,8 @@
 class ModelControllerGenerator < Rails::Generators::Base
   def create_initializer_file
-    generate "model", "provider firstname:string lastname:string tel_num:string email:string license_num:string description:text experience:string avatar:string"
-    generate "controller", "providers index show new create edit update destroy --skip-routes"
-    route "resources :providers"
+    # generate "model", "provider firstname:string lastname:string tel_num:string email:string license_num:string description:text experience:string avatar:string"
+    # generate "controller", "providers index show new create edit update destroy --skip-routes"
+    # route "resources :providers"
 
     generate "model", "like user:references provider:references"
     generate "controller", "likes create destroy --skip-routes"
