@@ -5,21 +5,6 @@ class UsersController < ApplicationController
   def show
   end
 
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
   def contact
   end
 
@@ -30,5 +15,8 @@ class UsersController < ApplicationController
   end
 
   def urgent
-  end 
+  end
+
+  def result
+  end
 end

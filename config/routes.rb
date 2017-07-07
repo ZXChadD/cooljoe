@@ -5,12 +5,21 @@ Rails.application.routes.draw do
   get '/homepage', to: 'users#homepage', as: 'homepage'
   get '/contact', to: 'users#contact', as: 'contact'
   get '/about', to: 'users#about', as: 'about'
+  get '/urgent', to: 'users#urgent', as: 'urgent'
+  get '/result', to: 'users#result', as: 'result'
+  get '/electricians', to: 'users#electricians', as: 'electricians'
 
+
+  resources :users, only: [:index, :show]
+  resources :providers, only: [:index, :show]
   resources :joblistings
+  resources :likes, only: [:create, :destroy]
 
-  resources :users
-  resources :invoice
-  resources :likes
-  resources :providers
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace 'admin' do
+    resources :joblistings
+    resources :invoice, except: [:destroy]
+    resources :providers, only: [:index]
+    resources :users, only: [:index]
+  end
+
 end
