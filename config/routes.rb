@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get '/result', to: 'users#result', as: 'result'
   get '/electricians', to: 'users#electricians', as: 'electricians'
 
-
   resources :users, only: [:index, :show]
   resources :providers, only: [:index, :show]
   resources :joblistings
