@@ -10,7 +10,7 @@ class ModelControllerGenerator < Rails::Generators::Base
 
     # generate "model", "provider_attach image:string title:string provider:references"
 
-    # generate "model", "job type:string description:text fixture:string num_fixture:int housing:string job_address:text user:references provider:references status:int date:string time:string"
+    # generate "model", "job type:string description:text fixture:string num_fixture:integer housing:string job_address:text user:references provider:references status:integer date:string time:string"
     # generate "controller", "jobs index show new create edit update destroy --skip-routes"
     # route "resources :jobs"
 
@@ -18,7 +18,7 @@ class ModelControllerGenerator < Rails::Generators::Base
 
     # generate "model", "schedule date:string time:string provider:references"
 
-    # generate "model", "invoice provider:references job:references invoice_ref:string price:decimal precision:10 scale:2 "
+    # generate "model", "invoice provider:references job:references invoice_ref:string price:decimal"
     # generate "controller", "invoices index show new create edit update destroy --skip-routes"
     # route "resources :invoice"
 
