@@ -42,7 +42,10 @@
   span a {
     color: #f26101;
   }
-
+  :hover {
+      text-decoration: none;
+      color: white;
+  }
 }
 
 * {
@@ -52,10 +55,4 @@
 
 ul {
   list-style-type: none;
-}
-
-  :hover {
-      text-decoration: none;
-      color: white;
-  }
 }
