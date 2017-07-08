@@ -2,15 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//homepage
+//homepage.html
 .homepage {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 60vh;
   a {
     background-color: #f26101;
     color: white;
     font-size: 200%;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
   }
   :hover {
     color: #304269;
@@ -25,8 +29,6 @@
   }
 }
 
+//contact.html
 
-
-//contact
-
-//about
+//about.html

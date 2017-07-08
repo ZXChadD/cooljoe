@@ -17,9 +17,13 @@
 @import "bootstrap";
 @import "bootstrap/**/*";
 
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
 .heading {
- text-align: center;
- background-color: #304269;
+  text-align: center;
+  background-color: #304269;
+  font-family: 'Courgette', cursive;
+  // font-weight: bold;
 }
 
 #com_name {
@@ -42,5 +46,32 @@
   :hover {
       text-decoration: none;
       color: white;
+  }
+}
+
+#footer {
+  background-color: #304269;
+  body {
+    padding-bottom: 50px;
+  }
+  #footer-links {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    color: #f26101;
+    #copyright {
+      margin-right: 50vw;
+      padding-left: 20px;
+    }
+    #links {
+      a {
+      color: #f26101;
+      padding-left: 20px;
+      text-decoration: none;
+      }
+      a:hover {
+        color: white;  
+      }
+    }
   }
 }
