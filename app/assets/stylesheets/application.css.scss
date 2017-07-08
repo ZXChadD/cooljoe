@@ -29,13 +29,20 @@
   font-size: 400%;
   a {
     color: #f26101;
+    text-decoration: none;
   }
 }
 
 #banner_links {
-  a {
+  padding-bottom: 10px;
+  span.divider {
+    color: #f26101;
+    padding: 10px
+  }
+  span a {
     color: #f26101;
   }
+
 }
 
 * {
@@ -45,4 +52,10 @@
 
 ul {
   list-style-type: none;
+}
+
+  :hover {
+      text-decoration: none;
+      color: white;
+  }
 }
