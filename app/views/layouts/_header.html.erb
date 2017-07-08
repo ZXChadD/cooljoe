@@ -2,7 +2,15 @@
     <div class='container'>
     <div class='row'>
       <div id='com_name', class='col-md-6 col-md-offset-3' >
-        <%= link_to 'Cool Joe', users_path%>
+        <% if provider_signed_in? || user_signed_in? %>      
+          <% if provider_signed_in? %>        
+            <%= link_to 'Cool Joe', providers_path %>
+          <% else %>
+            <%= link_to 'Cool Joe', users_path %>
+          <% end %>
+        <% else %>
+          <%= link_to 'Cool Joe', homepage_path %>
+        <% end %>
       </div>
     </div>
       <div class='row'>
