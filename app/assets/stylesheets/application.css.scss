@@ -16,10 +16,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap/**/*";
+@import "css/**/*";
+
 
 .heading {
  text-align: center;
  background-color: #304269;
+ font-weight: bolder;
 }
 
 #com_name {
@@ -33,4 +36,13 @@
   a {
     color: #f26101;
   }
+}
+
+* {
+  font-family: 'Kurale', serif !important;
+  font-size: 105%;
+}
+
+ul {
+  list-style-type: none;
 }
