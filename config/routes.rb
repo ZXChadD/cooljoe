@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :providers, only: [:index, :show]
   resources :joblistings
   resources :likes, only: [:create, :destroy]
+  resources :invoice, except: [:destroy]
+
 
   namespace 'admin' do
     resources :joblistings
