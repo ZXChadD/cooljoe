@@ -1,18 +1,13 @@
 class UsersController < ApplicationController
-  def index
-  end
 
-  def show
-  end
+  def index; end
 
-  def urgent
-  end
+  def show; end
 
-  def result
-  end
+  def urgent; end
 
-  def electricians
+  def result; end
 
-  end
+  def electricians; end
 
 end
