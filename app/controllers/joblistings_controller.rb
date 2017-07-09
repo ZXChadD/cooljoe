@@ -10,8 +10,9 @@ class JoblistingsController < ApplicationController
 
   def create
     @joblisting = Joblisting.new(joblisting_params)
+    @joblisting.user = current_user
     if @joblisting.save
-      redirect_to root_path
+      redirect_to users_path
     else
       render :new
     end
@@ -26,6 +27,6 @@ class JoblistingsController < ApplicationController
   private
 
   def joblisting_params
-    params.require(:joblisting).permit(:description, :num_fixture, :housing, :job_address, :date, :time, fixture:[], type:[])
+    params.require(:joblisting).permit(:description, :num_fixture, :job_address, :time, date:[], housing:[], fixture:[], issue:[])
   end
 end

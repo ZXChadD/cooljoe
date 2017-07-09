@@ -21,6 +21,40 @@
 
 // @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
 
+// user request form
+#request {
+
+  position: relative;
+  width: 500px;
+  margin: 50px auto 100px auto;
+  background: #d9e8f5;
+  padding: 10px;
+
+  label {
+    font-size: 0.90em;
+  }
+
+}
+
+input[type="checkbox"]{
+  width: 20px; /*Desired width*/
+  height: 20px; /*Desired height*/
+}
+
+// user sign_in/sign_up forms
+
+#form {
+  position: relative;
+  width: 500px;
+  margin: 50px auto 100px auto;
+  background: #e2dedb;
+  color: #b3aca7;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #aca49c;
   font-size: 0.875em;
@@ -102,17 +136,6 @@ input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
 // }
 //
 
-#form {
-  position: relative;
-  width: 500px;
-  margin: 50px auto 100px auto;
-  background: #e2dedb;
-  color: #b3aca7;
-  text-align: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
 input {
   font-family: 'Lato', sans-serif;
   font-size: 0.875em;
@@ -150,7 +173,7 @@ textarea {
 
   color: #726659;
   font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
+  font-size: 1.25em;
 
   border: solid 1px #b3aca7;
 
