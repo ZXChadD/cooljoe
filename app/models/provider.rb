@@ -9,4 +9,11 @@ class Provider < ApplicationRecord
   has_many :provider_attaches
   has_one :schedule
 
+  enum experience: {
+    "< 1 year":       1,
+    "1 to 3 years":   2,
+    "3 to 5 years":   3,
+    "> 5 years":      4
+  }
+
 end

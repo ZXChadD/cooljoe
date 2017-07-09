@@ -1,0 +1,9 @@
+<span><%= link_to 'Home', providers_path %></span>
+<span class='divider'>|</span>
+<span><%= link_to 'Current jobs', provider_path(current_provider) %></span>
+<span class='divider'>|</span>
+<span><%= link_to 'Job history', provider_path(current_provider) %></span>
+<span class='divider'>|</span>
+<span><%= link_to 'Profile', provider_path(current_provider) %></span>
+<span class='divider'>|</span>
+<span><%= link_to 'Log out', destroy_provider_session_path, method: :delete %></span>
