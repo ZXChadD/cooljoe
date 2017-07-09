@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :providers, :controllers => { registrations: 'providers/registrations', sessions: 'providers/sessions', passwords: 'providers/passwords'}
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
   get '/', to: 'pages#homepage'
   get '/homepage', to: 'pages#homepage', as: 'homepage'
