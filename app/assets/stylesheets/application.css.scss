@@ -18,6 +18,7 @@
 @import "bootstrap/**/*";
 @import "css/**/*";
 
+// Header
 .heading {
   text-align: center;
   background-color: #304269;
@@ -46,11 +47,15 @@
   }
 }
 
+// Body
+body {
+  padding-bottom: 50px;
+}
+
+// Footer
 #footer {
   background-color: #304269;
-  body {
-    padding-bottom: 50px;
-  }
+
   #footer-links {
     display: flex;
     flex-flow: row wrap;

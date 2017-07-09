@@ -10,8 +10,10 @@
   </head>
   <body>
     <%= render partial: 'layouts/header' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice != nil || alert !=nil %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <% end %>
     <%= yield %>
     <%= render partial: 'layouts/footer' %>
   </body>
