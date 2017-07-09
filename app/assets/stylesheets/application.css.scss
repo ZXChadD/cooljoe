@@ -18,11 +18,9 @@
 @import "bootstrap/**/*";
 @import "css/**/*";
 
-
 .heading {
- text-align: center;
- background-color: #304269;
- font-weight: bolder;
+  text-align: center;
+  background-color: #304269;
 }
 
 #com_name {
@@ -37,7 +35,7 @@
   padding-bottom: 10px;
   span.divider {
     color: #f26101;
-    padding: 10px
+    padding: 5px;
   }
   span a {
     color: #f26101;
@@ -45,6 +43,33 @@
   :hover {
       text-decoration: none;
       color: white;
+  }
+}
+
+#footer {
+  background-color: #304269;
+  body {
+    padding-bottom: 50px;
+  }
+  #footer-links {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    color: #f26101;
+    #copyright {
+      margin-right: 50vw;
+      padding-left: 20px;
+    }
+    #links {
+      a {
+      color: #f26101;
+      padding-left: 20px;
+      text-decoration: none;
+      }
+      a:hover {
+        color: white;  
+      }
+    }
   }
 }
 
