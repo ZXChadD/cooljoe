@@ -1,26 +1,3 @@
-// .form {
-//   text-align: center;
-//   background-color: #91bed4;
-//   border-radius: 25px;
-//   width: 55%;
-// }
-//
-// @media (max-width: 768px) {
-//   .form {
-//     width: 100%;
-//   }
-// }
-//
-// .form-buttons {
-//   margin-top: 0.5em;
-//   margin-bottom: 0.5em;
-//   margin-left: 0.5em;
-//   background-color: #f26101;
-//   font-size: 15px;
-// }
-
-// @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
-
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #aca49c;
   font-size: 0.875em;
@@ -94,13 +71,6 @@ input:hover::placeholder, textarea:hover::placeholder {
 input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
   color: #cbc6c1;
 }
-
-// body {
-//   font-family: 'Lato', sans-serif;
-//   background: #e2dedb;
-//   color: #b3aca7;
-// }
-//
 
 #form {
   position: relative;

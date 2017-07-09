@@ -72,14 +72,23 @@ body {
       text-decoration: none;
       }
       a:hover {
-        color: white;  
+        color: white;
       }
     }
   }
 }
 
+.form-buttons {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  background-color: #f26101;
+  font-size: 15px;
+}
+
 * {
-  font-family: 'Kurale', serif !important;
+  font-family: 'Kurale', serif;
   font-size: 105%;
 }
 
