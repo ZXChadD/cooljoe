@@ -7,14 +7,16 @@ class Providers::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+   def create
+     super
+     flash.delete(:notice)
+   end
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+   # DELETE /resource/sign_out
+   def destroy
+     super
+     flash.delete(:notice)
+   end
 
   # protected
 

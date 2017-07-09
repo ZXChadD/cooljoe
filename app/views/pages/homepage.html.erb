@@ -1,4 +1,12 @@
-<div class='homepage'>
-  <div class='button'><%= link_to "User", new_user_session_path %></div>
-  <div class='button'><%= link_to "Provider", new_provider_session_path %></div>
+<div id='homepage'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-offset-4 col-sm-4 col-sm-offset-1 title'>
+        <%= link_to "User", new_user_session_path %>
+      </div>
+      <div class='col-xs-offset-3 col-sm-4 col-sm-offset-2 title'>
+        <%= link_to "Provider", new_provider_session_path %>
+      </div>
+    </div>
+  </div>
 </div>
