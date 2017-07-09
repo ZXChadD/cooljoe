@@ -8,9 +8,14 @@ class JoblistingsController < ApplicationController
     @joblisting = Joblisting.new
   end
 
-  def new; end
-
-  def create; end
+  def create
+    @joblisting = Joblisting.new(joblisting_params)
+    if @joblisting.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
 
   def edit; end
 
@@ -21,6 +26,6 @@ class JoblistingsController < ApplicationController
   private
 
   def joblisting_params
-    params.require(:joblisting).permit(:description, :fixture, :num_fixture, :housing, :job_address, :date, :time, type:[])
+    params.require(:joblisting).permit(:description, :num_fixture, :housing, :job_address, :date, :time, fixture:[], type:[])
   end
 end

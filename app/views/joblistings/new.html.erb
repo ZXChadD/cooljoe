@@ -1,15 +1,33 @@
-<%= form_for @joblisting do |f| %>
+<%= form_for @joblisting, method: :post do |f| %>
 
-  <div class='field'>
+  <!-- <div class='field'>
     <%= label_tag 'type_install', 'Install' %>
     <%= check_box_tag 'joblisting[type][]', 'Install', checked('Install'), id: 'type_install' %>
 
     <%= label_tag 'type_repair', 'Repair' %>
-    <%= check_box_tag 'joblisting[type][]', 'Install', checked('Repair'), id: 'type_repair' %>
+    <%= check_box_tag 'joblisting[type][]', 'Repair', checked('Repair'), id: 'type_repair' %>
 
     <%= label_tag 'type_replace', 'Replace' %>
-    <%= check_box_tag 'joblisting[type][]', 'Install', checked('Replace'), id: 'type_replace' %>
+    <%= check_box_tag 'joblisting[type][]', 'Replace', checked('Replace'), id: 'type_replace' %>
+  </div> -->
 
+  <div class='field'>
+    <%= label_tag 'fixture_wiring', 'Wiring' %>
+    <%= check_box_tag 'joblisting[fixture][]', 'Wiring', checked('Wiring'), id: 'fixture_wiring' %>
+
+    <%= label_tag 'fixture_light', 'Light' %>
+    <%= check_box_tag 'joblisting[fixture][]', '', checked('Light'), id: 'fixture_light' %>
+
+    <%= label_tag 'fixture_switch', 'Switch' %>
+    <%= check_box_tag 'joblisting[fixture][]', '', checked('Switch'), id: 'fixture_switch' %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :description, autofocus: true, placeholder: 'Description' %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :job_address, autofocus: true, placeholder: 'Job Address' %>
   </div>
 
   <div class='actions'>
