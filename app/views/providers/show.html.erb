@@ -1,2 +1,180 @@
-<h1>Providers#show</h1>
-<p>Find me in app/views/providers/show.html.erb</p>
+
+<div class="container">
+<div class="row">
+      <div class="col-xs-12 col-sm-9">
+
+        <!-- User profile -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Electrician Profile</h4>
+          </div>
+          <div class="panel-body">
+            <div class="profile__avatar">
+              <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="...">
+            </div>
+            <div class="profile__header">
+              <h4><%= "#{@provider.firstname} #{@provider.lastname}" %><small> Electrician</small></h4>
+              <p class="text-muted">
+                <%= @provider.description %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- User info -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">User info</h4>
+          </div>
+          <div class="panel-body">
+            <table class="table profile__table">
+              <tbody>
+                <tr>
+                  <th><strong>License Number</strong></th>
+                  <td><%= @provider.license_num %></td>
+                </tr>
+                <tr>
+                  <th><strong>Position</strong></th>
+                  <td>Electrician</td>
+                </tr>
+                <tr>
+                  <th><strong>Experience</strong></th>
+                  <td><%= @provider.experience %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Community -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Community</h4>
+          </div>
+          <div class="panel-body">
+            <table class="table profile__table">
+              <tbody>
+                <tr>
+                  <th><strong>Jobs Completed</strong></th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th><strong>Member since</strong></th>
+                  <td><%= @provider.created_at %></td>
+                </tr>
+                <tr>
+                  <th><strong>Last login</strong></th>
+                  <td><%= @provider.last_sign_in_at %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Latest posts -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Remarks by Customers</h4>
+          </div>
+          <div class="panel-body">
+            <div class="profile__comments">
+              <div class="profile-comments__item">
+                <div class="profile-comments__controls">
+                  <a href="#"><i class="fa fa-share-square-o"></i></a>
+                  <a href="#"><i class="fa fa-edit"></i></a>
+                  <a href="#"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <div class="profile-comments__avatar">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">
+                </div>
+                <div class="profile-comments__body">
+                  <h5 class="profile-comments__sender">
+                    Richard Roe <small>2 hours ago</small>
+                  </h5>
+                  <div class="profile-comments__content">
+                  One of the best electrician i've met so feature
+                  </div>
+                </div>
+              </div>
+              <div class="profile-comments__item">
+                <div class="profile-comments__controls">
+                  <a href="#"><i class="fa fa-share-square-o"></i></a>
+                  <a href="#"><i class="fa fa-edit"></i></a>
+                  <a href="#"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <div class="profile-comments__avatar">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="...">
+                </div>
+                <div class="profile-comments__body">
+                  <h5 class="profile-comments__sender">
+                    Richard Roe <small>5 hours ago</small>
+                  </h5>
+                  <div class="profile-comments__content">
+                    All my problems are fixed by him!
+                  </div>
+                </div>
+              </div>
+              <div class="profile-comments__item">
+                <div class="profile-comments__controls">
+                  <a href="#"><i class="fa fa-share-square-o"></i></a>
+                  <a href="#"><i class="fa fa-edit"></i></a>
+                  <a href="#"><i class="fa fa-trash-o"></i></a>
+                </div>
+                <div class="profile-comments__avatar">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="...">
+                </div>
+                <div class="profile-comments__body">
+                  <h5 class="profile-comments__sender">
+                    Richard Roe <small>1 day ago</small>
+                  </h5>
+                  <div class="profile-comments__content">
+                    This electrician is amazing!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-xs-12 col-sm-3">
+
+        <!-- Contact user -->
+        <p>
+          <a href="#" class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
+            Contact Me
+          </a>
+        </p>
+
+        <hr class="profile__contact-hr">
+
+        <!-- Contact info -->
+        <div class="profile__contact-info">
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-phone"></i>
+            </div>
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-phone"></i>
+            </div>
+            <div class="profile__contact-info-body">
+              <h6 class="profile__contact-info-heading">Mobile number</h5>
+              <p>
+                <%= "+65 #{@provider.tel_num}" %>
+              </p>
+            </div>
+          </div>
+          <div class="profile__contact-info-item">
+            <div class="profile__contact-info-icon">
+              <i class="fa fa-envelope-square"></i>
+            </div>
+            <div class="profile__contact-info-body">
+              <h6 class="profile__contact-info-heading">E-mail address</h5>
+              <a href="mailto:admin@domain.com"><%= @provider.email %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
