@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def urgent
+    @time_now = Time.now
     @list_num = 3
     get_list_of_electricians
   end
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
   private
 
   def get_list_of_electricians
-    if Time.now.sunday? || Time.now.saturday?
+    if @time_now.sunday? || @time_now.saturday?
       @time = 'weekends'
       get_sub_list_electricians
     else
