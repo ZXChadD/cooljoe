@@ -42,6 +42,8 @@ gem 'faker', '~> 1.6', '>= 1.6.3'
 gem 'jquery-rails'
 # Classier solution for file uploads for Rails, Sinatra and other Ruby web frameworks
 gem 'carrierwave', '~> 1.1.0'
+# Ruby cloud services library
+gem 'fog'
 # Facebook OAuth2 Strategy for OmniAuth
 gem 'omniauth-facebook'
 # Gemification of rails's country_select
@@ -87,3 +89,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+#bootstrap form
+gem 'bootstrap_form'

@@ -17,6 +17,7 @@
         <div id='banner_links', class='col-xs-12 col-sm-9 col-sm-offset-1'>
           <% if provider_signed_in? || user_signed_in? %>
             <% if provider_signed_in? %>
+
               <span><%= link_to 'Home', providers_path %></span>
               <span class='divider'>|</span>
               <span><%= link_to 'Current jobs', provider_path(current_provider) %></span>
