@@ -32,18 +32,33 @@ end
 
 # Create Provider
 Provider.find_or_create_by(email: 'provider1@provider.com') do |provider|
-  provider.firstname = 'provider1'
-  provider.lastname = 'provider1'
+  provider.firstname = 'pro_firstname1'
+  provider.lastname = 'pro_lastname1'
   provider.email = 'provider1@provider.com'
   provider.password = '123456'
   provider.license_num = 12345678
-  provider.tel_num = 12345678
+  provider.tel_num = Faker::Number.number(8)
+  provider.description = "description"
+  provider.experience = 4
+  provider.avatar = Faker::Avatar.image  
 end
 
-# Create Provider users
-# provider_count = 10
-# if Provider.count < provider_count + 1
-#   (provider_count - Provider.count).times do
-#   end
-# end
+# Create Providers
+provider_count = 10
+if Provider.count < provider_count + 1
+  (provider_count - Provider.count).times do
+    n = Provider.last.id + 1
+    firstname = "pro_firstname#{n}"
+    lastname = "pro_lastname#{n}"
+    email = "provider#{n}@provider.com"
+    password = '123456'
+    license_num = 12345678
+    tel_num = Faker::Number.number(8)
+    description = "description"
+    experience = Faker::Number.between(1, 4)
+    avatar = Faker::Avatar.image
+
+    provider = Provider.create(firstname: firstname, lastname: lastname, email: email, password: password, license_num: license_num, tel_num: tel_num, description: description, experience: experience, remote_avatar_url: avatar)
+  end
+end
 
