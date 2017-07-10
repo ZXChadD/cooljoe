@@ -1,8 +1,12 @@
 class ProvidersController < ApplicationController
+  def index
+  end
 
   def index; end
 
-  def show; end
+  def show
+    @provider = Provider.find(params[:id])
+  end
 
   def like
     @provider = Provider.find(params[:id])
@@ -21,5 +25,4 @@ class ProvidersController < ApplicationController
     @like.destroy
     redirect_back(fallback_location: users_path)    
   end
-
 end
