@@ -1,8 +1,9 @@
 class ProvidersController < ApplicationController
 
-  def index; end
-
-  def index; end
+  def index;
+    @schedule = Schedule.new
+    @provider = current_provider
+  end
 
   def show
     @provider = Provider.find(params[:id])
