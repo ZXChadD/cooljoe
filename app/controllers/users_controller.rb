@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   require 'time'
 
   def index
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
   end
 
   def urgent
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
       get_sub_list_electricians
     else
       @time = 'weekdays'
-      get_sub_list_electricians 
+      get_sub_list_electricians
     end
   end
 
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
         break
       end
     @electricians
-    end 
+    end
   end
 
 end

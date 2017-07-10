@@ -6,10 +6,10 @@ class Joblisting < ApplicationRecord
   has_one :invoice
 
   before_save do
-    self.issue.gsub!(/[\[\]\"]/, "") if attribute_present?("issue")
-    self.fixture.gsub!(/[\[\]\"]/, "") if attribute_present?("fixture")
-    self.housing.gsub!(/[\[\]\"]/, "") if attribute_present?("housing")
-    self.date.gsub!(/[\[\]\"]/, "") if attribute_present?("date")
+    issue.gsub!(/[\[\]\"]/, '') if attribute_present?('issue')
+    fixture.gsub!(/[\[\]\"]/, '') if attribute_present?('fixture')
+    housing.gsub!(/[\[\]\"]/, '') if attribute_present?('housing')
+    date.gsub!(/[\[\]\"]/, '') if attribute_present?('date')
   end
 
   enum status: {

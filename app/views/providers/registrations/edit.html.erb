@@ -1,67 +1,70 @@
-<div class="container">
+<div class="topBefore", id="form">
 
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-  <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.text_field :firstname, label: "First Name", autofocus: true %>
-  </div>
+    <div class="field">
+      <%= f.label :firstname %>
+      <%= f.text_field :firstname, autofocus: true, placeholder: 'Firstname' %>
+    </div>
 
-  <div class="field">
-    <%= f.text_field :lastname, label: "Last Name", autofocus: true %>
-  </div>
+    <div class="field">
+      <%= f.label :lastname %>
+      <%= f.text_field :lastname, autofocus: true, placeholder: 'Lastname' %>
+    </div>
 
-  <div class="field">
-    <%= f.text_field :tel_num, label: "Mobile Number", autofocus: true %>
-  </div>
+    <div class="field">
+      <%= f.label :telephone_number %>
+      <%= f.text_field :tel_num, autofocus: true, placeholder: 'Telephone' %>
+    </div>
 
-  <div class="field">
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :license_number %>
+      <%= f.text_field :license_num, autofocus: true, placeholder: "License Number" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :years_of_experience %>
+      <%= f.select :experience, Provider.experiences.keys.to_a %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description_of_yourself %>
+      <%= f.text_area :description, autofocus: true, placeholder: "Description of youself" %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "off", placeholder: "New Password (leave blank if you don't want to change it)" %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm New Password" %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :current_password, autocomplete: "off", placeholder: "Confirm Password (we need your current password to confirm your changes)" %>
+    </div>
+
+    <div class="field">
+      <%= f.file_field :avatar, label: "Photo Upload", autofocus: true %>
+    </div>
+
+    <br />
+
+    <%= f.submit "Update", :id => 'submit' %>
   <% end %>
-
-  <div class="field">
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :license_num, label: "License Number", autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.text_area :description, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.text_area :experience, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.file_field :avatar, label: "Photo Upload", autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-  <% end %>
-
-  <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :id => 'submit' %>
   <%= link_to "Back", :back %>
 
 </div>
