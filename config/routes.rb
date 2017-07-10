@@ -13,9 +13,14 @@ Rails.application.routes.draw do
   get '/electricians', to: 'users#electricians', as: 'electricians'
 
   resources :users, only: [:index, :show]
-  resources :providers, only: [:index, :show]
+  resources :providers, only: [:index, :show] do
+    member do
+      post 'like'
+      delete 'unlike'
+    end
+  end
+
   resources :joblistings
-  resources :likes, only: [:create, :destroy]
   resources :invoice, except: [:destroy]
 
 

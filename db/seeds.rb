@@ -30,7 +30,7 @@ User.find_or_create_by(email: 'user2@user.com') do |user|
   user.user_address = Faker::Address.street_address
 end
 
-Create Provider
+# Create Provider
 Provider.find_or_create_by(email: 'provider1@provider.com') do |provider|
   provider.firstname = 'pro_firstname1'
   provider.lastname = 'pro_lastname1'
@@ -39,8 +39,8 @@ Provider.find_or_create_by(email: 'provider1@provider.com') do |provider|
   provider.license_num = 12345678
   provider.tel_num = Faker::Number.number(8)
   provider.description = "description"
-  provider.experience = 
-  # provider.avatar = Faker::Avatar.image  
+  provider.experience = 4
+  provider.avatar = Faker::Avatar.image  
 end
 
 # Create Providers
@@ -56,9 +56,9 @@ if Provider.count < provider_count + 1
     tel_num = Faker::Number.number(8)
     description = "description"
     experience = Faker::Number.between(1, 4)
-    # avatar = Faker::Avatar.image
+    avatar = Faker::Avatar.image
 
-    provider = Provider.create(firstname: firstname, lastname: lastname, email: email, password: password, license_num: license_num, tel_num: tel_num, description: description, experience: experience)
+    provider = Provider.create(firstname: firstname, lastname: lastname, email: email, password: password, license_num: license_num, tel_num: tel_num, description: description, experience: experience, remote_avatar_url: avatar)
   end
 end
 

@@ -1,9 +1,18 @@
-<span><%= link_to 'Jobs list', admin_joblistings_path %></span>
-<span class='divider'>|</span>
-<span><%= link_to 'Users list', admin_users_path %></span>
-<span class='divider'>|</span>
-<span><%= link_to 'Electricians list', admin_providers_path %></span>
-<span class='divider'>|</span>
-<span>Statistics</span>
-<span class='divider'>|</span>
-<span><%= link_to 'Log out', destroy_user_session_path, method: :delete %></span>
+<div class='row'>
+  <div id='com_name', class='col-md-6 col-md-offset-3' >
+    <%= link_to 'Cool Joe', homepage_path %>        
+  </div>
+</div>
+<div class='row'>
+  <div id='banner_links', class='col-md-6 col-md-offset-3'>
+    <span><%= link_to 'Jobs list', admin_joblistings_path %></span>
+    <span class='divider'>|</span>
+    <span><%= link_to 'Users list', admin_users_path %></span>
+    <span class='divider'>|</span>
+    <span><%= link_to 'Electricians list', admin_providers_path %></span>
+    <span class='divider'>|</span>
+    <span>Statistics</span>
+    <span class='divider'>|</span>
+    <span><%= link_to 'Log out', destroy_user_session_path, method: :delete %></span>
+  </div>
+</div>

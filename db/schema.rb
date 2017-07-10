@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20170707061529) do
     t.string "tel_num", null: false
     t.string "license_num"
     t.text "description"
-    t.string "experience"
+    t.integer "experience"
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

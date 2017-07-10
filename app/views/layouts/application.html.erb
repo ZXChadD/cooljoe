@@ -17,7 +17,8 @@
       <p class="alert"><%= alert %></p>
     <% end %>
     <%= yield %>
-    <%= render partial: 'layouts/footer' %>
+    <% if provider_signed_in? || user_signed_in? %>
+      <%= render partial: 'layouts/footer' %>
+    <% end %>
   </body>
 </html>
-

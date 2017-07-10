@@ -6,7 +6,7 @@ class CreateProviders < ActiveRecord::Migration[5.1]
       t.string :tel_num, null:false
       t.string :license_num
       t.text :description
-      t.string :experience
+      t.integer :experience
       t.string :avatar
 
       t.timestamps

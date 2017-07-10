@@ -1,11 +1,20 @@
-<span><%= link_to 'Home', users_path %></span>
-<span class='divider'>|</span>
-<span><%= link_to 'Urgent job', urgent_path %></span>
-<span class='divider'>|</span>
-<span><%= link_to 'Standard job', new_joblisting_path %></span>
-<span class='divider'>|</span>              
-<span><%= link_to 'Electricians', electricians_path %></span>
-<span class='divider'>|</span>
-<span><%= link_to 'Profile', user_path(current_user) %></span>
-<span class='divider'>|</span>
-<span><%= link_to 'Log out', destroy_user_session_path, method: :delete %></span>
+<div class='row'>
+  <div id='com_name', class='col-md-6 col-md-offset-3' >
+    <%= link_to 'Cool Joe', users_path %>        
+  </div>
+</div>
+<div class='row'>
+  <div id='banner_links', class='col-md-6 col-md-offset-3'>
+    <span><%= link_to 'Home', users_path %></span>
+    <span class='divider'>|</span>
+    <span><%= link_to 'Urgent job', urgent_path %></span>
+    <span class='divider'>|</span>
+    <span><%= link_to 'Standard job', new_joblisting_path %></span>
+    <span class='divider'>|</span>              
+    <span><%= link_to 'Electricians', electricians_path %></span>
+    <span class='divider'>|</span>
+    <span><%= link_to 'Profile', user_path(current_user) %></span>
+    <span class='divider'>|</span>
+    <span><%= link_to 'Log out', destroy_user_session_path, method: :delete %></span>
+  </div>
+</div>

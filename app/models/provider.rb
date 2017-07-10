@@ -1,5 +1,6 @@
 class Provider < ApplicationRecord
-
+  mount_uploader :avatar, ProviderAvatarUploader
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
