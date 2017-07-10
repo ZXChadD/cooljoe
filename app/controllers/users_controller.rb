@@ -1,18 +1,15 @@
 class UsersController < ApplicationController
-  def index
+
+  def index; end
+
+  def show;
+    @user = User.find(params[:id]) 
   end
 
-  def show
-  end
+  def urgent; end
 
-  def urgent
-  end
+  def result; end
 
-  def result
-  end
-
-  def electricians
-
-  end
+  def electricians; end
 
 end

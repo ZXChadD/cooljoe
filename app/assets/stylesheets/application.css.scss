@@ -19,13 +19,6 @@
 @import "bootstrap/**/*";
 @import "css/**/*";
 
-
-.heading {
- text-align: center;
- background-color: #304269;
- font-weight: bolder;
-}
-
 #com_name {
   font-size: 400%;
   a {
@@ -38,7 +31,7 @@
   padding-bottom: 10px;
   span.divider {
     color: #f26101;
-    padding: 10px
+    padding: 5px;
   }
   span a {
     color: #f26101;
@@ -49,8 +42,48 @@
   }
 }
 
+// Body
+body {
+  // padding-bottom: 50px;
+}
+
+// Footer
+#footer {
+  background-color: #304269;
+
+  #footer-links {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    color: #f26101;
+    #copyright {
+      margin-right: 50vw;
+      padding-left: 20px;
+    }
+    #links {
+      a {
+      color: #f26101;
+      padding-left: 20px;
+      text-decoration: none;
+      }
+      a:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+.form-buttons {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  background-color: #f26101;
+  font-size: 15px;
+}
+
 * {
-  font-family: 'Kurale', serif !important;
+  font-family: 'Kurale', serif;
   font-size: 105%;
 }
 

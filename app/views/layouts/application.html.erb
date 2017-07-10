@@ -9,9 +9,16 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
   </head>
   <body>
-    <%= render partial: 'layouts/header' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if provider_signed_in? || user_signed_in? %>
+      <%= render partial: 'layouts/header' %>
+    <% end %>
+    <% if notice != nil || alert !=nil %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <% end %>
     <%= yield %>
+    <% if provider_signed_in? || user_signed_in? %>
+      <%= render partial: 'layouts/footer' %>
+    <% end %>
   </body>
 </html>

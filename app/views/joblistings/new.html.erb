@@ -1,2 +1,87 @@
-<h1>Joblistings#new</h1>
-<p>Find me in app/views/joblistings/new.html.erb</p>
+<div class="topBefore", id="request">
+  <%= form_for @joblisting, method: :post do |f| %>
+
+    <div class='field'>
+      <p>What needs to be done?</p>
+      <%= label_tag 'issue_install', 'Installation' %>
+      <%= check_box_tag 'joblisting[issue][]', 'Installation', checked('Installation'), id: 'issue_install' %>
+
+      <%= label_tag 'issue_repair', 'Repair' %>
+      <%= check_box_tag 'joblisting[issue][]', 'Repair', checked('Repair'), id: 'issue_repair' %>
+
+      <%= label_tag 'issue_replace', 'Replace' %>
+      <%= check_box_tag 'joblisting[issue][]', 'Replace', checked('Replace'), id: 'issue_replace' %>
+    </div>
+
+    <br />
+
+    <div class='field'>
+      <p>What type of fixtures do you require?</p>
+      <%= label_tag 'fixture_wiring', 'Wiring' %>
+      <%= check_box_tag 'joblisting[fixture][]', 'Wiring', checked('Wiring'), id: 'fixture_wiring' %>
+
+      <%= label_tag 'fixture_light', 'Lights' %>
+      <%= check_box_tag 'joblisting[fixture][]', 'Lights', checked('Lights'), id: 'fixture_light' %>
+
+      <%= label_tag 'fixture_switch', 'Switches' %>
+      <%= check_box_tag 'joblisting[fixture][]', 'Switches', checked('Switches'), id: 'fixture_switch' %>
+    </div>
+
+    <br />
+
+    <div class="field">
+      <%= f.label :number_of_fixtures_required %>
+      <%= f.select :num_fixture, ['1','2','3','4'] %>
+    </div>
+
+    <br />
+
+    <div class='field'>
+      <p>When does it need to be done?</p>
+      <%= label_tag 'date_day', 'Within 5 days' %>
+      <%= check_box_tag 'joblisting[date][]', '5', checked('Within 5 days'), id: 'date_day' %>
+
+      <%= label_tag 'date_week', 'Within 2 weeks' %>
+      <%= check_box_tag 'joblisting[date][]', '14', checked('Within 2 weeks'), id: 'date_week' %>
+
+      <%= label_tag 'date_month', 'Within 1 month' %>
+      <%= check_box_tag 'joblisting[date][]', '31', checked('Within 1 month'), id: 'date_month' %>
+    </div>
+
+    <br />
+
+    <div class="field">
+      <%= f.label :desired_timing %>
+      <%= f.select :time, ['Morning','Afternoon','Evening'] %>
+    </div>
+
+    <br />
+
+    <div class='field'>
+      <p>What type of property do you stay in?</p>
+      <%= label_tag 'housing_public', 'HDBs' %>
+      <%= check_box_tag 'joblisting[housing][]', 'HDBs', checked('HDBs'), id: 'housing_public' %>
+
+      <%= label_tag 'housing_condo', 'Condo' %>
+      <%= check_box_tag 'joblisting[housing][]', 'Condo', checked('Condo'), id: 'housing_condo' %>
+
+      <%= label_tag 'housing_landed', 'Landed' %>
+      <%= check_box_tag 'joblisting[housing][]', 'Landed', checked('Landed'), id: 'housing_landed' %>
+    </div>
+
+    <br />
+
+    <div class="field">
+      <%= f.text_area :description, autofocus: true, placeholder: 'Description' %>
+    </div>
+
+    <div class="field">
+      <%= f.text_area :job_address, autofocus: true, placeholder: 'Job Address' %>
+    </div>
+
+    <div class='actions'>
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+</div>
