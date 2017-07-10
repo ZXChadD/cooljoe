@@ -1,7 +1,12 @@
 class ProvidersController < ApplicationController
 
-  def index;
-    @schedule = Schedule.new
+  def index
+    if current_provider.schedule.present?
+      @schedule = Schedule.find_by(provider_id: current_provider.id)
+      @provider = current_provider
+    else
+      @schedule = Schedule.new
+    end
     @provider = current_provider
   end
 

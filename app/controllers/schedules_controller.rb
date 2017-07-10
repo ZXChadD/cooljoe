@@ -7,7 +7,18 @@ class SchedulesController < ApplicationController
     @schedule.provider = current_provider
     if @schedule.save!
       redirect_to providers_path
-    end 
+    end
+  end
+
+  def edit; end
+
+  def update
+    @schedule = Schedule.find_by(provider_id: current_provider.id)
+    if @schedule.update(schedule_params)
+      redirect_to providers_path
+    else
+      render :edit
+    end
   end
 
   private

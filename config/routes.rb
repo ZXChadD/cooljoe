@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :providers, only: [:index, :show] do
     member do
-      resources :schedules, only: [:show, :new, :create, :update]
+      resources :schedules, only: [:show, :new, :create, :update, :edit]
     end
     member do
       post 'like'
