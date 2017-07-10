@@ -18,4 +18,6 @@ class Provider < ApplicationRecord
     "> 5 years":      4
   }
 
+  scope :experiences, -> {order(:experience).reverse}
+  
 end
