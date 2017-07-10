@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *= require_self 
+ *= require_self
  *= require rails_bootstrap_forms
  */
 @import "bootstrap-sprockets";
@@ -19,9 +19,14 @@
 @import "bootstrap/**/*";
 @import "css/**/*";
 
-html {
-  position: relative;
-  min-height: 100%;
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
 }
 
 #com_name {
@@ -30,6 +35,14 @@ html {
     color: #f26101;
     text-decoration: none;
   }
+}
+
+* {
+  font-family: 'Kurale', serif;
+}
+
+ul {
+  list-style-type: none;
 }
 
 #banner_links {
@@ -50,10 +63,6 @@ html {
 // Footer
 #footer {
   background-color: #304269;
-  position: absolute;
-  bottom: 0;
-  height: 50px;
-  width: 100%;
   text-align: center;
 
   #footer-links {
@@ -85,13 +94,4 @@ html {
   margin-left: 0.5em;
   background-color: #f26101;
   font-size: 15px;
-}
-
-* {
-  font-family: 'Kurale', serif;
-  font-size: 105%;
-}
-
-ul {
-  list-style-type: none;
 }

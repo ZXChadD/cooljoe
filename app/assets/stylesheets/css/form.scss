@@ -18,7 +18,12 @@ input[type="checkbox"]{
   height: 20px; /*Desired height*/
 }
 
-// sign_in/sign_up form 
+input[type="file"]{
+  margin-left: 3%;
+}
+
+
+// sign_in/sign_up form
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #aca49c;

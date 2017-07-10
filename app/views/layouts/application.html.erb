@@ -15,10 +15,14 @@
     <% if alert !=nil %>
       <p class="alert"><%= alert %></p>
     <% end %>
-  <body>
-    <%= yield %>
-  </body>
-    <% if provider_signed_in? || user_signed_in? %>
+  <body class="Site">
+    <main class="Site-content">
+      <%= yield %>
+    </main>
+    <footer>
+      <% if provider_signed_in? || user_signed_in? %>
       <%= render partial: 'layouts/footer' %>
-    <% end %>
+      <% end %>
+    </footer>
+  </body>
 </html>
