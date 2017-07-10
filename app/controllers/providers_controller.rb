@@ -1,6 +1,6 @@
 class ProvidersController < ApplicationController
-  def index
-  end
+
+  def index; end
 
   def index; end
 
@@ -23,6 +23,7 @@ class ProvidersController < ApplicationController
     @provider = Provider.find(params[:id])
     @like = @provider.likes.find_by(user_id: current_user.id)
     @like.destroy
-    redirect_back(fallback_location: users_path)    
+    redirect_back(fallback_location: users_path)
   end
+
 end

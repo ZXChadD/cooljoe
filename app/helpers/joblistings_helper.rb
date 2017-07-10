@@ -6,4 +6,5 @@ module JoblistingsHelper
     @joblisting.housing.nil? ? false : @joblisting.housing.match(area)
     @joblisting.date.nil? ? false : @joblisting.date.match(area)
   end
+
 end

@@ -1,4 +1,5 @@
 class Providers::SessionsController < Devise::SessionsController
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -7,21 +8,27 @@ class Providers::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-   def create
-     super
-     flash.delete(:notice)
-   end
+  def create
+    super
+    flash.delete(:notice)
+  end
 
-   # DELETE /resource/sign_out
-   def destroy
-     super
-     flash.delete(:notice)
-   end
+  # DELETE /resource/sign_out
+  def destroy
+    super
+    flash.delete(:notice)
+  end
 
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
+
+  def after_sign_in_path_for(_resource)
+    providers_path
+  end
+
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
 end

@@ -46,7 +46,7 @@ if Provider.count < provider_count + 1
     avatar = Faker::Avatar.image
 
     provider = Provider.create(firstname: firstname, lastname: lastname, email: email, password: password, license_num: license_num, tel_num: tel_num, description: description, experience: experience, remote_avatar_url: avatar)
-    
+
     date = ['weekdays', 'weekends', 'all'].sample
     time = ['morning', 'afternoon', 'evening'].sample
 
