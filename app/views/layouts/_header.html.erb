@@ -1,13 +1,15 @@
 <header class='heading'>
     <div class='container'>
-      <% if provider_signed_in? %>
-        <%= render partial: 'layouts/provider_signin' %>
-      <% elsif user_signed_in? %>
-        <% if current_user.is_admin %>
-          <%= render partial: 'layouts/admin_signin' %>
-        <% else %>
-          <%= render partial: 'layouts/user_signin' %>
+      <div class='row'>
+        <% if provider_signed_in? %>
+          <%= render partial: 'layouts/provider_signin' %>
+        <% elsif user_signed_in? %>
+          <% if current_user.is_admin %>
+            <%= render partial: 'layouts/admin_signin' %>
+          <% else %>
+            <%= render partial: 'layouts/user_signin' %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
 </header>
