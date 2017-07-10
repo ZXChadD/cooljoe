@@ -18,17 +18,59 @@
     </ul>
 
     <div class="tab-content">
-      <div id="home" class="tab-pane fade in active">
+      <div id="menu1" class="tab-pane fade in active">
         <h3>All Jobs</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>
-      <div id="menu1" class="tab-pane fade">
-        <h3>Current Job</h3>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div>
       <div id="menu2" class="tab-pane fade">
+      <h3>Current Job</h3>
+        <div class="panel panel-default">
+          <table class="table">
+            <tr>
+              <td>#</td>
+              <td>Date</td>
+              <td>Summary</td>
+              <td>Status</td>
+              <td>Electrican name</td>
+            </tr>
+            <% @current_joblistings.each_with_index do |current_joblisting, index| %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= current_joblisting.created_at.strftime("%F") %></td>
+                <td><%= link_to "#{current_joblisting.description}", joblisting_path(current_joblisting) %></td>
+                <td><%= current_joblisting.status %></td>
+                <% if current_joblisting.status == 'booked' %>
+                  <td><%= link_to "#{Provider.find(current_joblisting.provider_id).firstname}", provider_path(Provider.find(current_joblisting.provider_id)) %></td>
+                <% else %>
+                  <td>Pending</td>
+                <% end %>
+              </tr>
+            <% end %>
+          </table>
+        </div>      
+      </div>
+      <div id="menu3" class="tab-pane fade">
         <h3>History</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        <div class="panel panel-default">
+          <table class="table">
+            <tr>
+              <td>#</td>
+              <td>Date</td>
+              <td>Summary</td>
+              <td>Status</td>
+              <td>Electrican name</td>
+            </tr>
+            <% @past_joblistings.each_with_index do |past_joblisting, index| %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= past_joblisting.created_at.strftime("%F") %></td>
+                <td><%= link_to "#{past_joblisting.description}", joblisting_path(past_joblisting) %></td>
+                <td><%= past_joblisting.status %></td>
+                <td><%= link_to "#{Provider.find(past_joblisting.provider_id).firstname}", provider_path(Provider.find(past_joblisting.provider_id)) %></td>
+              </tr>
+            <% end %> 
+          </table>
+        </div> 
       </div>
     </div>
   </div>
