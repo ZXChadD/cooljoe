@@ -1,1 +1,15 @@
-<%= link_to 'Edit', edit_user_registration_path %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-xs-offset-3 col-sm-6 col-sm-offset-5">
+        <h1><%= @user.firstname.capitalize %> <%= @user.lastname.capitalize %></h1>
+        <h4><i class="fa fa-phone" aria-hidden="true"></i> <%= @user.tel_num %></h4>
+        <h4><i class="fa fa-home" aria-hidden="true"></i> <%= @user.user_address %></h4>
+        <br />
+        <button>
+          <%= link_to 'Edit', edit_user_registration_path %>
+        </button>
+      </div>
+    </div>
+</div>

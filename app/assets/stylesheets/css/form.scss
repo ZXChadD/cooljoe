@@ -1,26 +1,3 @@
-// .form {
-//   text-align: center;
-//   background-color: #91bed4;
-//   border-radius: 25px;
-//   width: 55%;
-// }
-//
-// @media (max-width: 768px) {
-//   .form {
-//     width: 100%;
-//   }
-// }
-//
-// .form-buttons {
-//   margin-top: 0.5em;
-//   margin-bottom: 0.5em;
-//   margin-left: 0.5em;
-//   background-color: #f26101;
-//   font-size: 15px;
-// }
-
-// @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
-
 // user request form
 #request {
 
@@ -41,19 +18,7 @@ input[type="checkbox"]{
   height: 20px; /*Desired height*/
 }
 
-// user sign_in/sign_up forms
-
-#form {
-  position: relative;
-  width: 500px;
-  margin: 50px auto 100px auto;
-  background: #e2dedb;
-  color: #b3aca7;
-  text-align: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
+// sign_in/sign_up form 
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #aca49c;
@@ -129,12 +94,16 @@ input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
   color: #cbc6c1;
 }
 
-// body {
-//   font-family: 'Lato', sans-serif;
-//   background: #e2dedb;
-//   color: #b3aca7;
-// }
-//
+#form {
+  position: relative;
+  width: 500px;
+  margin: 25px auto 100px auto;
+  background: #e2dedb;
+  color: #b3aca7;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
 input {
   font-family: 'Lato', sans-serif;
