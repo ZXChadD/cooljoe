@@ -44,25 +44,25 @@
                 <div class='field'>
                   <p>Available days?</p>
                   <%= label_tag 'date_weekdays', 'Weekdays' %>
-                  <%= check_box_tag 'schedule[date][]', 'Weekdays', checked('Weekdays'), id: 'date_weekdays' %>
+                  <%= check_box_tag 'schedule[date][]', 'Weekdays', checked_d('Weekdays'), id: 'date_weekdays' %>
 
                   <%= label_tag 'date_weekends', 'Weekends' %>
-                  <%= check_box_tag 'schedule[date][]', 'Weekends', checked('Weekends'), id: 'date_weekends' %>
+                  <%= check_box_tag 'schedule[date][]', 'Weekends', checked_d('Weekends'), id: 'date_weekends' %>
 
                   <%= label_tag 'date_all', 'All' %>
-                  <%= check_box_tag 'schedule[date][]', 'All', checked('All'), id: 'date_all' %>
+                  <%= check_box_tag 'schedule[date][]', 'All', checked_d('All'), id: 'date_all' %>
                 </div>
 
                 <div class='field'>
                   <p>Available timings?</p>
                   <%= label_tag 'time_morning', 'Morning' %>
-                  <%= check_box_tag 'schedule[time][]', 'Morning', checked('Morning'), id: 'time_morning' %>
+                  <%= check_box_tag 'schedule[time][]', 'Morning', checked_t('Morning'), id: 'time_morning' %>
 
                   <%= label_tag 'time_afternoon', 'Afternoon' %>
-                  <%= check_box_tag 'schedule[time][]', 'Afternoon', checked('Afternoon'), id: 'time_afternoon' %>
+                  <%= check_box_tag 'schedule[time][]', 'Afternoon', checked_t('Afternoon'), id: 'time_afternoon' %>
 
                   <%= label_tag 'time_evening', 'Evening' %>
-                  <%= check_box_tag 'schedule[time][]', 'Evening', checked('Evening'), id: 'time_evening' %>
+                  <%= check_box_tag 'schedule[time][]', 'Evening', checked_t('Evening'), id: 'time_evening' %>
                 </div>
                 <%= f.submit %>
               <% end %>
@@ -71,25 +71,25 @@
                 <div class='field'>
                   <p>Available days?</p>
                   <%= label_tag 'date_weekdays', 'Weekdays' %>
-                  <%= check_box_tag 'schedule[date][]', 'Weekdays', checked('Weekdays'), id: 'date_weekdays' %>
+                  <%= check_box_tag 'schedule[date][]', 'Weekdays', checked_d('Weekdays'), id: 'date_weekdays' %>
 
                   <%= label_tag 'date_weekends', 'Weekends' %>
-                  <%= check_box_tag 'schedule[date][]', 'Weekends', checked('Weekends'), id: 'date_weekends' %>
+                  <%= check_box_tag 'schedule[date][]', 'Weekends', checked_d('Weekends'), id: 'date_weekends' %>
 
                   <%= label_tag 'date_all', 'All' %>
-                  <%= check_box_tag 'schedule[date][]', 'All', checked('All'), id: 'date_all' %>
+                  <%= check_box_tag 'schedule[date][]', 'All', checked_d('All'), id: 'date_all' %>
                 </div>
 
                 <div class='field'>
                   <p>Available timings?</p>
                   <%= label_tag 'time_morning', 'Morning' %>
-                  <%= check_box_tag 'schedule[time][]', 'Morning', checked('Morning'), id: 'time_morning' %>
+                  <%= check_box_tag 'schedule[time][]', 'Morning', checked_t('Morning'), id: 'time_morning' %>
 
                   <%= label_tag 'time_afternoon', 'Afternoon' %>
-                  <%= check_box_tag 'schedule[time][]', 'Afternoon', checked('Afternoon'), id: 'time_afternoon' %>
+                  <%= check_box_tag 'schedule[time][]', 'Afternoon', checked_t('Afternoon'), id: 'time_afternoon' %>
 
                   <%= label_tag 'time_evening', 'Evening' %>
-                  <%= check_box_tag 'schedule[time][]', 'Evening', checked('Evening'), id: 'time_evening' %>
+                  <%= check_box_tag 'schedule[time][]', 'Evening', checked_t('Evening'), id: 'time_evening' %>
                 </div>
                 <%= f.submit %>
               <% end %>

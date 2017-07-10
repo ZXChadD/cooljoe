@@ -9,8 +9,8 @@ class Schedule < ApplicationRecord
   scope :alldays, -> {where(date: 'all')}
 
   before_save do
-    self.date.gsub!(/[\[\]\"]/, "") if attribute_present?("date")
-    self.time.gsub!(/[\[\]\"]/, "") if attribute_present?("time")
+    date.gsub!(/[\[\]\"]/, "") if attribute_present?("date")
+    time.gsub!(/[\[\]\"]/, "") if attribute_present?("time")
   end
 
 end
