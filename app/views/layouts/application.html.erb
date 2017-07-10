@@ -8,7 +8,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
   </head>
-  <body>
     <%= render partial: 'layouts/header' %>
     <% if notice != nil %>
       <p class="notice"><%= notice %></p>
@@ -16,9 +15,10 @@
     <% if alert !=nil %>
       <p class="alert"><%= alert %></p>
     <% end %>
+  <body>
     <%= yield %>
+  </body>
     <% if provider_signed_in? || user_signed_in? %>
       <%= render partial: 'layouts/footer' %>
     <% end %>
-  </body>
 </html>

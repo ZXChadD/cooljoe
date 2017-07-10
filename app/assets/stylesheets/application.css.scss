@@ -19,7 +19,10 @@
 @import "bootstrap/**/*";
 @import "css/**/*";
 
-
+html {
+  position: relative;
+  min-height: 100%;
+}
 
 #com_name {
   font-size: 400%;
@@ -44,12 +47,11 @@
   }
 }
 
-
-
 // Footer
 #footer {
   background-color: #304269;
-  position: relative;
+  position: absolute;
+  bottom: 0;
   height: 50px;
   width: 100%;
   text-align: center;
