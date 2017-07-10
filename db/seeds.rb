@@ -31,23 +31,23 @@ User.find_or_create_by(email: 'user2@user.com') do |user|
 end
 
 # Create Provider
-Provider.find_or_create_by(email: 'provider1@provider.com') do |provider|
-  provider.firstname = 'pro_firstname1'
-  provider.lastname = 'pro_lastname1'
-  provider.email = 'provider1@provider.com'
-  provider.password = '123456'
-  provider.license_num = 12345678
-  provider.tel_num = Faker::Number.number(8)
-  provider.description = "description"
-  provider.experience = 4
-  provider.avatar = Faker::Avatar.image  
-end
+# Provider.find_or_create_by(email: 'provider1@provider.com') do |provider|
+#   provider.firstname = 'pro_firstname1'
+#   provider.lastname = 'pro_lastname1'
+#   provider.email = 'provider1@provider.com'
+#   provider.password = '123456'
+#   provider.license_num = 12345678
+#   provider.tel_num = Faker::Number.number(8)
+#   provider.description = "description"
+#   provider.experience = 4
+#   provider.avatar = Faker::Avatar.image  
+# end
 
 # Create Providers
 provider_count = 10
 if Provider.count < provider_count + 1
   (provider_count - Provider.count).times do
-    n = Provider.last.id + 1
+    n = Provider.count + 1
     firstname = "pro_firstname#{n}"
     lastname = "pro_lastname#{n}"
     email = "provider#{n}@provider.com"
@@ -59,6 +59,12 @@ if Provider.count < provider_count + 1
     avatar = Faker::Avatar.image
 
     provider = Provider.create(firstname: firstname, lastname: lastname, email: email, password: password, license_num: license_num, tel_num: tel_num, description: description, experience: experience, remote_avatar_url: avatar)
+    
+    date = ['weekdays', 'weekends', 'all'].sample
+    time = ['morning', 'afternoon', 'evening'].sample
+
+    schedule = Schedule.create(provider_id: provider.id, date: date, time: time)
+
   end
 end
 

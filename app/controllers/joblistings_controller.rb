@@ -12,7 +12,7 @@ class JoblistingsController < ApplicationController
     @joblisting = Joblisting.new(joblisting_params)
     @joblisting.user = current_user
     if @joblisting.save
-      redirect_to users_path
+      redirect_to result_path(job_date: @joblisting.date)
     else
       render :new
     end
