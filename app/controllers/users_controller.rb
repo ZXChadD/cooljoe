@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @time_now = Time.now
     @list_num = 3
     get_list_of_electricians
+    @page = 'urgent_job'
   end
 
   def result
@@ -19,10 +20,12 @@ class UsersController < ApplicationController
     @time_now = Time.now + @time_adjust.days
     @list_num = Provider.count
     get_list_of_electricians
+    @page = 'standard_job'
   end
 
   def electricians
     @electricians = Provider.all
+    @page = 'all_electricians'
   end
 
   private

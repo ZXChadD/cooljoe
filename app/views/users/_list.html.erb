@@ -20,7 +20,9 @@
           <% else %>
             <button><%= link_to 'Unlike', unlike_provider_path(electrician), method: :delete %></button>
           <% end %>
-          <button>Book now</button>
+          <% if @page == 'standard_job' %>
+            <button>Book now</button>
+          <% end %>
         </div>     
       </div>
     </div>
