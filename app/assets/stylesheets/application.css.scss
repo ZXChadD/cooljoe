@@ -19,6 +19,8 @@
 @import "bootstrap/**/*";
 @import "css/**/*";
 
+
+
 #com_name {
   font-size: 400%;
   a {
@@ -42,14 +44,15 @@
   }
 }
 
-// Body
-body {
-  // padding-bottom: 50px;
-}
+
 
 // Footer
 #footer {
   background-color: #304269;
+  position: relative;
+  height: 50px;
+  width: 100%;
+  text-align: center;
 
   #footer-links {
     display: flex;
