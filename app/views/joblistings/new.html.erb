@@ -1,5 +1,5 @@
 <div class="topBefore", id="request">
-  <%= form_for @joblisting, method: :post do |f| %>
+  <%= form_for @joblisting, html: {multipart: true}, method: :post do |f| %>
 
     <div class='field'>
       <p>What needs to be done?</p>
@@ -69,7 +69,15 @@
       <%= check_box_tag 'joblisting[housing][]', 'Landed', checked('Landed'), id: 'housing_landed' %>
     </div>
 
-    <br />
+    <br>
+      <div class="job_attaches">
+        <%= f.fields_for :job_attaches do |job_attach| %>
+        <%= render 'partials/job_attachment', f: job_attach %>
+        <% end %>
+        <%= link_to_add_association 'Add Image', f, :job_attaches, partial: 'partials/job_attachment' %>
+
+      </div>
+    <br>
 
     <div class="field">
       <%= f.text_area :description, autofocus: true, placeholder: 'Description' %>

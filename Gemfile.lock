@@ -57,6 +57,7 @@ GEM
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
     chartkick (2.2.4)
+    cocoon (1.2.10)
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -447,6 +448,7 @@ DEPENDENCIES
   byebug
   carrierwave (~> 1.1.0)
   chartkick
+  cocoon
   coffee-rails (~> 4.2)
   countries
   country_select
