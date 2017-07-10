@@ -12,4 +12,11 @@ class Joblisting < ApplicationRecord
     self.date.gsub!(/[\[\]\"]/, "") if attribute_present?("date")
   end
 
+  enum status: {
+    'now':        1,
+    'booked':     2,
+    'completed':  3,
+    'cancel':     4
+  }
+
 end

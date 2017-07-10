@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   require 'time'
 
   def index
+    @joblistings = current_user.joblistings.order(:created_at).reverse
+    @current_joblistings = current_user.joblistings.where(status:1) + current_user.joblistings.where(status:2)
+    @past_joblistings = current_user.joblistings.where(status:3) + current_user.joblistings.where(status:4)
   end
 
   def show

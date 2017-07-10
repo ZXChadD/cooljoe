@@ -10,9 +10,9 @@ User.find_or_create_by(email: 'admin@admin.com') do |user|
 end
 
 # Create 2 standard users
-User.find_or_create_by(email: 'user1@user.com') do |user|
-  user.firstname = 'user1'
-  user.lastname = 'user1'
+user2 = User.find_or_create_by(email: 'user1@user.com') do |user|
+  user.firstname = Faker::Name.first_name
+  user.lastname = Faker::Name.last_name
   user.email = 'user1@user.com'
   user.password = '123456'
   user.is_admin = false
@@ -20,9 +20,9 @@ User.find_or_create_by(email: 'user1@user.com') do |user|
   user.user_address = Faker::Address.street_address
 end
 
-User.find_or_create_by(email: 'user2@user.com') do |user|
-  user.firstname = 'user2'
-  user.lastname = 'user2'
+user3 = User.find_or_create_by(email: 'user2@user.com') do |user|
+  user.firstname = Faker::Name.first_name
+  user.lastname = Faker::Name.last_name
   user.email = 'user2@user.com'
   user.password = '123456'
   user.is_admin = false
@@ -30,26 +30,13 @@ User.find_or_create_by(email: 'user2@user.com') do |user|
   user.user_address = Faker::Address.street_address
 end
 
-# Create Provider
-# Provider.find_or_create_by(email: 'provider1@provider.com') do |provider|
-#   provider.firstname = 'pro_firstname1'
-#   provider.lastname = 'pro_lastname1'
-#   provider.email = 'provider1@provider.com'
-#   provider.password = '123456'
-#   provider.license_num = 12345678
-#   provider.tel_num = Faker::Number.number(8)
-#   provider.description = "description"
-#   provider.experience = 4
-#   provider.avatar = Faker::Avatar.image  
-# end
-
 # Create Providers
 provider_count = 10
 if Provider.count < provider_count + 1
   (provider_count - Provider.count).times do
     n = Provider.count + 1
-    firstname = "pro_firstname#{n}"
-    lastname = "pro_lastname#{n}"
+    firstname = Faker::Name.first_name
+    lastname = Faker::Name.last_name
     email = "provider#{n}@provider.com"
     password = '123456'
     license_num = 12345678
@@ -68,3 +55,22 @@ if Provider.count < provider_count + 1
   end
 end
 
+# Create Joblistings
+joblisting_count = 40
+if Joblisting.count < joblisting_count + 1
+  (joblisting_count - Joblisting.count).times do
+    issue = ['Installation', 'Repair', 'Replace'].sample
+    description = 'description'
+    fixture = ['Wiring', 'Lights', 'Switches'].sample
+    num_fixture = Faker::Number.between(1, 4)
+    housing = ['HDBs', 'Condo', 'Landed'].sample
+    job_address = 'Job address'
+    date = ['5', '14', '31'].sample
+    time = ['Morning', 'Afternoon', 'Evening'].sample
+    status = Faker::Number.between(1, 4)
+    user_id = Faker::Number.between(1, User.count)
+    provider_id = Faker::Number.between(1, Provider.count)
+
+    joblisting = Joblisting.create(issue: issue, description: description, fixture: fixture, num_fixture: num_fixture, housing: housing, job_address: job_address, date: date, time: time, status: status, user_id: user_id, provider_id: provider_id)
+  end
+end
