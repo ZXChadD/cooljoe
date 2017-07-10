@@ -1,3 +1,25 @@
+// user request form
+#request {
+
+  position: relative;
+  width: 500px;
+  margin: 50px auto 100px auto;
+  background: #d9e8f5;
+  padding: 10px;
+
+  label {
+    font-size: 0.90em;
+  }
+
+}
+
+input[type="checkbox"]{
+  width: 20px; /*Desired width*/
+  height: 20px; /*Desired height*/
+}
+
+// sign_in/sign_up form 
+
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #aca49c;
   font-size: 0.875em;
@@ -120,7 +142,7 @@ textarea {
 
   color: #726659;
   font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
+  font-size: 1.25em;
 
   border: solid 1px #b3aca7;
 
