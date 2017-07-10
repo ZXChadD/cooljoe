@@ -140,6 +140,14 @@ body{
 .profile__contact-btn {
   padding: 12px 20px;
   margin-bottom: 20px;
+  background-color: #f26101;
+  border-color: #f26101;
+}
+
+.profile__contact-btn:hover {
+  background-color: #f26101;
+  border-color: #f26101;
+  color: #304269;
 }
 .profile__contact-hr {
   position: relative;

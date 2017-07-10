@@ -2,8 +2,8 @@
     <div class='container'>
     <div class='row'>
       <div id='com_name', class='col-md-6 col-md-offset-3' >
-        <% if provider_signed_in? || user_signed_in? %>      
-          <% if provider_signed_in? %>        
+        <% if provider_signed_in? || user_signed_in? %>
+          <% if provider_signed_in? %>
             <%= link_to 'Cool Joe', providers_path %>
           <% else %>
             <%= link_to 'Cool Joe', users_path %>
@@ -17,11 +17,11 @@
         <div id='banner_links', class='col-md-6 col-md-offset-3'>
           <% if provider_signed_in? || user_signed_in? %>
             <% if provider_signed_in? %>
-              <span><%= link_to 'Home', controller: :providers, action: :index %></span>
-              <span class='divider'>|</span>  
+              <span><%= link_to 'Home' %></span>
+              <span class='divider'>|</span>
               <span><%= link_to 'Current jobs', provider_path(current_provider) %></span>
               <span class='divider'>|</span>
-              <span><%= link_to 'Job history', provider_path(current_provider) %></span>              
+              <span><%= link_to 'Job history', provider_path(current_provider) %></span>
               <span class='divider'>|</span>
               <span><%= link_to 'Profile', provider_path(current_provider) %></span>
               <span class='divider'>|</span>
@@ -31,11 +31,11 @@
                 <span><%= link_to 'Jobs list', admin_joblistings_path %></span>
                 <span class='divider'>|</span>
                 <span><%= link_to 'Users list', admin_users_path %></span>
-                <span class='divider'>|</span>                
+                <span class='divider'>|</span>
                 <span><%= link_to 'Electricians list', admin_providers_path %></span>
-                <span class='divider'>|</span>                
+                <span class='divider'>|</span>
                 <span>Statistics</span>
-                <span class='divider'>|</span>                
+                <span class='divider'>|</span>
                 <span><%= link_to 'Log out', destroy_user_session_path, method: :delete %></span>
               <% else %>
                 <span><%= link_to 'Home', controller: :users, action: :index %></span>
@@ -43,11 +43,11 @@
                 <span><%= link_to 'Urgent job', joblistings_path %></span>
                 <span class='divider'>|</span>
                 <span><%= link_to 'Non-urgent job', new_joblisting_path %></span>
-                <span class='divider'>|</span>              
+                <span class='divider'>|</span>
                 <span><%= link_to 'Electricians', electricians_path %></span>
-                <span class='divider'>|</span>                
+                <span class='divider'>|</span>
                 <span><%= link_to 'Profile', user_path(current_user) %></span>
-                <span class='divider'>|</span>                
+                <span class='divider'>|</span>
                 <span><%= link_to 'Log out', destroy_user_session_path, method: :delete %></span>
               <% end %>
             <% end %>
