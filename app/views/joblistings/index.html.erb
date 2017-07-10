@@ -1,2 +1,19 @@
-<h1>Joblistings#index</h1>
-<p>Find me in app/views/joblistings/index.html.erb</p>
+<h3>All Joblistings</h3>
+<div class="panel panel-default">
+  <table class="table">
+    <tr>
+      <td>#</td>
+      <td>Date</td>
+      <td>Summary</td>
+      <td>Status</td>
+    </tr>
+    <% @joblistings.each_with_index do |joblisting, index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= joblisting.created_at.strftime("%F") %></td>
+      <td><%= link_to "#{joblisting.description}", joblisting_path(joblisting) %></td>
+      <td><%= joblisting.status %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

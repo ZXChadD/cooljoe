@@ -1,6 +1,10 @@
 class JoblistingsController < ApplicationController
 
-  def index; end
+  def index
+
+    @joblistings = Joblisting.all
+
+  end
 
   def show; end
 
