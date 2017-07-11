@@ -4,9 +4,18 @@ class InvoicesController < ApplicationController
 
   def show; end
 
-  def new; end
+  def new
+    @invoice = Invoice.new
+  end
 
-  def create; end
+  def create
+    @invoice = Invoice.new(invoice_params)
+    if @invoice.save!
+      redirect_to
+    else
+      render 'new'
+    end 
+  end
 
   def edit; end
 
