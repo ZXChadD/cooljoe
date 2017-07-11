@@ -26,11 +26,12 @@ class UsersController < ApplicationController
     else
       @joblisting = Joblisting.find(params[:job_id])
       get_time_adjust(@joblisting.date)
-      @job_time = @joblisting.created_at + @time_adjust.days      
+      @job_time = @joblisting.created_at + @time_adjust.days
     end
     @list_num = Provider.count
     get_list_of_electricians
     @page = 'standard_job'
+    @joblisting = Joblisting.find_by(params[:id])
   end
 
   def electricians

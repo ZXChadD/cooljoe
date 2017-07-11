@@ -175,7 +175,9 @@
           </div>
         </div>
         <button>
-          <%= link_to "Edit Profile", edit_provider_registration_path %>
+          <% if current_provider %>
+            <%= link_to "Edit Profile", edit_provider_registration_path%>
+          <% end %>
         </button>
       </div>
     </div>

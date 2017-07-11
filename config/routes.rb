@@ -20,10 +20,16 @@ Rails.application.routes.draw do
     member do
       post 'like'
       delete 'unlike'
+      put 'book'
     end
   end
 
-  resources :joblistings
+  resources :joblistings do
+    member do
+      put 'accept'
+      put 'decline'
+    end
+  end
   resources :invoice, except: [:destroy]
 
   namespace 'admin' do

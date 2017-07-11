@@ -1,13 +1,11 @@
 class SchedulesController < ApplicationController
-  def new
-  end
+
+  def new; end
 
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.provider = current_provider
-    if @schedule.save!
-      redirect_to providers_path
-    end
+    redirect_to providers_path if @schedule.save!
   end
 
   def edit; end
@@ -22,7 +20,9 @@ class SchedulesController < ApplicationController
   end
 
   private
+
   def schedule_params
-    params.require(:schedule).permit(date:[], time:[])
+    params.require(:schedule).permit(date: [], time: [])
   end
+
 end

@@ -11,18 +11,39 @@
   <body>
     <div class="container">
       <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#menu1">All Jobs</a></li>
-        <li><a data-toggle="tab" href="#menu2">Current Job</a></li>
-        <li><a data-toggle="tab" href="#menu3">History</a></li>
+        <li class="active"><a data-toggle="tab" href="#menu1">New Jobs</a></li>
+        <li><a data-toggle="tab" href="#menu2">Current Jobs</a></li>
+        <li><a data-toggle="tab" href="#menu3">Job Histroy</a></li>
       </ul>
 
       <div class="tab-content">
         <div id="menu1" class="tab-pane fade in active">
-          <h3>All Jobs</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h3>New Jobs</h3>
+          <div class="panel panel-default">
+            <table class="table">
+              <tr>
+                <td>#</td>
+                <td>Date</td>
+                <td>Summary</td>
+                <td>Status</td>
+                <td>Response</td>
+                <td>Edit</td>
+              </tr>
+              <% @new_joblistings.each_with_index do |new_joblisting, index| %>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= new_joblisting.created_at.strftime("%F") %></td>
+                  <td><%= link_to "#{new_joblisting.description}", joblisting_path(new_joblisting) %></td>
+                  <td><%= new_joblisting.status %></td>
+                  <td><%= link_to 'View Providers', result_path(job_id: new_joblisting.id) %></td>
+                  <td><%= link_to 'Edit', joblisting_path(new_joblisting.id), method: :update %></td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
         </div>
         <div id="menu2" class="tab-pane fade">
-          <h3>Current Job</h3>
+          <h3>Current Jobs</h3>
           <div class="panel panel-default">
             <table class="table">
               <tr>
@@ -31,7 +52,7 @@
                 <td>Summary</td>
                 <td>Status</td>
                 <td>Electrican name</td>
-                <td>Response</td>
+                <!-- <td>Response</td> -->
               </tr>
               <% @current_joblistings.each_with_index do |current_joblisting, index| %>
                 <tr>
@@ -44,16 +65,16 @@
                   <% else %>
                     <td>No provider</td>
                   <% end %>
-                  <% if current_joblisting.status == 'created' %>
+                  <!-- <% if current_joblisting.status == 'created' %>
                     <td><%= link_to "#{current_joblisting.status}", result_path(job_id: current_joblisting.id) %></td>
-                  <% end %>
+                  <% end %> -->
                 </tr>
               <% end %>
             </table>
           </div>
         </div>
         <div id="menu3" class="tab-pane fade">
-          <h3>History</h3>
+          <h3>Job History</h3>
           <div class="panel panel-default">
             <table class="table">
               <tr>
