@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   get '/result', to: 'users#result', as: 'result'
   get '/electricians', to: 'users#electricians', as: 'electricians'
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    member do
+      resources :conversations
+    end
+  end
   resources :providers, only: [:index, :show] do
     member do
       resources :schedules, only: [:show, :new, :create, :update, :edit]

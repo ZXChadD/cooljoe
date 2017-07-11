@@ -1,0 +1,14 @@
+<table>
+  <th>
+    <td> # </td>
+    <td> Provider </td>
+  </th>
+  <tr>
+    <% @conversations.each_with_index do |conversation, index| %>
+    <td><%= index + 1 %></td>
+    <td><%= Provider.find(conversation.provider_id).firstname %></td>
+    <% end %>
+  </tr>
+</table>
+
+<%= link_to 'New Conversation', new_conversation_path(current_user.id) %>
