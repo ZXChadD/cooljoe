@@ -37,9 +37,8 @@ class ProvidersController < ApplicationController
   def book
     @provider = Provider.find(params[:id])
     @joblisting = current_user.joblistings.last
-    if @joblisting.update(provider_id: @provider.id)
-      redirect_to providers_path
-    end
+    @joblisting.update(provider_id: @provider.id, status: 'pending')
+    redirect_to providers_path
   end
 
 end

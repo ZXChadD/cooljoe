@@ -28,6 +28,14 @@ class JoblistingsController < ApplicationController
 
   def destroy; end
 
+  def accept
+    @joblisting = Joblisting,find(params[:id])
+    @joblisitng.update(status: 'booked')
+  end
+
+  def decline
+  end
+
   private
 
   def joblisting_params

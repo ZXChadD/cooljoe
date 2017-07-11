@@ -18,13 +18,18 @@ Rails.application.routes.draw do
       resources :schedules, only: [:show, :new, :create, :update, :edit]
     end
     member do
-      put 'book'
       post 'like'
       delete 'unlike'
+      put 'book'
     end
   end
 
-  resources :joblistings
+  resources :joblistings do
+    member do
+      put 'accept'
+      put 'decline'
+    end
+  end
   resources :invoice, except: [:destroy]
 
   namespace 'admin' do
