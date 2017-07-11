@@ -1,9 +1,7 @@
 class JoblistingsController < ApplicationController
 
   def index
-
     @joblistings = Joblisting.all
-
   end
 
   def show; end
@@ -23,9 +21,18 @@ class JoblistingsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @joblisting = Joblisting.find(params[:id])
+  end
 
-  def update; end
+  def update
+    @joblisting = Joblisting.find(params[:id])
+    if @joblisting.update(joblisting_params)
+      redirect_to users_path
+    else
+      render :edit
+    end
+  end
 
   def destroy; end
 

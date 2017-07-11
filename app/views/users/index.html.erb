@@ -36,7 +36,7 @@
                   <td><%= link_to "#{new_joblisting.description}", joblisting_path(new_joblisting) %></td>
                   <td><%= new_joblisting.status %></td>
                   <td><%= link_to 'View Providers', result_path(job_id: new_joblisting.id) %></td>
-                  <td><%= link_to 'Edit', joblisting_path(new_joblisting.id), method: :update %></td>
+                  <td><%= link_to 'Edit', edit_joblisting_path(new_joblisting) %></td>
                 </tr>
               <% end %>
             </table>

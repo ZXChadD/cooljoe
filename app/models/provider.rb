@@ -13,7 +13,7 @@ class Provider < ApplicationRecord
   has_many :joblistings
   has_one :schedule
 
-  scope :sort_exp, -> {order('experience DESC')}
+  scope :sort_exp, -> { order('experience DESC') }
 
   enum experience: {
     "< 1 year":       1,
