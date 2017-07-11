@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   require 'time'
 
   def index
-    @new_joblistings = current_user.joblistings.where(status:[1, 5]).order('created_at DESC')
-    @current_joblistings = current_user.joblistings.where(status:[2, 3]).order('created_at DESC')
-    @past_joblistings = current_user.joblistings.where(status:4).order('created_at DESC')
+    @new_joblistings = current_user.joblistings.where(status: [1, 5]).order('created_at DESC')
+    @current_joblistings = current_user.joblistings.where(status: [2, 3]).order('created_at DESC')
+    @past_joblistings = current_user.joblistings.where(status: 4).order('created_at DESC')
   end
 
   def show
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     if params[:job_date] != nil
       get_time_adjust(params[:job_date])
       @job_time = Time.now + @time_adjust.days
+      @joblisting = current_user.joblistings.last
     elsif params[:job_id] != nil
       @joblisting = Joblisting.find(params[:job_id])
       get_time_adjust(@joblisting.date)
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
       @electricians_arr = params[:providers_id_arr]
       current_index = @electricians_arr.index(params[:id])
       render_electricians_arr = @electricians_arr[current_index+1..current_index+@page_limit]
+      @joblisting = Joblisting.find(params[:job_id])
       get_list_of_electricians2(render_electricians_arr)
     else
       # get initial list of providers
@@ -62,13 +64,13 @@ class UsersController < ApplicationController
   private
 
   def get_time_adjust(job_date)
-    if job_date == 'Within 5 days'
-      @time_adjust = 5
-    elsif job_date == 'Within 2 weeks'
-      @time_adjust = 14
-    else
-      @time_adjust = 31
-    end
+    @time_adjust = if job_date == 'Within 5 days'
+                     5
+                   elsif job_date == 'Within 2 weeks'
+                     14
+                   else
+                     31
+                   end
   end
 
   def get_list_of_electricians

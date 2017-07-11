@@ -69,8 +69,11 @@ if Joblisting.count < joblisting_count + 1
     time = ['Morning', 'Afternoon', 'Evening'].sample
     status = Faker::Number.between(1, 5)
     user_id = Faker::Number.between(1, User.count)
-    provider_id = Faker::Number.between(1, Provider.count)
-
+    unless status = 1 || status = 4
+      provider_id = Faker::Number.between(1, Provider.count)
+    else
+      provider_id = nil
+    end
     joblisting = Joblisting.create(issue: issue, description: description, fixture: fixture, num_fixture: num_fixture, housing: housing, job_address: job_address, date: date, time: time, status: status, user_id: user_id, provider_id: provider_id)
   end
 end
