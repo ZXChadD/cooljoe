@@ -1,10 +1,9 @@
 class ProvidersController < ApplicationController
 
   def index
-    @joblistings = current_provider.joblistings.order('created_at DESC')
-    @current_joblistings = @joblistings.where(status:2)
-    @past_joblistings = @joblistings.where(status:3, status:4)
-    # byebug
+    @new_joblistings = current_provider.joblistings.where(status:2).order('created_at DESC')
+    @current_joblistings = current_provider.joblistings.where(status:3).order('created_at DESC')
+    @past_joblistings = current_provider.joblistings.where(status:5).order('created_at DESC')
     if current_provider.schedule.present?
       @schedule = Schedule.find_by(provider_id: current_provider.id)
     else

@@ -67,7 +67,7 @@ if Joblisting.count < joblisting_count + 1
     job_address = 'Job address'
     date = ['5', '14', '31'].sample
     time = ['Morning', 'Afternoon', 'Evening'].sample
-    status = Faker::Number.between(1, 4)
+    status = Faker::Number.between(1, 5)
     user_id = Faker::Number.between(1, User.count)
     provider_id = Faker::Number.between(1, Provider.count)
 
