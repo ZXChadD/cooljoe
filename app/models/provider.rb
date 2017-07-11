@@ -12,6 +12,8 @@ class Provider < ApplicationRecord
   has_many :provider_attaches
   has_one :schedule
 
+  scope :experiences, -> {order(:experience).reverse}
+
   enum experience: {
     "< 1 year":       1,
     "1 to 3 years":   2,
@@ -19,6 +21,5 @@ class Provider < ApplicationRecord
     "> 5 years":      4
   }
 
-  scope :experiences, -> {order(:experience).reverse}
-  
+
 end
