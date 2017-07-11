@@ -21,9 +21,12 @@
             <button><%= link_to 'Unlike', unlike_provider_path(electrician), method: :delete %></button>
           <% end %>
           <% if @page == 'standard_job' %>
-            <button>Book now</button>
+            <% if @joblisting.provider_id.nil? %>
+                <button><%= link_to 'Book', book_provider_path(electrician), method: :put %></button>
+            <% else %>
+            <% end %>
           <% end %>
-        </div>     
+        </div>
       </div>
     </div>
   </div>

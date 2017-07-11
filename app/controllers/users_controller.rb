@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @list_num = Provider.count
     get_list_of_electricians
     @page = 'standard_job'
+    @joblisting = current_user.joblistings.last
   end
 
   def electricians

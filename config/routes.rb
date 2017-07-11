@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :schedules, only: [:show, :new, :create, :update, :edit]
     end
     member do
+      put 'book'
       post 'like'
       delete 'unlike'
     end

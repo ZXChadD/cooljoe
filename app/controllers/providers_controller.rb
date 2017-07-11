@@ -34,4 +34,12 @@ class ProvidersController < ApplicationController
     redirect_back(fallback_location: users_path)
   end
 
+  def book
+    @provider = Provider.find(params[:id])
+    @joblisting = current_user.joblistings.last
+    if @joblisting.update(provider_id: @provider.id)
+      redirect_to providers_path
+    end
+  end
+
 end
