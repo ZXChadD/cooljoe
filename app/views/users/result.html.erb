@@ -2,8 +2,13 @@
   <div class='row'>
     <div class='col-xs-10'>
       <h2>List of electricians</h2>
-      <div>
-      <%= render partial: 'users/list' %>
+      <div class='initial-list' data-id="<%= @page_limit %>" >
+        <%= render partial: 'users/list' %>
+      </div>
+      <div class="load-more-container" data-id="<%= @electricians_arr %>" >
+        <!-- hide our loading gif image so that we show it when making ajax call via jquery -->
+        <%= image_tag "ajax-loader.gif", style: "display:none;", class: "loading-gif" %>
+        <button><%= link_to "Load More", result_path(providers_id_arr: @electricians_arr), class: "load-more" %></button>
       </div>
     </div>
     <div class='col-xs-2'>

@@ -14,23 +14,44 @@ class UsersController < ApplicationController
 
   def urgent
     @job_time = Time.now
-    @list_num = 3
+    @list_limit = 3
+    @page_limit = 3
     get_list_of_electricians
     @page = 'urgent_job'
   end
 
   def result
+    # get the @time_adjust and @job_time
     if params[:job_date] != nil
       get_time_adjust(params[:job_date])
       @job_time = Time.now + @time_adjust.days
-    else
+    elsif params[:job_id] != nil
       @joblisting = Joblisting.find(params[:job_id])
       get_time_adjust(@joblisting.date)
-      @job_time = @joblisting.created_at + @time_adjust.days      
+      @job_time = @joblisting.created_at + @time_adjust.days
     end
-    @list_num = Provider.count
-    get_list_of_electricians
+
+    # the id params is present when clicking the 'load-more' button
+    if params[:id]
+      # get all records with id not shown yet
+      @page_limit = 5
+      @electricians_arr = params[:providers_id_arr]
+      current_index = @electricians_arr.index(params[:id])
+      render_electricians_arr = @electricians_arr[current_index+1..current_index+@page_limit]
+      get_list_of_electricians2(render_electricians_arr)
+    else
+      # get initial list of providers
+      @list_limit = Schedule.count
+      @page_limit = 5
+      get_list_of_electricians
+    end
+
     @page = 'standard_job'
+    @electricians_arr
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def electricians
@@ -60,12 +81,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def get_list_of_electricians2(render_electricians_arr)
+    @electricians = render_electricians_arr.map do |provider_id|
+      Provider.find(provider_id)
+    end
+  end
+
   def get_sub_list_electricians
-    @schedules = Schedule.where(date: @date, date: 'all')
-    @schedules_arr = @schedules.limit(@list_num).pluck(:id)
+    @schedules = Schedule.where(date: [@date, 'all'])
+    @schedules_arr = @schedules.limit(@list_limit).pluck(:id)
     @electricians_arr = Provider.where(id: @schedules_arr).order('experience DESC').pluck(:id)
-    @electricians_list = Provider.where(id: @electricians_arr).order('experience DESC')
-    @electricians = @electricians_list.paginate(:page => params[:page], :per_page => 10)
+    @render_electricians_arr = @electricians_arr[0...@page_limit]
+    @electricians = Provider.where(id: @render_electricians_arr).order('experience DESC')
   end
 
 end
