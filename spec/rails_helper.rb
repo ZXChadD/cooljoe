@@ -4,6 +4,11 @@ ENV['RAILS_ENV'] ||= 'test'
       require 'spec_helper'
       require 'rspec/rails'
       require 'devise'
+
+      RSpec.configure do |config|
+        config.include Devise::Test::ControllerHelpers, :type => :controller
+      end
+      
       ActiveRecord::Migration.maintain_test_schema!
       Shoulda::Matchers.configure do |config|
         config.integrate do |with|
