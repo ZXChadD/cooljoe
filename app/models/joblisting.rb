@@ -13,10 +13,11 @@ class Joblisting < ApplicationRecord
   end
 
   enum status: {
-    'now':        1,
-    'booked':     2,
-    'completed':  3,
-    'cancel':     4
+    'created':    1,
+    'pending':    2,
+    'booked':     3,
+    'completed':  4,
+    'cancel':     5
   }
 
 end

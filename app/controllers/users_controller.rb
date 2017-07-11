@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   require 'time'
 
   def index
-    @joblistings = current_user.joblistings.order('created_at DESC')
-    @current_joblistings = @joblistings.where(status:1, status:2)
-    @past_joblistings = @joblistings.where(status:3, status:4)
+    @new_joblistings = current_user.joblistings.where(status:[1, 5]).order('created_at DESC')
+    @current_joblistings = current_user.joblistings.where(status:[2, 3]).order('created_at DESC')
+    @past_joblistings = current_user.joblistings.where(status:4).order('created_at DESC')
   end
 
   def show
@@ -13,15 +13,21 @@ class UsersController < ApplicationController
   end
 
   def urgent
-    @time_now = Time.now
+    @job_time = Time.now
     @list_num = 3
     get_list_of_electricians
     @page = 'urgent_job'
   end
 
   def result
-    @time_adjust = params[:job_date].to_i
-    @time_now = Time.now + @time_adjust.days
+    if params[:job_date] != nil
+      get_time_adjust(params[:job_date])
+      @job_time = Time.now + @time_adjust.days
+    else
+      @joblisting = Joblisting.find(params[:job_id])
+      get_time_adjust(@joblisting.date)
+      @job_time = @joblisting.created_at + @time_adjust.days      
+    end
     @list_num = Provider.count
     get_list_of_electricians
     @page = 'standard_job'
@@ -34,8 +40,18 @@ class UsersController < ApplicationController
 
   private
 
+  def get_time_adjust(job_date)
+    if job_date == 'Within 5 days'
+      @time_adjust = 5
+    elsif job_date == 'Within 2 weeks'
+      @time_adjust = 14
+    else
+      @time_adjust = 31
+    end
+  end
+
   def get_list_of_electricians
-    if @time_now.sunday? || @time_now.saturday?
+    if @job_time.sunday? || @job_time.saturday?
       @date = 'weekends'
       get_sub_list_electricians
     else

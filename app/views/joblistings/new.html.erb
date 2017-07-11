@@ -38,14 +38,8 @@
 
     <div class='field'>
       <p>When does it need to be done?</p>
-      <%= label_tag 'date_day', 'Within 5 days' %>
-      <%= check_box_tag 'joblisting[date][]', '5', checked('Within 5 days'), id: 'date_day' %>
-
-      <%= label_tag 'date_week', 'Within 2 weeks' %>
-      <%= check_box_tag 'joblisting[date][]', '14', checked('Within 2 weeks'), id: 'date_week' %>
-
-      <%= label_tag 'date_month', 'Within 1 month' %>
-      <%= check_box_tag 'joblisting[date][]', '31', checked('Within 1 month'), id: 'date_month' %>
+      <%= f.label :desired_date %>
+      <%= f.select :date, ['Within 5 days', 'Within 2 weeks', 'Within 1 month'] %>
     </div>
 
     <br />
@@ -59,14 +53,8 @@
 
     <div class='field'>
       <p>What type of property do you stay in?</p>
-      <%= label_tag 'housing_public', 'HDBs' %>
-      <%= check_box_tag 'joblisting[housing][]', 'HDBs', checked('HDBs'), id: 'housing_public' %>
-
-      <%= label_tag 'housing_condo', 'Condo' %>
-      <%= check_box_tag 'joblisting[housing][]', 'Condo', checked('Condo'), id: 'housing_condo' %>
-
-      <%= label_tag 'housing_landed', 'Landed' %>
-      <%= check_box_tag 'joblisting[housing][]', 'Landed', checked('Landed'), id: 'housing_landed' %>
+      <%= f.label :housing %>
+      <%= f.select :housing, ['HDBs', 'Condo', 'Landed'] %>
     </div>
 
     <br />

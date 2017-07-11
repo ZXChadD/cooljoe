@@ -6,7 +6,6 @@ class Schedule < ApplicationRecord
 
   scope :weekends, -> {where(date: 'weekends')}
   scope :weekdays, -> {where(date: 'weekdays')}
-  scope :alldays, -> {where(date: 'all')}
 
   before_save do
     date.gsub!(/[\[\]\"]/, "") if attribute_present?("date")
