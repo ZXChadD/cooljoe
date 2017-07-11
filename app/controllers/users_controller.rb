@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   require 'time'
 
   def index
-    @joblistings = current_user.joblistings.order(:created_at).reverse
-    @current_joblistings = current_user.joblistings.where(status:1) + current_user.joblistings.where(status:2)
-    @past_joblistings = current_user.joblistings.where(status:3) + current_user.joblistings.where(status:4)
+    @joblistings = current_user.joblistings.order('created_at DESC')
+    @current_joblistings = @joblistings.where(status:1, status:2)
+    @past_joblistings = @joblistings.where(status:3, status:4)
   end
 
   def show
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def get_sub_list_electricians
     @schedules = Schedule.where(date: @date, date: 'all')
     @schedules_arr = @schedules.limit(@list_num).pluck(:id)
-    @electricians_arr = Provider.where(id: @schedules_arr).experiences.pluck(:id)
+    @electricians_arr = Provider.where(id: @schedules_arr).order('experience DESC').pluck(:id)
     @electricians_list = Provider.where(id: @electricians_arr).order('experience DESC')
     @electricians = @electricians_list.paginate(:page => params[:page], :per_page => 10)
   end
