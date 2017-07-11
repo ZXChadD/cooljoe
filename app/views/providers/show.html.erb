@@ -9,7 +9,7 @@
           </div>
           <div class="panel-body">
             <div class="profile__avatar">
-              <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="...">
+              <%= image_tag @provider.avatar %>
             </div>
             <div class="profile__header">
               <h4><%= "#{@provider.firstname} #{@provider.lastname}" %><small> Electrician</small></h4>
