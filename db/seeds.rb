@@ -31,7 +31,7 @@ user3 = User.find_or_create_by(email: 'user2@user.com') do |user|
 end
 
 # Create Providers
-provider_count = 10
+provider_count = 15
 if Provider.count < provider_count + 1
   (provider_count - Provider.count).times do
     n = Provider.count + 1
@@ -56,7 +56,7 @@ if Provider.count < provider_count + 1
 end
 
 # Create Joblistings
-joblisting_count = 40
+joblisting_count = 50
 if Joblisting.count < joblisting_count + 1
   (joblisting_count - Joblisting.count).times do
     issue = ['Installation', 'Repair', 'Replace'].sample

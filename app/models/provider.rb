@@ -10,9 +10,10 @@ class Provider < ApplicationRecord
   has_many :likes
   has_many :invoices
   has_many :provider_attaches
+  has_many :joblistings
   has_one :schedule
 
-  scope :experiences, -> {order(:experience).reverse}
+  scope :experiences, -> {order('experience DESC')}
 
   enum experience: {
     "< 1 year":       1,

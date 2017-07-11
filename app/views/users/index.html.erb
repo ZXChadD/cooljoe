@@ -33,17 +33,17 @@
                 <td>Electrican name</td>
               </tr>
               <% @current_joblistings.each_with_index do |current_joblisting, index| %>
-              <tr>
-                <td><%= index + 1 %></td>
-                <td><%= current_joblisting.created_at.strftime("%F") %></td>
-                <td><%= link_to "#{current_joblisting.description}", joblisting_path(current_joblisting) %></td>
-                <td><%= current_joblisting.status %></td>
-                <% if current_joblisting.status == 'booked' %>
-                <td><%= link_to "#{Provider.find(current_joblisting.provider_id).firstname}", provider_path(Provider.find(current_joblisting.provider_id)) %></td>
-                <% else %>
-                <td>Pending</td>
-                <% end %>
-              </tr>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= current_joblisting.created_at.strftime("%F") %></td>
+                  <td><%= link_to "#{current_joblisting.description}", joblisting_path(current_joblisting) %></td>
+                  <td><%= current_joblisting.status %></td>
+                  <% if current_joblisting.status == 'booked' %>
+                  <td><%= link_to "#{Provider.find(current_joblisting.provider_id).firstname}", provider_path(Provider.find(current_joblisting.provider_id)) %></td>
+                  <% else %>
+                  <td>Pending</td>
+                  <% end %>
+                </tr>
               <% end %>
             </table>
           </div>
