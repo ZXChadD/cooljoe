@@ -9,12 +9,13 @@ class InvoicesController < ApplicationController
   end
 
   def create
+    @invoice.provider = current_provider
     @invoice = Invoice.new(invoice_params)
     if @invoice.save!
       redirect_to
     else
       render 'new'
-    end 
+    end
   end
 
   def edit; end
@@ -23,4 +24,9 @@ class InvoicesController < ApplicationController
 
   def destroy; end
 
+  private
+
+  def invoice_params
+    params.require(:invoice).permit(:provider_id, :joblisting_id, :invoice_ref, :price, :status, :job_description)
+  end
 end

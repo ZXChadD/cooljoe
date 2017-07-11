@@ -1,2 +1,14 @@
-<h1>Invoices#new</h1>
-<p>Find me in app/views/invoices/new.html.erb</p>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <h1> Create Invoice </h1>
+    <%= bootstrap_form_for @invoice do |f| %>
+    <%= f.text_area :job_description %>
+    <br>
+    <%= f.text_field :price %>
+    <br>
+    <%= f.text_field :invoice_ref %>
+    <br>
+    <%= f.submit %>
+    <% end %>
+  </div>
+</div>
