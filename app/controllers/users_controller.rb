@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     if params[:job_date] != nil
       get_time_adjust(params[:job_date])
       @job_time = Time.now + @time_adjust.days
+      @joblisting = current_user.joblistings.last
     else
       @joblisting = Joblisting.find(params[:job_id])
       get_time_adjust(@joblisting.date)
@@ -31,7 +32,6 @@ class UsersController < ApplicationController
     @list_num = Provider.count
     get_list_of_electricians
     @page = 'standard_job'
-    @joblisting = Joblisting.find_by(params[:id])
   end
 
   def electricians

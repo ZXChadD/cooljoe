@@ -22,7 +22,7 @@
           <% end %>
           <% if @page == 'standard_job' %>
             <% if @joblisting.provider_id.nil? %>
-                <button><%= link_to 'Book', book_provider_path(electrician), method: :put %></button>
+                <button><%= link_to 'Book', book_provider_path(electrician, joblisting_id: @joblisting.id), method: :put %></button>
             <% else %>
             <% end %>
           <% end %>
