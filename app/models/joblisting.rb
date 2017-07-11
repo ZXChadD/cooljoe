@@ -9,8 +9,6 @@ class Joblisting < ApplicationRecord
   before_save do
     issue.gsub!(/[\[\]\"]/, '') if attribute_present?('issue')
     fixture.gsub!(/[\[\]\"]/, '') if attribute_present?('fixture')
-    housing.gsub!(/[\[\]\"]/, '') if attribute_present?('housing')
-    date.gsub!(/[\[\]\"]/, '') if attribute_present?('date')
   end
 
   enum status: {
