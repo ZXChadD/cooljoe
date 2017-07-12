@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
       @message.body = current_user.firstname + " : " + @message.body
     else current_provider
       @message.body = current_provider.firstname + " : " + @message.body
-    end 
+    end
     if @message.save!
       redirect_back(fallback_location: users_path)
     end

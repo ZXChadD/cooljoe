@@ -1,8 +1,0 @@
-<%= form_for @conversation do |f| %>
-  <div class="field">
-    <%= f.label :provider %>
-    <%= f.select :provider_id, options_for_select(@providers.collect { |provider| [provider.firstname, provider.id] }), {}, {} %>
-  </div>
-
-  <%= f.submit %>
-<% end %>
