@@ -1,5 +1,5 @@
 # Create Admin user
-User.find_or_create_by(email: 'admin@admin.com') do |user|
+user1 = User.find_or_create_by(email: 'admin@admin.com') do |user|
   user.firstname = 'admin'
   user.lastname = 'administrator'
   user.email = 'admin@admin.com'
@@ -55,6 +55,16 @@ if Provider.count < provider_count + 1
   end
 end
 
+# Create Likes
+Provider.all.each do |provider|
+  if Faker::Boolean.boolean || (Like.where(provider_id: provider.id, user_id: user2.id) == nil)
+    user2.likes.create(provider_id: provider.id)
+  end
+  if Faker::Boolean.boolean || (Like.where(provider_id: provider.id, user_id: user3.id) == nil)
+    user3.likes.create(provider_id: provider.id)
+  end
+end
+
 # Create Joblistings
 joblisting_count = 50
 if Joblisting.count < joblisting_count + 1
@@ -68,12 +78,21 @@ if Joblisting.count < joblisting_count + 1
     date = ['5', '14', '31'].sample
     time = ['Morning', 'Afternoon', 'Evening'].sample
     status = Faker::Number.between(1, 5)
-    user_id = Faker::Number.between(1, User.count)
-    unless status = 1 || status = 4
+    user_id = Faker::Number.between(2, User.count)
+    unless status == 1 || status == 5
       provider_id = Faker::Number.between(1, Provider.count)
     else
       provider_id = nil
     end
     joblisting = Joblisting.create(issue: issue, description: description, fixture: fixture, num_fixture: num_fixture, housing: housing, job_address: job_address, date: date, time: time, status: status, user_id: user_id, provider_id: provider_id)
+    
+    if status == 4
+      joblisting_id = joblisting.id
+      price_size = Faker::Number.between(3, 4)
+      price = Faker::Number.decimal(price_size, 2)
+      invoice_status = Faker::Number.between(1, 3)
+      invoice_ref = "CoolJoe_INV_#{Faker::Number.number(6)}"
+      Invoice.create(provider_id: provider_id, joblisting_id: joblisting_id, status: invoice_status, price: price, invoice_ref: invoice_ref)
+    end
   end
 end

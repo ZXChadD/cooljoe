@@ -1,1 +1,54 @@
-<h1>Admin::Users#index</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>List of all users (<%= User.count - 1 %>)</h1>
+        <div class="panel panel-default">
+          <table class="table">
+            <tr>
+              <td>#</td>
+              <td>User name</td>
+              <td>No. of projects (<%= Joblisting.count %>)</td>
+              <td>Total projects value S$ (<%= number_with_delimiter(@all_projects_total_cost) %>)</td>
+            </tr>
+            <% @users.each_with_index do |user, index| %>
+              <% unless user.is_admin %>
+                <% user_joblisting = user.joblistings %>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= link_to "#{user.firstname}", user_path(user) %></td>
+                  <td>
+                  	<div class="panel panel-default">
+            					<table class="table">
+            						<tr>
+            							<td>New</td>
+            							<td>In-progress</td>
+            							<td>Completed</td>
+            							<td>Cancel</td>
+                          <td>Total</td>
+            						</tr>
+            						<tr>
+            							<td><%= user_joblisting.where(status: [1]).count %></td>
+                          <td><%= user_joblisting.where(status: [2,3]).count %></td>
+                          <td><%= user_joblisting.where(status: [4]).count %></td>
+                          <td><%= user_joblisting.where(status: [5]).count %></td>
+                          <td><%= user_joblisting.count %></td>                          
+            						</tr>
+            					</table>
+            				</div>
+                  </td>
+                  <td>
+                    <% total_sum = 0 %>
+                    <% user.invoices.each do |invoice| %>
+                      <% total_sum += invoice.price %>
+                    <% end %>
+                    <%= number_with_delimiter(total_sum) %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </table>
+        </div>
+      <%= will_paginate @users %>
+    </div>
+  </div>
+</div>
