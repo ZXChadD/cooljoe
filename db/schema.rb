@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711161320) do
+ActiveRecord::Schema.define(version: 20170712133805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20170711161320) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "providerticks", default: "green"
+    t.string "userticks", default: "green"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["provider_id"], name: "index_messages_on_provider_id"
     t.index ["user_id"], name: "index_messages_on_user_id"

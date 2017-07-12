@@ -7,5 +7,7 @@ class User < ApplicationRecord
   has_many :joblistings
   has_many :invoices, through: :joblistings
   has_many :likes
+  has_many :conversations
+  has_many :messages
 
 end

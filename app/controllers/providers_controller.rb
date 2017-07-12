@@ -42,9 +42,10 @@ class ProvidersController < ApplicationController
     @joblisting = Joblisting.find(params[:joblisting_id])
     @joblisting.update(provider_id: @provider.id, status: 'pending')
     @conversation = Conversation.where(provider_id: @provider.id, user_id: current_user.id).first_or_create
-    @message = Message.new(conversation_id: @conversation.id, user_id: current_user.id, provider_id: @conversation.provider_id, body: 'You have a new booking!')
+    @message = Message.new(conversation_id: @conversation.id, user_id: current_user.id, provider_id: @conversation.provider_id, body: 'You have a new request!')
     @message.body = current_user.firstname + ' : ' + @message.body + " #{view_context.link_to('View the Joblistng here', joblisting_path(@joblisting))} "
     @message.save
+    @message.update(userticks: 'blue')
     redirect_to users_path
   end
 
