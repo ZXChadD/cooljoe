@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-5">
+      <table>
+        <tr>
+          <th> # </th>
+          <th> Provider </th>
+        </tr>
+        <% @conversations.each_with_index do |conversation, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= link_to Provider.find(conversation.provider_id).firstname, conversation_path(user_id: current_user, id: conversation.id) %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-4">
+      <%= form_for @conversation do |f| %>
+      <div class="field">
+        <%= f.label :provider %>
+        <%= f.select :provider_id, options_for_select(@providers.collect { |provider| [provider.firstname, provider.id] }), {}, {} %>
+      </div>
+      <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 class JoblistingsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_provider!, only: [:accept, :decline]
 
   before_action :set_joblisting, except: %i[index new create]
 
@@ -37,11 +39,19 @@ class JoblistingsController < ApplicationController
 
   def accept
     @joblisting.update(status: 'booked')
+    @conversation = Conversation.where(provider_id: current_provider.id, user_id: @joblisting.user_id).first_or_create
+    @message = Message.new(conversation_id: @conversation.id, provider_id: current_provider.id, user_id: @joblisting.user_id, body: 'I have accepted your request!')
+    @message.body = current_provider.firstname + " : " + @message.body
+    @message.save
     redirect_to providers_path
   end
 
   def decline
     @joblisting.update(provider_id: nil, status: 'cancel')
+    @conversation = Conversation.where(provider_id: current_provider.id, user_id: @joblisting.user_id).first_or_create
+    @message = Message.new(conversation_id: @conversation.id, provider_id: current_provider.id, user_id: @joblisting.user_id, body: 'I have declined your request. Please find another provider. Thank you!')
+    @message.body = current_provider.firstname + " : " + @message.body + " #{view_context.link_to('View your Joblsitings here!', users_path)} "
+    @message.save
     redirect_to providers_path
   end
 
