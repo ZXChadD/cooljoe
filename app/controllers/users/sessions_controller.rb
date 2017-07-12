@@ -23,7 +23,11 @@ class Users::SessionsController < Devise::SessionsController
   # If you have extra params to permit, append them to the sanitizer.
 
   def after_sign_in_path_for(resource)
-    users_path
+    if current_user.is_admin
+      admin_statistics_path
+    else  
+      users_path
+    end
   end
 
   # def configure_sign_in_params

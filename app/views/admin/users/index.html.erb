@@ -1,1 +1,18 @@
-<h1>Admin::Users#index</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>List of all users (<%= User.count - 1 %>)</h1>
+        <div class="panel panel-default">
+          <table class="table">
+            <tr>
+              <%= render partial: 'main_thead' %>
+            </tr>
+            <% @users.each_with_index do |user, index| %>
+              <%= render partial: 'row_detail', locals: { user: user, index: index } %>
+            <% end %>
+          </table>
+        </div>
+      <%= will_paginate @users %>
+    </div>
+  </div>
+</div>
