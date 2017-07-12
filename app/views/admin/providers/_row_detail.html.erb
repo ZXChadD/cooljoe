@@ -1,0 +1,12 @@
+<% provider_joblistings = provider.joblistings %>
+<tr>
+  <td><%= index + 1 %></td>
+  <td><%= link_to "#{provider.firstname}", provider_path(provider) %></td>
+  <td>
+  	<%= render partial: 'project_status', locals: { provider_joblistings: provider_joblistings } %>
+  </td>
+  <td>
+  	<%= render partial: 'payment_status', locals: { provider: provider } %>
+  </td>
+  <td><%= provider.likes.count %></td>
+</tr>

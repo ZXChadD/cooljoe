@@ -1,1 +1,18 @@
-<h1>Admin::Providers#index</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>List of all providers (<%= Provider.count %>)</h1>
+        <div class="panel panel-default">
+          <table class="table">
+            <tr>
+              <%= render partial: 'main_thead' %>
+            </tr>
+            <% @providers.each_with_index do |provider, index| %>
+              <%= render partial: 'row_detail', locals: { provider: provider, index: index } %>
+            <% end %>
+          </table>
+        </div>
+      <%= will_paginate @providers %>
+    </div>
+  </div>
+</div>

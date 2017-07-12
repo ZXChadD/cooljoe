@@ -33,10 +33,11 @@ Rails.application.routes.draw do
   resources :invoice, except: [:destroy]
 
   namespace 'admin' do
-    resources :joblistings
+    resources :joblistings, only:[:index, :destroy]
     resources :invoice, except: [:destroy]
     resources :providers, only: [:index]
     resources :users, only: [:index]
+    get 'statistics'
   end
 
 end

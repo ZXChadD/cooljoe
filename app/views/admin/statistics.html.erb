@@ -1,0 +1,24 @@
+<div class="container charts">
+  <div class="row">
+    <div class="col-xs-6">
+			<h2>User Types</h2>	
+	    <%= pie_chart @user_ratio_hash %>	    
+	    <br><br>
+	  </div>
+	  <div class="col-xs-6">  
+	    <h2>Jobs Status</h2>    
+	    <%= pie_chart @joblistings.group(:status).count %>
+	    <br><br>	    
+	  </div>
+	  <div class="col-xs-6">  
+	    <h2>Providers Experiences</h2>    
+	    <%= pie_chart @providers.group(:experience).count %>
+	    <br><br>	    
+	  </div>	  
+	  <div class="col-xs-6">
+	    <h2>Invoices Status</h2>
+	    <%= pie_chart @invoices.group(:status).count %>
+	    <br><br>
+	  </div>
+  </div>
+</div>

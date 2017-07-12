@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <table class="table">
+    <tr>
+      <td>Project status:</td>
+      <td>New</td>
+      <td>In-progress</td>
+      <td>Completed</td>
+      <td>Cancel</td>
+      <td>Total no.</td>
+    </tr>
+    <tr>
+      <td>Total no.:</td>
+      <td><%= user_joblistings.where(status: [1]).count %></td>
+      <td><%= user_joblistings.where(status: [2,3]).count %></td>
+      <td><%= user_joblistings.where(status: [4]).count %></td>
+      <td><%= user_joblistings.where(status: [5]).count %></td>
+      <td><%= user_joblistings.count %></td>                          
+    </tr>
+  </table>
+</div>
