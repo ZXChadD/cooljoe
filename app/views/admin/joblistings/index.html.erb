@@ -5,36 +5,10 @@
         <div class="panel panel-default">
           <table class="table">
             <tr>
-              <td>#</td>
-              <td>Date created</td>
-              <td>Customer email</td>
-              <td>Job status</td>
-              <td>Provider email</td>
-              <td>Invoice status</td>
-              <td>Project value S$ (<%= number_with_delimiter(@all_projects_total_cost) %>)</td>
+              <%= render partial: 'main_thead' %>
             </tr>
             <% @joblistings.each_with_index do |joblisting, index| %>
-              <tr>
-                <td><%= index + 1 %></td>
-                <td><%= joblisting.created_at.strftime("%F")%></td>
-                <td><%= link_to "#{joblisting.user.email}", user_path(joblisting.user) %></td>
-                <td><%= link_to "#{joblisting.status}", joblisting_path(joblisting) %></td>
-                <% if joblisting.status == 'created' || joblisting.status == 'cancel' %>
-                  <td>No provider</td>
-                  <td>No invoice</td>
-                  <td></td>
-                <% else %>  
-                  <%provider = Provider.find(joblisting.provider_id)%>
-                  <td><%= link_to "#{provider.email}", provider_path(provider) %></td>
-                  <% if joblisting.invoice %>
-                    <td><%= joblisting.invoice.status %></td>
-                    <td><%= number_with_delimiter(joblisting.invoice.price) %></td>
-                  <% else %>
-                    <td>No invoice</td>
-                    <td></td>
-                  <% end %>
-                <% end %>
-              </tr>
+              <%= render partial: 'row_detail', locals: { joblisting: joblisting, index: index } %>
             <% end %>
           </table>
         </div>

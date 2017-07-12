@@ -4,3 +4,5 @@
 //= require turbolinks
 //= require_tree .
 //= require cocoon
+//= require Chart.bundle
+//= require chartkick

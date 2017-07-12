@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <table class="table">
+  <% user_invoices = user.invoices %>                      
+    <tr>
+      <td>Payment status:</td>
+      <td>Awaiting Payment</td>
+      <td>Payment Received</td>
+      <td>Payment Released</td>
+      <td>Total</td>
+    </tr>
+    <tr>
+      <td>Total no.:</td>
+      <td><%= user_invoices.where(status: [1]).count %></td>
+      <td><%= user_invoices.where(status: [2]).count %></td>
+      <td><%= user_invoices.where(status: [3]).count %></td>
+      <td><%= user_invoices.count %></td>                          
+    </tr>
+    <% total_sum = 0 %>
+    <% total_sum_status_1 = 0 %>
+    <% total_sum_status_2 = 0 %>
+    <% total_sum_status_3 = 0 %>
+    <% user.invoices.each do |invoice| %>
+      <% total_sum += invoice.price %>
+      <% if invoice.status == 'Awaiting Payment' %>
+        <% total_sum_status_1 += invoice.price %>
+      <%elsif invoice.status == 'Payment Received' %>
+        <% total_sum_status_2 += invoice.price %>
+      <% else %>
+        <% total_sum_status_3 += invoice.price %>
+      <% end %>
+    <% end %>
+    <tr>
+      <td>Total amt:</td>                    
+      <td><%= number_with_delimiter(total_sum_status_1) %></td>
+      <td><%= number_with_delimiter(total_sum_status_2) %></td>
+      <td><%= number_with_delimiter(total_sum_status_3) %></td>                      
+      <td><%= number_with_delimiter(total_sum) %></td>
+    </tr>
+  </table>
+</div>                  

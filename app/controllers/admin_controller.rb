@@ -3,6 +3,22 @@ class AdminController < ApplicationController
 
 	def statistics
 
+    #User ratio
+    @users_count = User.count - 1
+    @providers_count = Provider.count
+    @total_count = @users_count + @providers_count
+    @user_ratio_hash = {'users' => @users_count, 'providers' => @providers_count}
+
+    #Provider date types
+    @providers = Provider.all
+    
+    #Joblisting status ratio
+    @joblistings = Joblisting.all
+
+    #Invoice status ratio
+    @invoices = Invoice.all
+
+
 	end
 
   def is_admin?

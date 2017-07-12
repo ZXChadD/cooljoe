@@ -5,44 +5,10 @@
         <div class="panel panel-default">
           <table class="table">
             <tr>
-              <td>#</td>
-              <td>Provider name</td>
-              <td>No. of projects: <%= Joblisting.count %></td>
-              <td>Total earnings S$ (<%= number_with_delimiter(@all_projects_total_cost) %>)</td>
-              <td>No. of likes</td>
+              <%= render partial: 'main_thead' %>
             </tr>
             <% @providers.each_with_index do |provider, index| %>
-              <% provider_joblisting = provider.joblistings %>
-              <tr>
-                <td><%= index + 1 %></td>
-                <td><%= link_to "#{provider.firstname}", provider_path(provider) %></td>
-                <td>
-                	<div class="panel panel-default">
-          					<table class="table">
-          						<tr>
-          							<td>New</td>
-          							<td>In-progress</td>
-          							<td>Completed</td>
-                        <td>Total</td>
-          						</tr>
-          						<tr>
-          							<td><%= provider_joblisting.where(status: [2]).count %></td>
-                        <td><%= provider_joblisting.where(status: [3]).count %></td>
-                        <td><%= provider_joblisting.where(status: [4]).count %></td>
-                        <td><%= provider_joblisting.count %></td>
-          						</tr>
-          					</table>
-          				</div>
-                </td>
-                <td>
-                  <% total_sum = 0 %>
-                  <% provider.invoices.each do |invoice| %>
-                    <% total_sum += invoice.price %>
-                  <% end %>
-                  <%= number_with_delimiter(total_sum) %>
-                </td>
-                <td><%= provider.likes.count %></td>
-              </tr>
+              <%= render partial: 'row_detail', locals: { provider: provider, index: index } %>
             <% end %>
           </table>
         </div>
