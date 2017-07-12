@@ -12,9 +12,15 @@ Rails.application.routes.draw do
   get '/result', to: 'users#result', as: 'result'
   get '/electricians', to: 'users#electricians', as: 'electricians'
 
+
+
+
   resources :users, only: [:index, :show] do
-      resources :conversations do
-        resources :messages, only: [:new, :create, :destroy]
+    member do
+      resources :conversations
+    end
+    member do
+      resources :messages, only: [:new, :create, :destroy]
     end
   end
 

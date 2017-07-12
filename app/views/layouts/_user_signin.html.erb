@@ -17,6 +17,6 @@
     <span class='divider'>|</span>
     <span><%= link_to 'Log out', destroy_user_session_path, method: :delete %></span>
     <span class='divider'>|</span>
-    <span><%= link_to 'Messages', user_conversations_path(current_user.id) %></span>
+    <span><%= link_to 'Messages', conversations_path(current_user.id) %></span>
   </div>
 </div>
