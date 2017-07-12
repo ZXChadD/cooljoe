@@ -107,12 +107,13 @@
                 <td>Invoice Number</td>
                 <td>Status</td>
                 <td>Electrican name</td>
+                <td>Make Payments</td>
               </tr>
               <% @past_joblistings.each_with_index do |past_joblisting, index| %>
               <tr>
                 <td><%= index + 1 %></td>
                 <td><%= past_joblisting.created_at.strftime("%F") %></td>
-                <td><%= link_to "#{past_joblisting.description}", joblisting_path(past_joblisting) %></td>
+                <td><%= @user_invoice.invoice_ref %></td>
                 <td><%= past_joblisting.status %></td>
                 <td><%= link_to "#{Provider.find(past_joblisting.provider_id).firstname}", provider_path(Provider.find(past_joblisting.provider_id)) %></td>
               </tr>
