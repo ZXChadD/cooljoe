@@ -1,5 +1,6 @@
 class ProvidersController < ApplicationController
-  before_action :authenticate_user!, only: [:like, :unlike, :book]
+
+  before_action :authenticate_user!, only: %i[like unlike book]
   before_action :authenticate_provider!, only: [:index]
 
   def index
@@ -42,7 +43,7 @@ class ProvidersController < ApplicationController
     @joblisting.update(provider_id: @provider.id, status: 'pending')
     @conversation = Conversation.where(provider_id: @provider.id, user_id: current_user.id).first_or_create
     @message = Message.new(conversation_id: @conversation.id, user_id: current_user.id, provider_id: @conversation.provider_id, body: 'You have a new booking!')
-    @message.body = current_user.firstname + " : " + @message.body + " #{view_context.link_to('View the Joblistng here', joblisting_path(@joblisting))} "
+    @message.body = current_user.firstname + ' : ' + @message.body + " #{view_context.link_to('View the Joblistng here', joblisting_path(@joblisting))} "
     @message.save
     redirect_to users_path
   end

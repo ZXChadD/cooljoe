@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show]
-  before_action :authenticate_provider!, only: [:allmessages, :showmessages]
 
+  before_action :authenticate_user!, only: %i[index show]
+  before_action :authenticate_provider!, only: %i[allmessages showmessages]
 
   def index
     @conversations = Conversation.where(user_id: current_user.id)
@@ -21,7 +21,7 @@ class ConversationsController < ApplicationController
       redirect_to conversations_path(current_user.id)
     else
       redirect_to conversations_path(current_user.id)
-      flash[:error] = "Conversation already exists"
+      flash[:error] = 'Conversation already exists'
     end
   end
 
