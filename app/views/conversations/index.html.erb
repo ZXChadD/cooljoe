@@ -5,11 +5,20 @@
         <tr>
           <th> # </th>
           <th> Provider </th>
+          <th> Unread </th>
         </tr>
         <% @conversations.each_with_index do |conversation, index| %>
         <tr>
           <td><%= index + 1 %></td>
           <td><%= link_to Provider.find(conversation.provider_id).firstname, conversation_path(user_id: current_user, id: conversation.id) %></td>
+          <td>
+            <% if conversation.messages.where(userticks: 'green').count > 0 %>
+              <div class="notification-icon">
+                <span class="glyphicon glyphicon-envelope"></span>
+                <span class="badge"><%= conversation.messages.where(userticks: 'green').count %></span>
+              </div>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </table>
