@@ -9,5 +9,4 @@ class Invoice < ApplicationRecord
     'Payment Released': 3,
   }
 
-
 end

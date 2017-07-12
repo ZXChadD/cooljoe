@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711034255) do
+
+ActiveRecord::Schema.define(version: 20170712133805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "provider_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider_id"], name: "index_conversations_on_provider_id"
+    t.index ["user_id"], name: "index_conversations_on_user_id"
+  end
 
   create_table "invoices", force: :cascade do |t|
     t.bigint "provider_id"
@@ -62,6 +72,20 @@ ActiveRecord::Schema.define(version: 20170711034255) do
     t.datetime "updated_at", null: false
     t.index ["provider_id"], name: "index_likes_on_provider_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "conversation_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "provider_id", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "providerticks", default: "green"
+    t.string "userticks", default: "green"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["provider_id"], name: "index_messages_on_provider_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "provider_attaches", force: :cascade do |t|
@@ -128,6 +152,8 @@ ActiveRecord::Schema.define(version: 20170711034255) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "conversations", "providers"
+  add_foreign_key "conversations", "users"
   add_foreign_key "invoices", "joblistings"
   add_foreign_key "invoices", "providers"
   add_foreign_key "job_attaches", "joblistings"
@@ -135,6 +161,9 @@ ActiveRecord::Schema.define(version: 20170711034255) do
   add_foreign_key "joblistings", "users"
   add_foreign_key "likes", "providers"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "providers"
+  add_foreign_key "messages", "users"
   add_foreign_key "provider_attaches", "providers"
   add_foreign_key "schedules", "providers"
 end

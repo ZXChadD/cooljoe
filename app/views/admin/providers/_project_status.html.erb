@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+	<table class="table">
+		<tr>
+			<td>New</td>
+			<td>In-progress</td>
+			<td>Completed</td>
+      <td>Total</td>
+		</tr>
+		<tr>
+			<td><%= provider_joblistings.where(status: [2]).count %></td>
+      <td><%= provider_joblistings.where(status: [3]).count %></td>
+      <td><%= provider_joblistings.where(status: [4]).count %></td>
+      <td><%= provider_joblistings.count %></td>
+		</tr>
+	</table>
+</div>

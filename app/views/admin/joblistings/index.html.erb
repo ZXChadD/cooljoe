@@ -1,1 +1,18 @@
-<h1>Admin::Joblistings#index</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>List of all joblistings (<%= Joblisting.count %>)</h1>
+        <div class="panel panel-default">
+          <table class="table">
+            <tr>
+              <%= render partial: 'main_thead' %>
+            </tr>
+            <% @joblistings.each_with_index do |joblisting, index| %>
+              <%= render partial: 'row_detail', locals: { joblisting: joblisting, index: index } %>
+            <% end %>
+          </table>
+        </div>
+      <%= will_paginate @joblistings %>
+    </div>
+  </div>
+</div>

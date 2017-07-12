@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-5">
+      <table>
+        <tr>
+          <th> # </th>
+          <th> Provider </th>
+          <th> Unread </th>
+        </tr>
+        <% @conversations.each_with_index do |conversation, index| %>
+        <tr>
+            <td><%= index + 1 %></td>
+            <td><%= link_to User.find(conversation.user_id).firstname, showmessages_provider_path(id: current_provider, conversation_id: conversation.id) %></td>
+            <td>
+              <% if conversation.messages.where(providerticks: 'green').count > 0 %>
+                <div class="notification-icon">
+                  <span class="glyphicon glyphicon-envelope"></span>
+                  <span class="badge"><%= conversation.messages.where(providerticks: 'green').count %></span>
+                </div>
+              <% end %>
+            </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

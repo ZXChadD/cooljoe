@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   require 'time'
 
   def index
@@ -22,11 +24,11 @@ class UsersController < ApplicationController
 
   def result
     # get the @time_adjust and @job_time
-    if params[:job_date] != nil
+    if !params[:job_date].nil?
       get_time_adjust(params[:job_date])
       @job_time = Time.now + @time_adjust.days
       @joblisting = current_user.joblistings.last
-    elsif params[:job_id] != nil
+    elsif !params[:job_id].nil?
       @joblisting = Joblisting.find(params[:job_id])
       get_time_adjust(@joblisting.date)
       @job_time = @joblisting.created_at + @time_adjust.days
@@ -38,7 +40,7 @@ class UsersController < ApplicationController
       @page_limit = 5
       @electricians_arr = params[:providers_id_arr]
       current_index = @electricians_arr.index(params[:id])
-      render_electricians_arr = @electricians_arr[current_index+1..current_index+@page_limit]
+      render_electricians_arr = @electricians_arr[current_index + 1..current_index + @page_limit]
       @joblisting = Joblisting.find(params[:job_id])
       get_list_of_electricians2(render_electricians_arr)
     else

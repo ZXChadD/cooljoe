@@ -1,7 +1,6 @@
 class Joblisting < ApplicationRecord
 
   belongs_to :user
-  # belongs_to :provider
   has_many :job_attaches, dependent: :destroy
   accepts_nested_attributes_for :job_attaches, reject_if: :all_blank, allow_destroy: true
   has_one :invoice
