@@ -24,11 +24,15 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def edit; end
+  def show
+    @invoice = Invoice.find(params[:id])
+  end
 
-  def update; end
-
-  def destroy; end
+  def destroy
+    @invoice = Invoice.find(params[:id])
+    @invoice.destroy!
+    redirect_to providers_path
+  end
 
   private
 

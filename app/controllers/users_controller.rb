@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     @new_joblistings = current_user.joblistings.where(status: [1, 5]).order('created_at DESC')
     @current_joblistings = current_user.joblistings.where(status: [2, 3]).order('created_at DESC')
     @past_joblistings = current_user.joblistings.where(status: 4).order('created_at DESC')
-    @user_invoice = @past_joblistings.find_by(status: 4).invoice
   end
 
   def show
