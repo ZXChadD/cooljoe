@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   devise_for :providers, :controllers => { registrations: 'providers/registrations', sessions: 'providers/sessions', passwords: 'providers/passwords'}
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
+  authenticated :user do
+    root 'users#index'
+  end
+
+  authenticated :provider do
+    root 'providers#index'
+  end
+
   get '/', to: 'pages#homepage'
   get '/homepage', to: 'pages#homepage', as: 'homepage'
   get '/contact', to: 'pages#contact', as: 'contact'
@@ -51,5 +59,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
     get 'statistics'
   end
+
 
 end

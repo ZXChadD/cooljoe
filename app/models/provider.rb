@@ -12,6 +12,9 @@ class Provider < ApplicationRecord
   has_many :provider_attaches
   has_many :joblistings
   has_one :schedule
+  has_many :conversations
+  has_many :messages
+
 
   scope :sort_exp, -> { order('experience DESC') }
 

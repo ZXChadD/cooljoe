@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show]
-  before_action :authenticate_provider!, only: [:allmessages, :showmessages]
 
+  before_action :authenticate_user!, only: %i[index show]
+  before_action :authenticate_provider!, only: %i[allmessages showmessages]
 
   def index
     @conversations = Conversation.where(user_id: current_user.id)
@@ -11,6 +11,9 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
+    if @conversation.messages.present?
+      @messages = @conversation.messages.update(userticks: 'blue')
+    end
     @message = Message.new(conversation_id: @conversation)
   end
 
@@ -18,10 +21,10 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.new(conversation_params)
     @conversation.user = current_user
     if @conversation.save
-      redirect_to conversations_path(current_user.id)
+      redirect_to conversation_path(@conversation)
     else
       redirect_to conversations_path(current_user.id)
-      flash[:error] = "Conversation already exists"
+      flash[:error] = 'Conversation already exists'
     end
   end
 
@@ -31,6 +34,9 @@ class ConversationsController < ApplicationController
 
   def showmessages
     @conversation = Conversation.find(params[:conversation_id])
+    if @conversation.messages.present?
+      @messages = @conversation.messages.update(providerticks: 'blue')
+    end
     @message = Message.new(conversation_id: @conversation)
   end
 

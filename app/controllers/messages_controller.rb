@@ -1,18 +1,15 @@
 class MessagesController < ApplicationController
 
-  def new
-  end
+  def new; end
 
   def create
     @message = Message.new(message_params)
     if current_user
-      @message.body = current_user.firstname + " : " + @message.body
+      @message.body = current_user.firstname + ' : ' + @message.body
     else current_provider
-      @message.body = current_provider.firstname + " : " + @message.body
+         @message.body = current_provider.firstname + ' : ' + @message.body
     end
-    if @message.save!
-      redirect_back(fallback_location: users_path)
-    end
+    redirect_back(fallback_location: users_path) if @message.save!
   end
 
   private
