@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711144223) do
+ActiveRecord::Schema.define(version: 20170711161320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,18 @@ ActiveRecord::Schema.define(version: 20170711144223) do
     t.datetime "updated_at", null: false
     t.index ["provider_id"], name: "index_likes_on_provider_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "conversation_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "provider_id", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["provider_id"], name: "index_messages_on_provider_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "provider_attaches", force: :cascade do |t|
@@ -145,6 +157,9 @@ ActiveRecord::Schema.define(version: 20170711144223) do
   add_foreign_key "joblistings", "users"
   add_foreign_key "likes", "providers"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "providers"
+  add_foreign_key "messages", "users"
   add_foreign_key "provider_attaches", "providers"
   add_foreign_key "schedules", "providers"
 end
