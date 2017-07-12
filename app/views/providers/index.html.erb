@@ -19,7 +19,7 @@
 
       <div class="tab-content topBefore" id="form">
         <div id="menu1" class="tab-pane fade in active">
-          <h3>Current Jobs</h3>
+          <h3>New Jobs</h3>
           <div class="panel panel-default">
             <table class="table">
               <tr>
@@ -63,6 +63,7 @@
                   <td><%= link_to "#{current_joblisting.description}", joblisting_path(current_joblisting) %></td>
                   <td><%= current_joblisting.status %></td>
                   <td><%= link_to "#{User.find(current_joblisting.user_id).firstname}", user_path(User.find(current_joblisting.user_id)) %></td>
+                  <td><%= link_to "Send Invoice", new_invoice_path(current_joblisting) %></td>
                 </tr>
               <% end %>
             </table>

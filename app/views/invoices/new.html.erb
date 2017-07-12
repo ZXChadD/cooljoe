@@ -6,8 +6,9 @@
     <br>
     <%= f.text_field :price %>
     <br>
-    <%= f.text_field :invoice_ref %>
+    <%= f.hidden_field :invoice_ref, value: @invoice_number %>
     <br>
+    <%= f.hidden_field :joblisting_id, value: @joblisting.id%>
     <%= f.submit %>
     <% end %>
   </div>

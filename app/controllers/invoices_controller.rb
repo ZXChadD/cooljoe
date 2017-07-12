@@ -6,13 +6,17 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
+    @joblisting = Joblisting.find_by(params[:id])
+    @invoice_number = "CoolJoe_inv_" + SecureRandom.hex(3)
   end
 
   def create
-    @invoice.provider = current_provider
     @invoice = Invoice.new(invoice_params)
+    @joblisting = Joblisting.find_by(params[:id])
+    @invoice.provider = current_provider
     if @invoice.save!
-      redirect_to
+    @joblisting.update(status: 'completed')
+      redirect_to providers_path
     else
       render 'new'
     end

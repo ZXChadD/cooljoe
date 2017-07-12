@@ -30,11 +30,11 @@ Rails.application.routes.draw do
       put 'decline'
     end
   end
-  resources :invoice, except: [:destroy]
+  resources :invoices
 
   namespace 'admin' do
     resources :joblistings
-    resources :invoice, except: [:destroy]
+    resources :invoices
     resources :providers, only: [:index]
     resources :users, only: [:index]
   end
