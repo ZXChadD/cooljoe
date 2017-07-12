@@ -6,7 +6,7 @@
   <tr>
     <% @conversations.each_with_index do |conversation, index| %>
     <td><%= index + 1 %></td>
-    <td><%= Provider.find(conversation.provider_id).firstname %></td>
+    <td><%= link_to Provider.find(conversation.provider_id).firstname, conversation_path(user_id: current_user, id: conversation.id) %></td>
   </tr>
   <% end %>
 </table>

@@ -9,6 +9,11 @@ class ConversationsController < ApplicationController
     @providers = Provider.all
   end
 
+  def show
+    @conversation = Conversation.find(params[:id])
+    @message = Message.new(conversation_id: @conversation)
+  end
+
   def create
     @conversation = Conversation.new(conversation_params)
     @conversation.user = current_user
