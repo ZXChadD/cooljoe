@@ -1,11 +1,12 @@
 <div class="nested-fields">
   <%= f.label :title %>
   <%= f.text_field :title %>
-
+  <br>
   <%= f.label :image %>
   <%= f.file_field :image %>
-
+  
   <%= f.check_box :_destroy %>
 
   <%= link_to_remove_association 'Remove Image', f %>
+  <br>
 </div>

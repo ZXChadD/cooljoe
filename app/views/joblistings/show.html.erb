@@ -3,14 +3,69 @@
     <div class"col">
       <table>
         <tr>
-          <td>
-            <h1> Description </h1>
-          </td>
-          <td>
-            <%= @joblisting.description %>
-          </td>
+          <h3>Images<h3>
+            <% image_tag @joblisting.job_attaches.each do |job_attach| %>
+              <%= image_tag job_attach.image %>
+            <% end %>
+        </tr>
+        <tr>
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Summary</h3></div>        
+              <%= @joblisting.description.capitalize %>
+            </div>
+          </div>
+        </tr>
+        <tr>  
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Job Scopes</h3></div>
+              <ul class="list-group">
+                <li class="list-group-item">Issue: <%= @joblisting.issue.capitalize %></li>
+                <li class="list-group-item">Fixture: <%= @joblisting.fixture.capitalize %></li>
+                <li class="list-group-item">Number of fixture: <%= @joblisting.num_fixture %> </li>
+                <li class="list-group-item">Preferred starting date: <%= @joblisting.date %></li>
+                <li class="list-group-item">Preferred timing: <%= @joblisting.time %></li>    
+              </ul>
+          </div>
+        </tr>
+        <tr>
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Contact details</h3></div>
+              <ul class="list-group">
+                <li class="list-group-item">Job address: <%= @joblisting.job_address.capitalize %> </li>
+                <li class="list-group-item">User name: <%= @joblisting.user.firstname.capitalize %> </li>  <li class="list-group-item">User email: <%= @joblisting.user.email %> </li>
+                <% if @joblisting.provider_id %>
+                  <li class="list-group-item">Provider name: <%= Provider.find(@joblisting.provider_id).firstname.capitalize %> </li>
+                  <li class="list-group-item">Provider contact: <%= Provider.find(@joblisting.tel_num).email %> </li>
+                <% else %>
+                  <li class="list-group-item">Provider name: No provider booked </li>
+                  <li class="list-group-item">Provider contact: No provider booked </li>
+                <% end  %>
+              </ul>
+          </div>        
+        </tr>
+        <tr>
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Status details</h3></div>
+              <ul class="list-group">
+                <li class="list-group-item">Job status: <%= @joblisting.status.capitalize %> </li>
+                <% if @joblisting.invoice %>
+                  <li class="list-group-item">Invoice ref: <%= @joblisting.invoice.invoice_ref %> </li>
+                  <li class="list-group-item">Invoice status: <%= @joblisting.invoice.status %> </li>
+                <% else %>
+                  <li class="list-group-item">Invoice ref: No invoice </li>
+                  <li class="list-group-item">Invoice status: No invoice </li>
+                <% end  %>
+              </ul>
+          </div>        
+        </tr>        
+        <tr>
+          <td>Created on: <%= @joblisting.created_at.strftime("%F") %></td>
+        </tr>
+        <tr>
+          <td>Last updated on : <%= @joblisting.updated_at.strftime("%F") %></td>
         </tr>
       </table>
+      <button><%= link_to "Edit", edit_joblisting_path(@joblisting) %></button>
     </div>
   </div>
 </div>

@@ -87,13 +87,15 @@ if Joblisting.count < joblisting_count + 1
     end
     joblisting = Joblisting.create(issue: issue, description: description, fixture: fixture, num_fixture: num_fixture, housing: housing, job_address: job_address, date: date, time: time, status: status, user_id: user_id, provider_id: provider_id)
     
+    # Create Invoices
     if status == 4
       joblisting_id = joblisting.id
       price_size = Faker::Number.between(3, 4)
       price = Faker::Number.decimal(price_size, 2)
       invoice_status = Faker::Number.between(1, 3)
       invoice_ref = "CoolJoe_INV_#{Faker::Number.number(6)}"
-      Invoice.create(provider_id: provider_id, joblisting_id: joblisting_id, status: invoice_status, price: price, invoice_ref: invoice_ref)
+      job_description = "job_description"
+      Invoice.create(provider_id: provider_id, joblisting_id: joblisting_id, status: invoice_status, price: price, invoice_ref: invoice_ref, job_description: job_description)
     end
   end
 end

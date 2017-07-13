@@ -1,19 +1,43 @@
-<h3>All Joblistings</h3>
-<div class="panel panel-default">
-  <table class="table">
-    <tr>
-      <td>#</td>
-      <td>Date</td>
-      <td>Summary</td>
-      <td>Status</td>
-    </tr>
-    <% @joblistings.each_with_index do |joblisting, index| %>
-    <tr>
-      <td><%= index + 1 %></td>
-      <td><%= joblisting.created_at.strftime("%F") %></td>
-      <td><%= link_to "#{joblisting.description}", joblisting_path(joblisting) %></td>
-      <td><%= joblisting.status %></td>
-    </tr>
-    <% end %>
-  </table>
+<div id='joblisting-index', class='container'>
+  <br><br>
+  <div id='joblisting-index-header'><h3>All Jobs</h3></div>
+  <div class="panel panel-default">
+   <div class="panel-heading"></div>
+    <table class="table">
+      <tr>
+        <td>#</td>
+        <td>Date</td>
+        <td>Summary</td>
+        <td>Job Status</td>
+        <td>Invoice Status</td>
+        <td>Project Value S$</td>
+      </tr>
+      <% @joblistings.each_with_index do |joblisting, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= joblisting.created_at.strftime("%F") %></td>
+          <td><%= link_to "#{joblisting.description.capitalize}", joblisting_path(joblisting) %></td>
+          <td><%= joblisting.status.capitalize %></td>
+          <% if joblisting.status == 'completed' %>
+            <td><%= joblisting.invoice.status.capitalize %></td>
+            <td><%= number_with_delimiter(joblisting.invoice.price) %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+          <% end %>
+        </tr>
+      <% end %>
+      <div>
+        <tr class='last-row'>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </div>
+    </table>
+  </div>
 </div>
+<%= will_paginate @joblistings %> 

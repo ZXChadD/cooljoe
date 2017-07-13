@@ -16,7 +16,6 @@ class InvoicesController < ApplicationController
     @joblisting = @@joblisting_id
     @invoice.provider = current_provider
     if @invoice.save!
-      byebug
     @joblisting.update(status: 'completed')
       redirect_to providers_path
     else

@@ -2,7 +2,8 @@
   <% user_joblistings = user.joblistings %>
   <tr>
     <td><%= index + 1 %></td>
-    <td><%= link_to "#{user.firstname}", user_path(user) %></td>
+    <td><%= user.firstname %></td>
+    <td><%= link_to "#{user.email}", user_path(user) %></td>
     <td>
     	<%= render partial: 'project_status', locals: { user_joblistings: user_joblistings } %>
     </td>

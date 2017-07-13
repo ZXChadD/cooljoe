@@ -1,12 +1,14 @@
 <div class="panel panel-default">
 	<table class="table">
 		<tr>
+			<td>Job Status</td>
 			<td>New</td>
 			<td>In-progress</td>
 			<td>Completed</td>
       <td>Total</td>
 		</tr>
 		<tr>
+			<td>Qty:</td>
 			<td><%= provider_joblistings.where(status: [2]).count %></td>
       <td><%= provider_joblistings.where(status: [3]).count %></td>
       <td><%= provider_joblistings.where(status: [4]).count %></td>

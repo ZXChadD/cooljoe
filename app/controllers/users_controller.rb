@@ -5,9 +5,11 @@ class UsersController < ApplicationController
   require 'time'
 
   def index
-    @new_joblistings = current_user.joblistings.where(status: [1, 5]).order('created_at DESC')
-    @current_joblistings = current_user.joblistings.where(status: [2, 3]).order('created_at DESC')
-    @past_joblistings = current_user.joblistings.where(status: 4).order('created_at DESC')
+    page_limit = 10
+    @new_joblistings = current_user.joblistings.where(status: [1, 5]).order('created_at DESC').page(params[:page]).per_page(page_limit)
+    @current_joblistings = current_user.joblistings.where(status: [2, 3]).order('created_at DESC').page(params[:page]).per_page(page_limit)
+    @past_joblistings = current_user.joblistings.where(status: 4).order('created_at DESC').page(params[:page]).per_page(page_limit)
+    @electricians = current_user.providers.order('experience DESC').page(params[:page]).per_page(page_limit)
   end
 
   def show

@@ -99,6 +99,17 @@ input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
   color: #cbc6c1;
 }
 
+.dashboard-form {
+  position: relative;
+  // width: 500p;
+  margin: 25px auto 25px auto;
+  background: #91bed4;
+  color: black;
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 5px;
+}
+
 #form {
   position: relative;
   width: 500px;
@@ -113,7 +124,7 @@ input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
 input {
   font-family: 'Lato', sans-serif;
   font-size: 0.875em;
-  width: 470px;
+  // width: 470px;
   height: 50px;
   padding: 0px 15px 0px 15px;
   margin-top: 0.5em;
