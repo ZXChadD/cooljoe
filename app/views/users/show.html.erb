@@ -58,14 +58,12 @@
           </div>
         </div>
 
-        <!-- Contact info -->
-        <div class="profile__contact-info">
-        <button>
-          <% if current_user %>
-            <%= link_to "Edit Profile", edit_user_registration_path%>
-          <% end %>
-        </button>
-      </div>
+      <!-- Edit profile -->
+      <button>
+        <% if current_user %>
+          <%= link_to "Edit Profile", edit_user_registration_path%>
+        <% end %>
+      </button>
     </div>
   </div>
 </div>
