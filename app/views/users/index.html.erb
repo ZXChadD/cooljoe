@@ -13,7 +13,8 @@
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#menu1">New Jobs</a></li>
         <li><a data-toggle="tab" href="#menu2">Current Jobs</a></li>
-        <li><a data-toggle="tab" href="#menu3">Job Histroy</a></li>
+        <li><a data-toggle="tab" href="#menu3">Job History</a></li>
+        <li><a data-toggle="tab" href="#menu4">Invoices</a></li>
       </ul>
 
       <div class="tab-content">
@@ -91,6 +92,35 @@
                 <td><%= link_to "#{past_joblisting.description}", joblisting_path(past_joblisting) %></td>
                 <td><%= past_joblisting.status %></td>
                 <td><%= link_to "#{Provider.find(past_joblisting.provider_id).firstname}", provider_path(Provider.find(past_joblisting.provider_id)) %></td>
+              </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+        <div id="menu4" class="tab-pane fade">
+          <% @past_joblistings.each_with_index do |past_joblisting, index| %>
+          <h3>Invoices</h3>
+          <div class="panel panel-default">
+            <table class="table">
+              <tr>
+                <td>#</td>
+                <td>Date</td>
+                <td>Invoice Number</td>
+                <td>Job Status</td>
+                <td>Electrican name</td>
+                <td>Invoice Status</td>
+                <td>Make Payments</td>
+              </tr>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= past_joblisting.created_at.strftime("%F") %></td>
+                <td><%= link_to "#{past_joblisting.invoice.invoice_ref}", invoice_path(past_joblisting.invoice) %></td>
+                <td><%= past_joblisting.status %></td>
+                <td><%= link_to "#{Provider.find(past_joblisting.provider_id).firstname}", provider_path(Provider.find(past_joblisting.provider_id)) %></td>
+                <td><%= past_joblisting.invoice.status %></td>
+                <% if past_joblisting.invoice.status = 1 %>
+                <td><%= link_to "Pay Now", new_payment_path(id: past_joblisting.invoice) %></td>
+                <% end %>
               </tr>
               <% end %>
             </table>

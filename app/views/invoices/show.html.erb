@@ -1,2 +1,5 @@
-<h1>Invoices#show</h1>
-<p>Find me in app/views/invoices/show.html.erb</p>
+<h1>Invoice Number: <%= @invoice.invoice_ref %></h1>
+<hr>
+<p>Current Status: <%= @invoice.status %></p>
+<br>
+<p>Total Amount: <%= @invoice.price %></p>

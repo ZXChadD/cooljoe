@@ -6,7 +6,7 @@ class Invoice < ApplicationRecord
   enum status: {
     'Awaiting Payment': 1,
     'Payment Received': 2,
-    'Payment Released': 3
+    'Payment Released': 3,
   }
 
 end

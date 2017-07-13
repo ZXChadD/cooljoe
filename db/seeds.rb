@@ -78,6 +78,7 @@ if Joblisting.count < joblisting_count + 1
     date = ['5', '14', '31'].sample
     time = ['Morning', 'Afternoon', 'Evening'].sample
     status = Faker::Number.between(1, 5)
+
     user_id = Faker::Number.between(2, User.count)
     unless status == 1 || status == 5
       provider_id = Faker::Number.between(1, Provider.count)

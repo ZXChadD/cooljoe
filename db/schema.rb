@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170712133805) do
 
   # These are extensions that must be enabled in order to support this database
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170712133805) do
     t.integer "status", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "job_description", null: false
     t.index ["joblisting_id"], name: "index_invoices_on_joblisting_id"
     t.index ["provider_id"], name: "index_invoices_on_provider_id"
   end
