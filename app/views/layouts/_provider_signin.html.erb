@@ -1,6 +1,6 @@
 <div class='row'>
   <div id='com_name', class='col-md-6 col-md-offset-3' >
-    <%= link_to 'Cool Joe', providers_path %>
+    <%= link_to (image_tag "cooljoe.png", id: "logo"), users_path%>
   </div>
 </div>
 <div class='row'>
@@ -11,8 +11,8 @@
     <span class='divider'>|</span>
     <span><%= link_to 'Profile', provider_path(current_provider) %></span>
     <span class='divider'>|</span>
-    <span><%= link_to 'Log out', destroy_provider_session_path, method: :delete %></span>
-    <span class='divider'>|</span>
     <span><%= link_to "Messages(#{current_provider.messages.where(providerticks: 'green').count})", allmessages_provider_path(current_provider.id) %></span>
+    <span class='divider'>|</span>
+    <span><%= link_to 'Log out', destroy_provider_session_path, method: :delete %></span>
   </div>
 </div>

@@ -7,9 +7,7 @@
         <h4><i class="fa fa-phone" aria-hidden="true"></i> <%= @user.tel_num %></h4>
         <h4><i class="fa fa-home" aria-hidden="true"></i> <%= @user.user_address %></h4>
         <br />
-        <button>
-          <%= link_to 'Edit', edit_user_registration_path %>
-        </button>
+          <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-success btn-block" %>
       </div>
     </div>
 </div>

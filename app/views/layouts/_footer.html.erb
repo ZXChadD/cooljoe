@@ -1,13 +1,13 @@
-
-<div class="row", id="footer">
-  <div class="col-xs-12">
-    <div id='footer-links', class='row'>
-      <div id='copyright'>Copyright @ 2017 CoolJoe, All rights reserved.</div>
-        <div id='links'>
-          <%= link_to 'About', about_path%>
-          <%= link_to 'Contact', contact_path%>
+    <footer id="myFooter">
+        <div class="footer-copyright">
+            <div class="footer-links">
+              <span><%= link_to 'About', about_path%></span>
+              <span class='divider'>|</span>
+              <%= link_to 'Contact', contact_path%>
+              <span class='divider'>|</span>
+              <%= link_to 'Terms of Services', about_path%>
+             </div>
+            <p>© Copyright 2017 CoolJoe. All rights reserved</p>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+    </footer>
+    
