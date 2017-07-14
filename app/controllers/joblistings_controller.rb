@@ -65,7 +65,7 @@ class JoblistingsController < ApplicationController
   private
 
   def joblisting_params
-    params.require(:joblisting).permit(:description, :num_fixture, :job_address, :time, :date, :housing, fixture: [], issue: [])
+    params.require(:joblisting).permit(:description, :num_fixture, :job_address, :time, :date, :housing, fixture: [], issue: [], job_attaches_attributes:[:id, :title, :image, :joblisting_id, :_destroy])
   end
 
   private

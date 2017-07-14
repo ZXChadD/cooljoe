@@ -1,5 +1,5 @@
 # Create Admin user
-user1 = User.find_or_create_by(email: 'admin@admin.com') do |user|
+  User.find_or_create_by(email: 'admin@admin.com') do |user|
   user.firstname = 'admin'
   user.lastname = 'administrator'
   user.email = 'admin@admin.com'
@@ -9,26 +9,23 @@ user1 = User.find_or_create_by(email: 'admin@admin.com') do |user|
   user.user_address = Faker::Address.street_address
 end
 
-# Create 2 standard users
-user2 = User.find_or_create_by(email: 'user1@user.com') do |user|
-  user.firstname = Faker::Name.first_name
-  user.lastname = Faker::Name.last_name
-  user.email = 'user1@user.com'
-  user.password = '123456'
-  user.is_admin = false
-  user.tel_num = 12345678
-  user.user_address = Faker::Address.street_address
+# Create Users
+user_count = 15
+if User.count < user_count + 2
+  (user_count - User.count).times do
+    n = User.count
+    firstname = Faker::Name.first_name
+    lastname = Faker::Name.last_name
+    email = "user#{n}@user.com"
+    password = '123456'
+    is_admin = false
+    tel_num = Faker::Number.number(8)
+    user_address = Faker::Address.street_address
+
+    User.create(firstname: firstname, lastname: lastname, email: email, password: password, is_admin: is_admin, tel_num: tel_num, user_address: user_address)
+  end
 end
 
-user3 = User.find_or_create_by(email: 'user2@user.com') do |user|
-  user.firstname = Faker::Name.first_name
-  user.lastname = Faker::Name.last_name
-  user.email = 'user2@user.com'
-  user.password = '123456'
-  user.is_admin = false
-  user.tel_num = 12345678
-  user.user_address = Faker::Address.street_address
-end
 
 # Create Providers
 provider_count = 15
@@ -57,16 +54,20 @@ end
 
 # Create Likes
 Provider.all.each do |provider|
-  if Faker::Boolean.boolean || (Like.where(provider_id: provider.id, user_id: user2.id) == nil)
-    user2.likes.create(provider_id: provider.id)
+  User.all.each do |user|
+    unless user.is_admin
+      if Faker::Boolean.boolean || (Like.where(provider_id: provider.id, user_id: user.id) == nil)
+        user.likes.create(provider_id: provider.id)
+      end
+    end
   end
-  if Faker::Boolean.boolean || (Like.where(provider_id: provider.id, user_id: user3.id) == nil)
-    user3.likes.create(provider_id: provider.id)
-  end
+  # if Faker::Boolean.boolean || (Like.where(provider_id: provider.id, user_id: user3.id) == nil)
+  #   user3.likes.create(provider_id: provider.id)
+  # end
 end
 
 # Create Joblistings
-joblisting_count = 50
+joblisting_count = 100
 if Joblisting.count < joblisting_count + 1
   (joblisting_count - Joblisting.count).times do
     issue = ['Installation', 'Repair', 'Replace'].sample
@@ -74,7 +75,7 @@ if Joblisting.count < joblisting_count + 1
     fixture = ['Wiring', 'Lights', 'Switches'].sample
     num_fixture = Faker::Number.between(1, 4)
     housing = ['HDBs', 'Condo', 'Landed'].sample
-    job_address = 'Job address'
+    job_address = Faker::Address.street_address
     date = ['5', '14', '31'].sample
     time = ['Morning', 'Afternoon', 'Evening'].sample
     status = Faker::Number.between(1, 5)
