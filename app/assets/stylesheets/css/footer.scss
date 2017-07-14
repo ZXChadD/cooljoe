@@ -1,0 +1,60 @@
+#myFooter {
+    background-color: #304269;
+    color: #f26101;
+    padding-top: 10px;
+}
+
+#myFooter .footer-copyright {
+    background-color: #304269;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+
+#myFooter .footer-copyright p {
+    margin: 5px;
+    margin-right: 20px;
+    color: #f26101;
+    text-align: right;
+
+}
+
+#myFooter ul {
+    list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+}
+
+#myFooter .footer-links {
+  position: absolute;
+  margin-left: 20px;
+}
+
+#myFooter .footer-links a {
+  color: #f26101;
+
+}
+
+
+
+@media screen and (max-width: 767px) {
+    #myFooter {
+        text-align: center;
+    }
+}
+
+
+/* CSS used for positioning the footers at the bottom of the page. */
+/* You can remove this. */
+
+
+.content{
+   flex: 1 0 auto;
+   -webkit-flex: 1 0 auto;
+   min-height: 200px;
+}
+
+#myFooter{
+   flex: 0 0 auto;
+   -webkit-flex: 0 0 auto;
+}

@@ -1,17 +1,36 @@
-<div class="topBefore", id="form">
-  <h2>Log in</h2>
+<div class="container">
+    <div class="login-signup">
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+          <div class="row">
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
-    </div>
+            <div class="col-xs-6 col-xs-offset-3" id="sign-box">
+              <article role="login">
+                <h3 class="text-center"><i class="fa fa-lock"></i>USER</h3>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <div class="form-group">
+                    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: 'Email Address' %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.submit "Sign In", class: "btn btn-success btn-block" %>
+                  </div>
+                <% end %>
 
-    <div class="field">
-      <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
-    </div>
+                <footer role="signup" class="text-center">
+                  <%= render "devise/shared/links" %>
+                </footer>
 
-    <%= f.submit "Log in" %>
-  <% end %>
-  <%= render "devise/shared/links" %>
+              </article>
+            </div>
 
-</div>
+          </div>
+          <!-- end of row -->
+        </div>
+        <!-- end of home -->
+
+
+  </div>
+  </div>

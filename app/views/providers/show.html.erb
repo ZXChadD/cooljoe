@@ -151,11 +151,9 @@
             </div>
           </div>
         </div>
-        <% if current_provider %>
-        <button class="edit-profile-button">
-            <%= link_to "Edit Profile", edit_provider_registration_path%>
-        </button>
-        <% end %>
+          <% if current_provider %>
+            <%= link_to "Edit Profile", edit_provider_registration_path, class: "btn btn-success btn-block"%>
+          <% end %>
       </div>
     </div>
   </div>
