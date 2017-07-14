@@ -14,7 +14,7 @@ class Provider < ApplicationRecord
   has_one :schedule
   has_many :conversations
   has_many :messages
-
+  has_many :comments
 
   scope :sort_exp, -> { order('experience DESC') }
 
