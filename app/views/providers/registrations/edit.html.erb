@@ -34,6 +34,10 @@
                 </div>
 
                 <div class="form-group">
+                  <%= link_to_add_association 'Add License File', f, :provider_attaches, partial: 'partials/provider_attachment'%>
+                 </div>
+
+                <div class="form-group">
                   <%= f.label :years_of_experience %>
                   <%= f.select :experience, Provider.experiences.keys.to_a %>
                 </div>
