@@ -117,22 +117,16 @@
       <div class="col-xs-12 col-sm-3">
 
         <!-- Contact provider -->
-        <p>
+        <% if current_user %>
           <button class="edit-profile-button">
-            <% if current_user %>
               <%= link_to 'Message Me', Conversation.find(@conversation.id) %>
-            <% end %>
           </button>
-        </p>
+        <% end %>
 
         <hr class="profile__contact-hr">
 
         <!-- Contact info -->
         <div class="profile__contact-info">
-          <div class="profile__contact-info-item">
-            <div class="profile__contact-info-icon">
-              <i class="fa fa-phone"></i>
-            </div>
           <div class="profile__contact-info-item">
             <div class="profile__contact-info-icon">
               <i class="fa fa-phone"></i>

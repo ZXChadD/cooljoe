@@ -20,7 +20,9 @@ class ProvidersController < ApplicationController
     @provider = Provider.find(params[:id])
     @comment = Comment.new
     @comments = Comment.where(provider_id: @provider.id)
-    @conversation = Conversation.where(provider_id: @provider.id, user_id: current_user.id).first_or_create
+    if current_user
+      @conversation = Conversation.where(provider_id: @provider.id, user_id: current_user.id).first_or_create
+    end
   end
 
   def like

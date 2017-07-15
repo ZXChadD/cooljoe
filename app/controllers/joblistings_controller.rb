@@ -6,11 +6,11 @@ class JoblistingsController < ApplicationController
   before_action :set_joblisting, except: %i[index new create]
 
   def index
-    if current_provider
-      @joblistings = current_provider.joblistings.page(params[:page]).per_page(10)
-    else
-      @joblistings = Joblisting.all.page(params[:page]).per_page(10)
-    end
+    @joblistings = if current_provider
+                     current_provider.joblistings.page(params[:page]).per_page(10)
+                   else
+                     Joblisting.all.page(params[:page]).per_page(10)
+                   end
   end
 
   def show; end
@@ -65,7 +65,7 @@ class JoblistingsController < ApplicationController
   private
 
   def joblisting_params
-    params.require(:joblisting).permit(:description, :num_fixture, :job_address, :time, :date, :housing, fixture: [], issue: [], job_attaches_attributes:[:id, :title, :image, :joblisting_id, :_destroy])
+    params.require(:joblisting).permit(:description, :num_fixture, :job_address, :time, :date, :housing, fixture: [], issue: [], job_attaches_attributes: %i[id title image joblisting_id _destroy])
   end
 
   private

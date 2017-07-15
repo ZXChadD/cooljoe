@@ -15,6 +15,7 @@
         <% end %>
       </div>
       <%= form_for @conversation do |f| %>
+      </br>
       <div class="field">
         <%= f.label :provider %>
         <%= f.select :provider_id, options_for_select(@providers.collect { |provider| [provider.firstname, provider.id] }), {}, {} %>
@@ -22,12 +23,15 @@
       <%= f.submit id: 'submit' %>
       <% end %>
     </div>
-    <div class="col-xs-12 col-sm-8 show-message">
-        <% if @conversations.present? %>
-          <h1><span class="badge badge-default">Click on the provider's name to view your conversation.</span></h1>
-        <% else %>
+      <% if @conversations.present? %>
+        <div class="col-xs-12 col-sm-8 show-message">
+          <span class="badge badge-default"><h5>Click on the provider's name to view your conversation.</h5></span>
+        </div>
+      <% else %>
+        <div class="col-xs-12 show-message">
           <span class="badge badge-default"><h4>You have no conversations</h4></span>
-        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

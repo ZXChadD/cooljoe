@@ -33,7 +33,7 @@ class PaymentsController < ApplicationController
       options: {
         submit_for_settlement: true
       }
-      
+
     )
 
     if result.success? || result.transaction
@@ -51,15 +51,15 @@ class PaymentsController < ApplicationController
 
     result_hash = if TRANSACTION_SUCCESS_STATUSES.include? status
                     {
-                      :header => "Sweet Success!",
-                      :icon => "success",
-                      :message => "Thank you, your payment for Invoice ref: #{@invoice.invoice_ref} has been successfully processed.",
+                      header: 'Sweet Success!',
+                      icon: 'success',
+                      message: "Thank you, your payment for Invoice ref: #{@invoice.invoice_ref} has been successfully processed."
                     }
                   else
                     {
-                      :header => "Transaction Failed",
-                      :icon => "fail",
-                      :message => "Your transaction has a status of #{status}.Please try again."
+                      header: 'Transaction Failed',
+                      icon: 'fail',
+                      message: "Your transaction has a status of #{status}.Please try again."
                     }
                   end
   end
