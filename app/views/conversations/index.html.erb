@@ -1,42 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-5">
-      <table>
-        <tr>
-          <th> # </th>
-          <th> Provider </th>
-          <th> Unread </th>
-        </tr>
+    <div class="col-xs-12 col-sm-4">
+      <div class="chatperson">
         <% @conversations.each_with_index do |conversation, index| %>
-        <tr>
-          <td><%= index + 1 %></td>
-          <td><%= link_to Provider.find(conversation.provider_id).firstname, conversation_path(user_id: current_user, id: conversation.id) %></td>
-          <td>
+            <div class="namechat">
+              <%= link_to Provider.find(conversation.provider_id).firstname, conversation_path(user_id: current_user, id: conversation.id), class: "display-button", :remote => true %>
             <% if conversation.messages.where(userticks: 'green').count > 0 %>
               <div class="notification-icon">
                 <span class="glyphicon glyphicon-envelope"></span>
                 <span class="badge"><%= conversation.messages.where(userticks: 'green').count %></span>
               </div>
             <% end %>
-          </td>
-        </tr>
+          </div>
         <% end %>
-      </table>
-    </div>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-4">
+      </div>
       <%= form_for @conversation do |f| %>
       <div class="field">
         <%= f.label :provider %>
         <%= f.select :provider_id, options_for_select(@providers.collect { |provider| [provider.firstname, provider.id] }), {}, {} %>
       </div>
-      <%= f.submit %>
+      <%= f.submit id: 'submit' %>
       <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-8 show-message">
+      <h4>
+        <img id="drag1" src="/assets/message.png" height="60%" width="60%" /><span>Click on the provider's name to view your conversation.</span>
+      </h4>
     </div>
   </div>
 </div>

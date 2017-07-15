@@ -31,6 +31,9 @@ Rails.application.routes.draw do
 
   resources :providers, only: [:index, :show] do
     member do
+      resources :comments
+    end
+    member do
       get '/allmessages', to: 'conversations#allmessages', as: 'allmessages'
       get '/showmessages/:conversation_id', to: 'conversations#showmessages', as: 'showmessages'
     end

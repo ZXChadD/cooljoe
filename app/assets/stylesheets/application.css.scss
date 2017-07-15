@@ -46,6 +46,7 @@ ul {
 }
 
 #banner_links {
+  text-align: center;
   padding-bottom: 10px;
   span.divider {
     color: #f26101;
@@ -95,4 +96,14 @@ ul {
   margin-left: 0.5em;
   background-color: #f26101;
   font-size: 15px;
+}
+
+#logo {
+  width: 200px;
+  height: 150px;
+  text-align: center;
+}
+
+.heading {
+  background-color: #304269;
 }

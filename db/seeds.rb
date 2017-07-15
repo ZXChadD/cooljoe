@@ -26,7 +26,6 @@ if User.count < user_count + 2
   end
 end
 
-
 # Create Providers
 provider_count = 15
 if Provider.count < provider_count + 1
@@ -91,12 +90,13 @@ if Joblisting.count < joblisting_count + 1
     # Create Invoices
     if status == 4
       joblisting_id = joblisting.id
+      job_description = 'description'
       price_size = Faker::Number.between(3, 4)
       price = Faker::Number.decimal(price_size, 2)
       invoice_status = Faker::Number.between(1, 3)
       invoice_ref = "CoolJoe_INV_#{Faker::Number.number(6)}"
-      job_description = "job_description"
-      Invoice.create(provider_id: provider_id, joblisting_id: joblisting_id, status: invoice_status, price: price, invoice_ref: invoice_ref, job_description: job_description)
+      
+      Invoice.create(provider_id: provider_id, joblisting_id: joblisting_id, job_description: job_description, status: invoice_status, price: price, invoice_ref: invoice_ref)
     end
   end
 end
