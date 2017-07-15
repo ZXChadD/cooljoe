@@ -60,8 +60,9 @@
     <br>
       <div class="job_attaches">
         <%= f.fields_for :job_attaches do |job_attach| %>
-        <%= render 'partials/job_attachment', f: job_attach %>
+          <%= render 'partials/job_attachment', f: job_attach %>
         <% end %>
+        <br>
         <%= link_to_add_association 'Add Image', f, :job_attaches, partial: 'partials/job_attachment' %>
 
       </div>

@@ -7,6 +7,7 @@ class ConversationsController < ApplicationController
     @conversations = Conversation.where(user_id: current_user.id)
     @conversation = Conversation.new
     @providers = Provider.all
+    @message = Message.new
   end
 
   def show
@@ -15,13 +16,17 @@ class ConversationsController < ApplicationController
       @messages = @conversation.messages.update(userticks: 'blue')
     end
     @message = Message.new(conversation_id: @conversation)
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def create
     @conversation = Conversation.new(conversation_params)
     @conversation.user = current_user
     if @conversation.save
-      redirect_to conversation_path(@conversation)
+      redirect_to conversations_path
     else
       redirect_to conversations_path(current_user.id)
       flash[:error] = 'Conversation already exists'
@@ -30,6 +35,7 @@ class ConversationsController < ApplicationController
 
   def allmessages
     @conversations = Conversation.where(provider_id: current_provider.id)
+    @message = Message.new
   end
 
   def showmessages
@@ -38,6 +44,10 @@ class ConversationsController < ApplicationController
       @messages = @conversation.messages.update(providerticks: 'blue')
     end
     @message = Message.new(conversation_id: @conversation)
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   private

@@ -1,27 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-5">
-      <table>
-        <tr>
-          <th> # </th>
-          <th> Provider </th>
-          <th> Unread </th>
-        </tr>
+    <div class="col-xs-12 col-sm-4">
+      <div class="chatperson">
         <% @conversations.each_with_index do |conversation, index| %>
-        <tr>
-            <td><%= index + 1 %></td>
-            <td><%= link_to User.find(conversation.user_id).firstname, showmessages_provider_path(id: current_provider, conversation_id: conversation.id) %></td>
-            <td>
-              <% if conversation.messages.where(providerticks: 'green').count > 0 %>
-                <div class="notification-icon">
-                  <span class="glyphicon glyphicon-envelope"></span>
-                  <span class="badge"><%= conversation.messages.where(providerticks: 'green').count %></span>
-                </div>
-              <% end %>
-            </td>
-        </tr>
+            <div class="namechat">
+              <%= link_to User.find(conversation.user_id).firstname, showmessages_provider_path(id: current_provider, conversation_id: conversation.id), class: "display-button", :remote => true %>
+            <% if conversation.messages.where(providerticks: 'green').count > 0 %>
+              <div class="notification-icon">
+                <span class="glyphicon glyphicon-envelope"></span>
+                <span class="badge"><%= conversation.messages.where(providerticks: 'green').count %></span>
+              </div>
+            <% end %>
+          </div>
         <% end %>
-      </table>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-8 show-message">
+      <h4>
+        <img id="drag1" src="/assets/message.png" height="60%" width="60%" /><span>Click on the customer's name to view your conversation.</span>
+      </h4>
     </div>
   </div>
 </div>

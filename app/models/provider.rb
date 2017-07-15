@@ -16,8 +16,11 @@ class Provider < ApplicationRecord
   has_one :schedule
   has_many :conversations
   has_many :messages
-
+  has_many :comments
+  
   accepts_nested_attributes_for :provider_attaches, reject_if: :all_blank, allow_destroy: true
+  
+
 
   scope :sort_exp, -> { order('experience DESC') }
 

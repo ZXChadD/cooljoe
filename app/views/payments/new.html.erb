@@ -9,28 +9,47 @@
       <%= form_tag(payments_path, method: "post", id: "payment-form") do %>
         <section>
           <div class="row">
-            <div class="col-md-7">
-              <h2>Total Amount (in SGD):</h2>
+            <div class="col-md-5">
+            <br><br>
+              <div class="panel panel-default">
+                <div class="panel-heading"><h3>Payment Information<h3></div>
+                <table class="table">
+                  <tr>
+                  </tr>
+                  <tr>
+                    <td>Project Description:</td>
+                    <td><%= link_to "#{@invoice.joblisting.description}", joblisting_path(@invoice.joblisting), target: :_blank %></td>
+                  </tr>
+                  <tr>
+                    <td>Electrician name:</td>
+                    <td><%= link_to "#{@invoice.provider.firstname}", provider_path(@invoice.provider), target: :_blank %></td>
+                  </tr>
+                  <tr>
+                    <td>Invoice number:</td>
+                    <td><%= link_to "#{@invoice.invoice_ref}", invoice_path(@invoice), target: :blank %></td>
+                  </tr>
+                  <tr>
+                    <td>Total Amount (in SGD):</td>
+                    <td>
+                      <label for="amount">
+                        <div class="input-wrapper amount-wrapper">
+                          <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" readonly="true" value= "<%= @invoice.price %>" size= <%= "#{@invoice.price.to_s.length - 2}" %>>
+                        </div>
+                      </label>
+                    </td>
+                  <tr>
+                </table>
+              </div>            
             </div>
           </div>
-          <br>
-
-          <label for="amount">
-            <div class="input-wrapper amount-wrapper">
-              <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" readonly="true" value= "<%= @invoice.price %>">
-            </div>
-          </label>
-
-          <hr>
           <div class="bt-drop-in-wrapper">
             <div id="bt-dropin"></div>
           </div>
         </section>
-
         <input type="hidden" id="nonce" name="payment_method_nonce" />
         <button class="button" type="submit"><span>Pay now</span></button>
       <% end %>
-
+    <br><br>
     </div>
   </div>
 </div>

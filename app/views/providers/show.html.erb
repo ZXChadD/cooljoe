@@ -23,7 +23,7 @@
         <!-- Electrician info -->
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4 class="panel-title">User info</h4>
+          <h4 class="panel-title">Electrician info</h4>
           </div>
           <div class="panel-body">
             <table class="table profile__table">
@@ -48,15 +48,11 @@
         <!-- Community -->
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4 class="panel-title">Community</h4>
+          <h4 class="panel-title">Activity</h4>
           </div>
           <div class="panel-body">
             <table class="table profile__table">
               <tbody>
-                <tr>
-                  <th><strong>Jobs Completed</strong></th>
-                  <td></td>
-                </tr>
                 <tr>
                   <th><strong>Member since</strong></th>
                   <td><%= @provider.created_at %></td>
@@ -64,6 +60,10 @@
                 <tr>
                   <th><strong>Last login</strong></th>
                   <td><%= @provider.last_sign_in_at %></td>
+                </tr>
+                <tr>
+                  <th><strong>Jobs Completed</strong></th>
+                  <td><%= @provider.joblistings.where(status: 'completed').count %></td>
                 </tr>
               </tbody>
             </table>
@@ -75,6 +75,7 @@
           <div class="panel-heading">
           <h4 class="panel-title">Remarks by Customers</h4>
           </div>
+          <% @comments.each do |comment| %>
           <div class="panel-body">
             <div class="profile__comments">
               <div class="profile-comments__item">
@@ -88,61 +89,40 @@
                 </div>
                 <div class="profile-comments__body">
                   <h5 class="profile-comments__sender">
-                    Richard Roe <small>2 hours ago</small>
+                    <%= User.find(comment.user_id).firstname.capitalize %> <%= User.find(comment.user_id).lastname.capitalize %> <small><%= comment.created_at %></small>
                   </h5>
                   <div class="profile-comments__content">
-                  One of the best electrician i've met so feature
-                  </div>
-                </div>
-              </div>
-              <div class="profile-comments__item">
-                <div class="profile-comments__controls">
-                  <a href="#"><i class="fa fa-share-square-o"></i></a>
-                  <a href="#"><i class="fa fa-edit"></i></a>
-                  <a href="#"><i class="fa fa-trash-o"></i></a>
-                </div>
-                <div class="profile-comments__avatar">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="...">
-                </div>
-                <div class="profile-comments__body">
-                  <h5 class="profile-comments__sender">
-                    Richard Roe <small>5 hours ago</small>
-                  </h5>
-                  <div class="profile-comments__content">
-                    All my problems are fixed by him!
-                  </div>
-                </div>
-              </div>
-              <div class="profile-comments__item">
-                <div class="profile-comments__controls">
-                  <a href="#"><i class="fa fa-share-square-o"></i></a>
-                  <a href="#"><i class="fa fa-edit"></i></a>
-                  <a href="#"><i class="fa fa-trash-o"></i></a>
-                </div>
-                <div class="profile-comments__avatar">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="...">
-                </div>
-                <div class="profile-comments__body">
-                  <h5 class="profile-comments__sender">
-                    Richard Roe <small>1 day ago</small>
-                  </h5>
-                  <div class="profile-comments__content">
-                    This electrician is amazing!
+                    <%= comment.body %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <% end %>
+          <% if current_user %>
+            <%= form_for @comment do |f| %>
+
+              <div class="field">
+                <%= f.text_area :body, autofocus: true, placeholder: 'Message' %>
+              </div>
+
+              <%= f.hidden_field :user_id, :value =>  current_user.id %>
+              <%= f.submit %>
+
+            <% end %>
+          <% end %>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-3">
 
-        <!-- Contact user -->
+        <!-- Contact provider -->
         <p>
-          <a href="#" class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form">
-            Contact Me
-          </a>
+          <button class="edit-profile-button">
+            <% if current_user %>
+              <%= link_to 'Message Me', Conversation.find(@conversation.id) %>
+            <% end %>
+          </button>
         </p>
 
         <hr class="profile__contact-hr">
@@ -165,9 +145,6 @@
             </div>
           </div>
           <div class="profile__contact-info-item">
-            <div class="profile__contact-info-icon">
-              <i class="fa fa-envelope-square"></i>
-            </div>
             <div class="profile__contact-info-body">
               <h6 class="profile__contact-info-heading">E-mail address</h5>
               <a href="mailto:admin@domain.com"><%= @provider.email %></a>

@@ -1,0 +1,60 @@
+<h3>Schedule</h3>
+
+<div class="panel panel-default">
+  <% if current_provider.schedule.present? %>
+    <%= form_for @schedule do |f| %>
+      <div class='field'>
+        <p>Available days?</p>
+        <%= label_tag 'date_weekdays', 'Weekdays' %>
+        <%= check_box_tag 'schedule[date][]', 'weekdays', checked_d('weekdays'), id: 'date_weekdays' %>
+
+        <%= label_tag 'date_weekends', 'Weekends' %>
+        <%= check_box_tag 'schedule[date][]', 'weekends', checked_d('weekends'), id: 'date_weekends' %>
+
+        <%= label_tag 'date_all', 'All' %>
+        <%= check_box_tag 'schedule[date][]', 'all', checked_d('all'), id: 'date_all' %>
+      </div>
+
+      <div class='field'>
+        <p>Available timings?</p>
+        <%= label_tag 'time_morning', 'Morning' %>
+        <%= check_box_tag 'schedule[time][]', 'morning', checked_t('morning'), id: 'time_morning' %>
+
+        <%= label_tag 'time_afternoon', 'Afternoon' %>
+        <%= check_box_tag 'schedule[time][]', 'afternoon', checked_t('afternoon'), id: 'time_afternoon' %>
+
+        <%= label_tag 'time_evening', 'Evening' %>
+        <%= check_box_tag 'schedule[time][]', 'evening', checked_t('evening'), id: 'time_evening' %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+
+  <% else %>
+    <%= form_for @schedule, url: schedules_path(@provider) do |f| %>
+      <div class='field'>
+        <p>Available days?</p>
+        <%= label_tag 'date_weekdays', 'Weekdays' %>
+        <%= check_box_tag 'schedule[date][]', 'weekdays', checked_d('weekdays'), id: 'date_weekdays' %>
+
+        <%= label_tag 'date_weekends', 'Weekends' %>
+        <%= check_box_tag 'schedule[date][]', 'weekends', checked_d('weekends'), id: 'date_weekends' %>
+
+        <%= label_tag 'date_all', 'All' %>
+        <%= check_box_tag 'schedule[date][]', 'all', checked_d('all'), id: 'date_all' %>
+      </div>
+
+      <div class='field'>
+        <p>Available timings?</p>
+        <%= label_tag 'time_morning', 'Morning' %>
+        <%= check_box_tag 'schedule[time][]', 'morning', checked_t('morning'), id: 'time_morning' %>
+
+        <%= label_tag 'time_afternoon', 'Afternoon' %>
+        <%= check_box_tag 'schedule[time][]', 'afternoon', checked_t('afternoon'), id: 'time_afternoon' %>
+
+        <%= label_tag 'time_evening', 'Evening' %>
+        <%= check_box_tag 'schedule[time][]', 'evening', checked_t('evening'), id: 'time_evening' %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
+</div>

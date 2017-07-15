@@ -4,21 +4,23 @@ class ProvidersController < ApplicationController
   before_action :authenticate_provider!, only: [:index]
 
   def index
-    @new_joblistings = current_provider.joblistings.where(status: 2).order('created_at DESC')
-    @current_joblistings = current_provider.joblistings.where(status: 3).order('created_at DESC')
-    @past_joblistings = current_provider.joblistings.where(status: 4).order('created_at DESC')
+    page_limit = 10
+    @new_joblistings = current_provider.joblistings.where(status: 2).order('created_at DESC').page(params[:page]).per_page(page_limit)
+    @current_joblistings = current_provider.joblistings.where(status: 3).order('created_at DESC').page(params[:page]).per_page(page_limit)
+    @past_joblistings = current_provider.joblistings.where(status: 4).order('created_at DESC').page(params[:page]).per_page(page_limit)
     @schedule = if current_provider.schedule.present?
                   Schedule.find_by(provider_id: current_provider.id)
                 else
                   Schedule.new
                 end
     @provider = current_provider
-
-
   end
 
   def show
     @provider = Provider.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.where(provider_id: @provider.id)
+    @conversation = Conversation.where(provider_id: @provider.id, user_id: current_user.id).first_or_create
   end
 
   def like

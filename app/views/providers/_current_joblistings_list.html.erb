@@ -1,0 +1,23 @@
+<h3>Current Jobs</h3>
+<div class="panel panel-default">
+  <table class="table">
+    <tr>
+      <td>#</td>
+      <td>Date</td>
+      <td>Summary</td>
+      <td>Status</td>
+      <td>Customer name</td>
+    </tr>
+    <% @current_joblistings.each_with_index do |current_joblisting, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= current_joblisting.created_at.strftime("%F") %></td>
+        <td><%= link_to "#{current_joblisting.description.capitalize}", joblisting_path(current_joblisting) %></td>
+        <td><%= current_joblisting.status.capitalize %></td>
+        <td><%= link_to "#{User.find(current_joblisting.user_id).firstname.capitalize}", user_path(User.find(current_joblisting.user_id)) %></td>
+        <td><%= link_to "Send Invoice", new_invoice_path(joblisting_id: current_joblisting) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<%= will_paginate @current_joblistings %> 

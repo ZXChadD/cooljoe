@@ -1,0 +1,24 @@
+<h3>Job History</h3>
+<div class="panel panel-default">
+  <table class="table">
+    <tr>
+      <td>#</td>
+      <td>Date</td>
+      <td>Summary</td>
+      <td>Job Status</td>
+      <td>Invoice Status</td>
+      <td>Electrican name</td>
+    </tr>
+    <% @past_joblistings.each_with_index do |past_joblisting, index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= past_joblisting.created_at.strftime("%F") %></td>
+      <td><%= link_to "#{past_joblisting.description.capitalize}", joblisting_path(past_joblisting) %></td>
+      <td><%= past_joblisting.status.capitalize %></td>
+      <td><%= past_joblisting.invoice.status.capitalize %></td>
+      <td><%= link_to "#{Provider.find(past_joblisting.provider_id).firstname}", provider_path(Provider.find(past_joblisting.provider_id)) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<%= will_paginate @past_joblistings %>

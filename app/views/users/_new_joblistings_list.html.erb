@@ -1,0 +1,24 @@
+<h3>New Jobs</h3>
+<div class="panel panel-default">
+  <table class="table">
+    <tr>
+      <td>#</td>
+      <td>Date</td>
+      <td>Summary</td>
+      <td>Status</td>
+      <td>Response</td>
+      <td>Edit</td>
+    </tr>
+    <% @new_joblistings.each_with_index do |new_joblisting, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= new_joblisting.created_at.strftime("%F") %></td>
+        <td><%= link_to "#{new_joblisting.description.capitalize}", joblisting_path(new_joblisting) %></td>
+        <td><%= new_joblisting.status.capitalize %></td>
+        <td><%= link_to 'View Providers', result_path(job_id: new_joblisting.id) %></td>
+        <td><%= link_to 'Edit', edit_joblisting_path(new_joblisting) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<%= will_paginate @new_joblistings %>  

@@ -9,5 +9,71 @@
         <br />
           <%= link_to 'Edit', edit_user_registration_path, class: "btn btn-success btn-block" %>
       </div>
+<div class="container user-profile">
+  <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+
+        <!-- User profile -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">User Profile</h4>
+          </div>
+          <div class="panel-body">
+            <div class="profile__header">
+              <h4><%= "#{@user.firstname.capitalize} #{@user.lastname.capitalize}" %></h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- User info -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">User info</h4>
+          </div>
+          <div class="panel-body">
+            <table class="table profile__table">
+              <tbody>
+                <tr>
+                  <th><strong>Address</strong></th>
+                  <td><i class="fa fa-home" aria-hidden="true"><%= @user.user_address %></td>
+                  <th><strong>Telephone</strong></th>
+                  <td><i class="fa fa-phone" aria-hidden="true"></i><%= @user.tel_num %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Community -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+          <h4 class="panel-title">Activity</h4>
+          </div>
+          <div class="panel-body">
+            <table class="table profile__table">
+              <tbody>
+                <tr>
+                  <th><strong>Member since</strong></th>
+                  <td><%= @user.created_at %></td>
+                </tr>
+                <tr>
+                  <th><strong>Last login</strong></th>
+                  <td><%= @user.last_sign_in_at %></td>
+                </tr>
+                <tr>
+                  <th><strong>Jobs completed</strong></th>
+                  <td><%= @user.joblistings.where(status: 'completed').count %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      <button>
+        <% if current_user %>
+          <%= link_to "Edit Profile", edit_user_registration_path%>
+        <% end %>
+      </button>
     </div>
+  </div>
 </div>
