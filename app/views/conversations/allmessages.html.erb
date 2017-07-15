@@ -16,9 +16,11 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-8 show-message">
-      <h4>
-        <img id="drag1" src="/assets/message.png" height="60%" width="60%" /><span>Click on the customer's name to view your conversation.</span>
-      </h4>
+        <% if @conversations.present? %>
+          <span class="badge badge-default"><h4>Click on the customer's name to view your conversation.</h4></span>
+        <% else %>
+          <span class="badge badge-default"><h4>You have no conversations</h4></span>
+        <% end %>
     </div>
   </div>
 </div>

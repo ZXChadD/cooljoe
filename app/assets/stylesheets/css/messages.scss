@@ -9,13 +9,15 @@
   margin-top: -15px;
 }
 
-.chatperson{
+.chatperson {
   margin-top: 1em;
 }
-.namechat:hover{
+
+.namechat:hover {
   text-decoration: none;
   border-bottom: 1px solid orange;
 }
+
 .namechat {
   display: inline-block;
   vertical-align: middle;
@@ -30,25 +32,28 @@
   height: 3em;
 }
 
-.media-body{
+.media-body {
   display: block;
   height: 3em;
   line-height: 3em;
 }
 
-
 #submit {
   cursor: pointer;
-  background:transparent;
+  background: transparent;
   border: 1px solid orange;
 }
 
-.media-form{
+.media-form {
   padding-right: 2em;
 }
 
-.show-message{
-  img{
+.show-message {
+  img {
     display: block;
   }
+}
+
+.message {
+  border: 1px solid black;
 }
