@@ -6,8 +6,10 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     if current_user
       @message.body = current_user.firstname + ' : ' + @message.body
+      @message.userticks = 'blue'
     else current_provider
          @message.body = current_provider.firstname + ' : ' + @message.body
+         @message.providerticks = 'blue'
     end
     redirect_back(fallback_location: users_path) if @message.save!
   end

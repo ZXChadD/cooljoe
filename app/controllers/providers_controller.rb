@@ -13,8 +13,6 @@ class ProvidersController < ApplicationController
                   Schedule.new
                 end
     @provider = current_provider
-
-
   end
 
   def show
