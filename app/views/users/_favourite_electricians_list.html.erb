@@ -1,0 +1,22 @@
+<h3>Favourite Electricians</h3>
+<div class="panel panel-default">
+  <table class="table">
+    <tr>
+      <td>#</td>
+      <td>Electrician name</td>
+      <td>Experience</td>
+      <td>Telephone number</td>
+      <td>Email</td>
+    </tr>
+    <% @electricians.each_with_index do |electrician, index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= link_to "#{electrician.firstname.capitalize}", provider_path(electrician) %></td>
+      <td><%= electrician.experience %></td>
+      <td><%= electrician.tel_num %></td>
+      <td><%= electrician.email %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+<%= will_paginate @electricians %>

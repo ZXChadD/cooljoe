@@ -1,0 +1,30 @@
+<h3>Current Jobs</h3>
+<div class="panel panel-default">
+  <table class="table">
+    <tr>
+      <td>#</td>
+      <td>Date</td>
+      <td>Summary</td>
+      <td>Status</td>
+      <td>Electrican name</td>
+      <!-- <td>Response</td> -->
+    </tr>
+    <% @current_joblistings.each_with_index do |current_joblisting, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= current_joblisting.created_at.strftime("%F") %></td>
+        <td><%= link_to "#{current_joblisting.description.capitalize}", joblisting_path(current_joblisting) %></td>
+        <td><%= current_joblisting.status.capitalize %></td>
+        <% if current_joblisting.status == 'booked' || current_joblisting.status == 'pending' %>
+          <td><%= link_to "#{Provider.find(current_joblisting.provider_id).firstname.capitalize}", provider_path(Provider.find(current_joblisting.provider_id)) %></td>
+        <% else %>
+          <td>No provider</td>
+        <% end %>
+        <!-- <% if current_joblisting.status == 'created' %>
+          <td><%= link_to "#{current_joblisting.status}", result_path(job_id: current_joblisting.id) %></td>
+        <% end %> -->
+      </tr>
+    <% end %>
+  </table>
+</div>
+<%= will_paginate @current_joblistings %>              

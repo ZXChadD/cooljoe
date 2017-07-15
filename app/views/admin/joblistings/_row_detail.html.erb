@@ -1,24 +1,24 @@
 <tr>
   <td><%= index + 1 %></td>
   <td><%= joblisting.created_at.strftime("%F")%></td>
-  <td><%= joblisting.user.firstname %></td>                
+  <td><%= joblisting.user.firstname.capitalize %></td>                
   <td><%= link_to "#{joblisting.user.email}", user_path(joblisting.user) %></td>
-  <td><%= link_to "#{joblisting.status}", joblisting_path(joblisting) %></td>
+  <td><%= link_to "#{joblisting.status.capitalize}", joblisting_path(joblisting) %></td>
   <% if joblisting.status == 'created' || joblisting.status == 'cancel' %>
-    <td></td>
     <td>No provider</td>
+    <td>N.A.</td>
     <td>No invoice</td>
-    <td></td>
+    <td>N.A.</td>
   <% else %>  
     <%provider = Provider.find(joblisting.provider_id)%>
-    <td><%= provider.firstname %></td>                  
+    <td><%= provider.firstname.capitalize %></td>                  
     <td><%= link_to "#{provider.email}", provider_path(provider) %></td>
     <% if joblisting.invoice %>
-      <td><%= joblisting.invoice.status %></td>
+      <td><%= joblisting.invoice.status.capitalize %></td>
       <td><%= number_with_delimiter(joblisting.invoice.price) %></td>
     <% else %>
       <td>No invoice</td>
-      <td></td>
+      <td>N.A.</td>
     <% end %>
   <% end %>
 </tr>

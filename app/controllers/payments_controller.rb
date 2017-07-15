@@ -18,6 +18,7 @@ class PaymentsController < ApplicationController
 
   def show
     @transaction = Braintree::Transaction.find(params[:id])
+    @invoice = Invoice.find(params[:invoice_id])
     @result = _create_result_hash(@transaction)
   end
 
@@ -32,11 +33,12 @@ class PaymentsController < ApplicationController
       options: {
         submit_for_settlement: true
       }
+      
     )
 
     if result.success? || result.transaction
       @invoice.update(status: 2)
-      redirect_to payment_path(result.transaction.id)
+      redirect_to payment_path(result.transaction.id, invoice_id: @invoice.id)
     else
       error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
       flash[:error] = error_messages
@@ -49,15 +51,15 @@ class PaymentsController < ApplicationController
 
     result_hash = if TRANSACTION_SUCCESS_STATUSES.include? status
                     {
-                      header: 'Sweet Success!',
-                      icon: 'success',
-                      message: 'Your test transaction has been successfully processed. See the Braintree API response and try again.'
+                      :header => "Sweet Success!",
+                      :icon => "success",
+                      :message => "Thank you, your payment for Invoice ref: #{@invoice.invoice_ref} has been successfully processed.",
                     }
                   else
                     {
-                      header: 'Transaction Failed',
-                      icon: 'fail',
-                      message: "Your test transaction has a status of #{status}. See the Braintree API response and try again."
+                      :header => "Transaction Failed",
+                      :icon => "fail",
+                      :message => "Your transaction has a status of #{status}.Please try again."
                     }
                   end
   end

@@ -1,0 +1,30 @@
+<h3>Invoices</h3>
+<div class="panel panel-default">
+  <table class="table">
+    <tr>
+      <td>#</td>
+      <td>Date</td>
+      <td>Invoice Number</td>
+      <td>Job Status</td>
+      <td>Electrican name</td>
+      <td>Invoice Status</td>
+      <td>Invoice Amount S$</td>
+      <td>Make Payments</td>
+    </tr>
+    <% @past_joblistings.each_with_index do |past_joblisting, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= past_joblisting.created_at.strftime("%F") %></td>
+        <td><%= link_to "#{past_joblisting.invoice.invoice_ref}", invoice_path(past_joblisting.invoice) %></td>
+        <td><%= past_joblisting.status.capitalize %></td>
+        <td><%= link_to "#{Provider.find(past_joblisting.provider_id).firstname.capitalize}", provider_path(Provider.find(past_joblisting.provider_id)) %></td>
+        <td><%= past_joblisting.invoice.status.capitalize %></td>
+        <td><%= number_with_delimiter(past_joblisting.invoice.price) %></td>
+        <% if past_joblisting.invoice.status = 1 %>
+          <td><%= link_to "Pay Now", new_payment_path(id: past_joblisting.invoice) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<%= will_paginate @past_joblistings %>

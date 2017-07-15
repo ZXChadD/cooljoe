@@ -6,10 +6,10 @@
       <td>In-progress</td>
       <td>Completed</td>
       <td>Cancel</td>
-      <td>Total no.</td>
+      <td>Total</td>
     </tr>
     <tr>
-      <td>Total no.:</td>
+      <td>Qty:</td>
       <td><%= user_joblistings.where(status: [1]).count %></td>
       <td><%= user_joblistings.where(status: [2,3]).count %></td>
       <td><%= user_joblistings.where(status: [4]).count %></td>
