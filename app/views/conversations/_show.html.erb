@@ -11,37 +11,21 @@
     <% end %>
 </div>
 
-<li><%= link_to 'New Message', new_message_path, id: 'new_chipper', "data-toggle" => "modal", "data-target" => "#myMessage", remote: true %></li>
+<li><%= link_to 'New Message', new_tweet_path, id: 'new_chipper', "data-toggle" => "modal", "data-target" => "#myTweet", remote: true %></li>
 
-<div class="modal fade" id="myMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div id="tweet_form_container">
-          <div class='container'>
-            <div class='row'>
-              <div class='col-sm-6'>
-                <div class="media-form">
-                  <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), remote: true  do |f| %>
+<div class="media-form">
+  <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), remote: true  do |f| %>
 
-                  <div class="field">
-                    <%= f.text_area :body, autofocus: true, placeholder: 'Message', cols: "60", rows: "3" %>
-                  </div>
-
-                  <%= f.hidden_field :conversation_id, :value => @conversation.id %>
-                  <%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
-                  <%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
-                  <%= f.hidden_field :userticks, :value =>  'blue' %>
-                  <span><%= f.submit id: 'submit' %></span>
-
-                  <% end %>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="field">
+    <%= f.text_area :body, autofocus: true, placeholder: 'Message', cols: "60", rows: "3" %>
   </div>
+
+  <%= f.hidden_field :conversation_id, :value => @conversation.id %>
+  <%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
+  <%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
+  <%= f.hidden_field :userticks, :value =>  'blue' %>
+  <span><%= f.submit id: 'submit' %></span>
+
+  <% end %>
+
 </div>

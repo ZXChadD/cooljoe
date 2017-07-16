@@ -26,7 +26,6 @@ Rails.application.routes.draw do
     end
     member do
       resources :messages, only: [:new, :create, :destroy]
-      post '/newmessage', to: 'messages#newmessage', as: 'newmessage'
     end
   end
 
