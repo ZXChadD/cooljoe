@@ -11,7 +11,7 @@
     <% end %>
 </div>
 
-<button class="btn btn-primary btn-shadow btn-rounded w-md" data-toggle="modal" data-target="#myModal">New Message</button>
+<button class="btn btn-primary btn-shadow btn-rounded w-md" data-toggle="modal" data-target="#myModal">Create Message</button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -21,7 +21,7 @@
       <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), html: {class: "white-pink"}, remote: true  do |f| %>
 
       <div class="field">
-        <%= f.text_area :body, autofocus: true, placeholder: 'Message', cols: "60", rows: "3" %>
+        <%= f.text_area :body, autofocus: true, placeholder: 'Message' %>
       </div>
 
       <%= f.hidden_field :conversation_id, :value => @conversation.id %>
