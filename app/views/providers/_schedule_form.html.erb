@@ -2,7 +2,7 @@
 
 <div class="panel panel-default">
   <% if current_provider.schedule.present? %>
-    <%= form_for @schedule do |f| %>
+    <%= form_for(@schedule, html: {class: "white-pink"}) do |f| %>
       <div class='field'>
         <p>Available days?</p>
         <%= label_tag 'date_weekdays', 'Weekdays' %>

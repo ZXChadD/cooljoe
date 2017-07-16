@@ -1,194 +1,90 @@
-// user request form
+.white-pink {
+    margin-left:auto;
+    margin-right:auto;
+
+    max-width: 500px;
+    background: #FFF;
+    padding: 30px 30px 20px 30px;
+    box-shadow: rgba(187, 187, 187, 1) 0 0px 20px -1px;
+    -webkit-box-shadow: rgba(187, 187, 187, 1) 0 0px 20px -1px;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #666;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    font-size: 1.1em;
+}
+.white-pink h1 {
+    font: 24px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom: 1px solid #F5F5F5;
+    margin: -10px -30px 10px -30px;
+    color: #969696;
+}
+.white-pink h1>span {
+    display: block;
+    font-size: 11px;
+    color: #C4C2C2;
+}
+.white-pink label {
+    display: block;
+    margin: 0px 0px 5px;
+}
+.white-pink label>span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: #969696;
+}
+.white-pink input[type="text"], .white-pink input[type="email"], .white-pink textarea,.white-pink select{
+    color: #555;
+    width: 70%;
+    padding: 3px 0px 3px 5px;
+    margin-top: 2px;
+    margin-right: 6px;
+    margin-bottom: 16px;
+    border: 1px solid #e5e5e5;
+    background: #fbfbfb;
+    height: 25px;
+    line-height:15px;
+    outline: 0;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+    box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+}
+.white-pink textarea{
+    height:100px;
+    padding: 5px 0px 0px 5px;
+    width: 70%;
+}
+.white-pink input[type="submit"]{
+    -moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
+    box-shadow:inset 0px 1px 0px 0px #fbafe3;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f26101), color-stop(1, #ef027d) );
+    background:-moz-linear-gradient( center top, #ff5bb0 5%, #ef027d 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bb0', endColorstr='#ef027d');
+    background-color:#ff5bb0;
+    border-radius:9px;
+    -webkit-border-radius:9px;
+    -moz-border-border-radius:9px;
+    border:1px solid #ee1eb5;
+    display:inline-block;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:11px;
+    font-weight:bold;
+    font-style:normal;
+    height: 40px;
+    line-height: 30px;
+    width:100px;
+    text-decoration:none;
+    text-align:center;
+    text-shadow:1px 1px 0px #c70067;
+}
+
 #request {
-
-  position: relative;
-  width: 500px;
-  margin: 25px auto 25px auto;
-  background: #d9e8f5;
-  padding: 10px;
-
-  label {
-    font-size: 0.90em;
-  }
-
-}
-
-input[type="checkbox"]{
-  width: 20px; /*Desired width*/
-  height: 20px; /*Desired height*/
-}
-
-input[type="file"]{
-  margin-left: 3%;
-}
-
-
-// sign_in/sign_up form
-
-input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-  color: #aca49c;
-  font-size: 0.875em;
-}
-
-input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
-  color: #bbb5af;
-}
-
-input::-moz-placeholder, textarea::-moz-placeholder {
-  color: #aca49c;
-  font-size: 0.875em;
-}
-
-input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
-  color: #bbb5af;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #aca49c;
-  font-size: 0.875em;
-}
-
-input:focus::placeholder, textarea::focus:placeholder {
-  color: #bbb5af;
-}
-
-input::-ms-placeholder, textarea::-ms-placeholder {
-  color: #aca49c;
-  font-size: 0.875em;
-}
-
-input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
-  color: #bbb5af;
-}
-
-/* on hover placeholder */
-
-input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
-  color: #e2dedb;
-  font-size: 0.875em;
-}
-
-input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
-  color: #cbc6c1;
-}
-
-input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
-  color: #e2dedb;
-  font-size: 0.875em;
-}
-
-input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
-  color: #cbc6c1;
-}
-
-input:hover::placeholder, textarea:hover::placeholder {
-  color: #e2dedb;
-  font-size: 0.875em;
-}
-
-input:hover:focus::placeholder, textarea:hover:focus::placeholder {
-  color: #cbc6c1;
-}
-
-input:hover::placeholder, textarea:hover::placeholder {
-  color: #e2dedb;
-  font-size: 0.875em;
-}
-
-input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
-  color: #cbc6c1;
-}
-
-.dashboard-form {
-  position: relative;
-  // width: 500p;
-  margin: 25px auto 25px auto;
-  background: #91bed4;
-  color: black;
-  text-align: center;
-  padding-top: 1px;
-  padding-bottom: 5px;
-}
-
-#form {
-  position: relative;
-  width: 500px;
-  margin: 25px auto 25px auto;
-  background: #e2dedb;
-  color: #b3aca7;
-  text-align: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-input {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
-  // width: 470px;
-  height: 50px;
-  padding: 0px 15px 0px 15px;
-  margin-top: 0.5em;
-
-  background: transparent;
-  outline: none;
-  color: #726659;
-
-  border: solid 1px #b3aca7;
-
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-}
-
-input:hover {
-  background: #b3aca7;
-  color: #e2dedb;
-}
-
-textarea {
-  width: 470px;
-  max-width: 470px;
-  height: 110px;
-  max-height: 110px;
-  padding: 15px;
-
-  background: transparent;
-  outline: none;
-
-  color: #726659;
-  font-family: 'Lato', sans-serif;
-  font-size: 1.25em;
-
-  border: solid 1px #b3aca7;
-
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-}
-
-textarea:hover {
-  background: #b3aca7;
-  color: #e2dedb;
-}
-
-#submit {
-  width: 470px;
-
-  padding: 0;
-  margin: -5px 0px 0px 0px;
-
-  font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
-  color: #b3aca7;
-
-  outline:none;
-  cursor: pointer;
-
-  border: solid 1px #b3aca7;
-}
-
-#submit:hover {
-  color: #e2dedb;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
