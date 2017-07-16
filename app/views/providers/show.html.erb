@@ -99,18 +99,22 @@
             </div>
           </div>
           <% end %>
-          <% if current_user %>
-            <%= form_for @comment do |f| %>
+          <div class="row">
+            <div class="col-xs-8 col-xs-offset-1 leave-comment">
+              <% if current_user %>
+                <%= form_for @comment do |f| %>
 
-              <div class="field">
-                <%= f.text_area :body, autofocus: true, placeholder: 'Message' %>
-              </div>
+                  <div class="field">
+                    <%= f.text_area :body, autofocus: true, placeholder: 'Message', :rows => 4, style: 'width:100%;' %>
+                  </div>
 
-              <%= f.hidden_field :user_id, :value =>  current_user.id %>
-              <%= f.submit %>
+                  <%= f.hidden_field :user_id, :value =>  current_user.id %>
+                  <%= f.submit id: 'submit' %>
 
-            <% end %>
-          <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -118,8 +122,8 @@
 
         <!-- Contact provider -->
         <% if current_user %>
-          <button class="edit-profile-button">
-              <%= link_to 'Message Me', Conversation.find(@conversation.id) %>
+          <button class="btn">
+              <%= link_to 'Message Me', conversations_path %>
           </button>
         <% end %>
 

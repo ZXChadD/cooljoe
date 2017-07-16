@@ -1,6 +1,9 @@
 class MessagesController < ApplicationController
 
-  def new; end
+  def new
+    @message = Message.new
+    @conversation = Conversation.find(params[:id])
+  end
 
   def create
     @message = Message.new(message_params)
@@ -8,10 +11,18 @@ class MessagesController < ApplicationController
       @message.body = current_user.firstname + ' : ' + @message.body
       @message.userticks = 'blue'
     else current_provider
-         @message.body = current_provider.firstname + ' : ' + @message.body
-         @message.providerticks = 'blue'
+       @message.body = current_provider.firstname + ' : ' + @message.body
+       @message.providerticks = 'blue'
     end
-    redirect_back(fallback_location: users_path) if @message.save!
+    respond_to do |format|
+      if @message.save!
+        format.js
+      end
+    end
+    @conversation = Conversation.find(@message.conversation_id)
+    if @conversation.messages.present?
+      @messages = @conversation.messages.update(userticks: 'blue')
+    end
   end
 
   private

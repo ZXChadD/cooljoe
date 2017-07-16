@@ -1,0 +1,12 @@
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+<div class="media">
+    <% if @messages.present? %>
+      <% @messages.each do |message| %>
+      <div class="media-body">
+        <small class="pull-right time"><i class="fa fa-clock-o"></i> <%= message.created_at %></small>
+        <%= message.body.html_safe %>
+      </div>
+      <% end %>
+    <% end %>
+</div>
