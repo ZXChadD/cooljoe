@@ -1,31 +1,39 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 <div class="media">
-    <% if @messages.present? %>
-      <% @messages.each do |message| %>
-      <div class="media-body">
-        <small class="pull-right time"><i class="fa fa-clock-o"></i> <%= message.created_at %></small>
-        <%= message.body.html_safe %>
-      </div>
-      <% end %>
-    <% end %>
+  <% if @messages.present? %>
+  <% @messages.each do |message| %>
+  <div class="media-body">
+    <small class="pull-right time">
+      <i class="fa fa-clock-o"></i>
+      <%= message.created_at %></small>
+    <%= message.body.html_safe %>
+  </div>
+  <% end %>
+  <% end %>
 </div>
 
-<li><%= link_to 'New Message', new_tweet_path, id: 'new_chipper', "data-toggle" => "modal", "data-target" => "#myTweet", remote: true %></li>
+<button class="btn btn-primary btn-shadow btn-rounded w-md" data-toggle="modal" data-target="#myModal">New Message</button>
 
-<div class="media-form">
-  <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), remote: true  do |f| %>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-  <div class="field">
-    <%= f.text_area :body, autofocus: true, placeholder: 'Message', cols: "60", rows: "3" %>
+    <div class="media-form">
+      <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), html: {class: "white-pink"}, remote: true  do |f| %>
+
+      <div class="field">
+        <%= f.text_area :body, autofocus: true, placeholder: 'Message' %>
+      </div>
+
+      <%= f.hidden_field :conversation_id, :value => @conversation.id %>
+      <%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
+      <%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
+      <%= f.hidden_field :userticks, :value =>  'blue' %>
+      <%= f.submit %>
+
+      <% end %>
+
+    </div>
   </div>
-
-  <%= f.hidden_field :conversation_id, :value => @conversation.id %>
-  <%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
-  <%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
-  <%= f.hidden_field :userticks, :value =>  'blue' %>
-  <span><%= f.submit id: 'submit' %></span>
-
-  <% end %>
-
 </div>

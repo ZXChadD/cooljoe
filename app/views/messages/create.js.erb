@@ -1,1 +1,2 @@
-$('.show-message').html('<%= j (render(partial: 'messages/aftercreate', locals: { @conversation => @message.conversation_id })) %>')
+$('.modal-backdrop').remove();
+$('.show-message').html('<%= j (render(partial: 'messages/aftercreate')) %>')

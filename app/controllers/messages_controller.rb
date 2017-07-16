@@ -14,15 +14,15 @@ class MessagesController < ApplicationController
        @message.body = current_provider.firstname + ' : ' + @message.body
        @message.providerticks = 'blue'
     end
-    # respond_to do |format|
-    #   if @message.save!
-    #     format.js
-    #   end
-    # end
-    # @conversation = Conversation.find(@message.conversation_id)
-    # if @conversation.messages.present?
-    #   @messages = @conversation.messages.update(userticks: 'blue')
-    # end
+    respond_to do |format|
+      if @message.save!
+        format.js
+      end
+    end
+    @conversation = Conversation.find(@message.conversation_id)
+    if @conversation.messages.present?
+      @messages = @conversation.messages.update(userticks: 'blue')
+    end
   end
 
   private
