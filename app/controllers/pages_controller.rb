@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
 
-  def homepage; end
+  def homepage
+    render layout: false
+  end
 
   def about; end
 
