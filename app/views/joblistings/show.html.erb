@@ -130,7 +130,7 @@
 
           <% unless current_user == nil || @joblisting.user_id != current_user.id %>
             <div>
-              <%= link_to "Edit", edit_joblisting_path(@joblisting), class:'btn'%>
+              <%= link_to "Edit", edit_joblisting_path(@joblisting), class:'btn btn-success btn-block' %>
             </div>
           <% end %>
 
