@@ -19,7 +19,7 @@ if User.count < user_count + 2
     email = "user#{n}@user.com"
     password = '123456'
     is_admin = false
-    tel_num = Faker::Number.number(8)
+    tel_num = ("8#{Faker::Number.number(7)}").to_i
     user_address = Faker::Address.street_address
 
     User.create(firstname: firstname, lastname: lastname, email: email, password: password, is_admin: is_admin, tel_num: tel_num, user_address: user_address)
@@ -29,6 +29,8 @@ end
 # Create Providers
 provider_count = 15
 if Provider.count < provider_count + 1
+  image_arr = ["http://i.imgur.com/bOCEefn.jpg", "http://i.imgur.com/9eABcLj.jpg", "http://i.imgur.com/yTJvpOc.png", "http://i.imgur.com/VN2yph7.png", "http://i.imgur.com/7hpAvw9.png", "http://i.imgur.com/IUf9Qxw.jpg", "http://i.imgur.com/dBWNHT2.png", "http://i.imgur.com/259G4eK.png", "http://i.imgur.com/Wwjb9Qq.png", "http://i.imgur.com/OA3SfYk.png", "http://i.imgur.com/F4998eD.png", "http://i.imgur.com/Xqg1zg5.png", "http://i.imgur.com/AM5dR4p.png", "http://i.imgur.com/XRcwN5x.jpg", "http://i.imgur.com/nckeDzd.jpg"].cycle
+  
   (provider_count - Provider.count).times do
     n = Provider.count + 1
     firstname = Faker::Name.first_name
@@ -36,10 +38,10 @@ if Provider.count < provider_count + 1
     email = "provider#{n}@provider.com"
     password = '123456'
     license_num = 12345678
-    tel_num = Faker::Number.number(8)
+    tel_num = ("9#{Faker::Number.number(7)}").to_i
     description = "description"
     experience = Faker::Number.between(1, 4)
-    avatar = Faker::Avatar.image
+    avatar = image_arr.next
 
     provider = Provider.create(firstname: firstname, lastname: lastname, email: email, password: password, license_num: license_num, tel_num: tel_num, description: description, experience: experience, remote_avatar_url: avatar)
 
@@ -60,14 +62,13 @@ Provider.all.each do |provider|
       end
     end
   end
-  # if Faker::Boolean.boolean || (Like.where(provider_id: provider.id, user_id: user3.id) == nil)
-  #   user3.likes.create(provider_id: provider.id)
-  # end
 end
 
 # Create Joblistings
 joblisting_count = 100
 if Joblisting.count < joblisting_count + 1
+  image_arr = ["http://i.imgur.com/g8APGYvm.jpg", "http://i.imgur.com/SiR6LXsm.jpg", "http://i.imgur.com/yqH69lCm.jpg", "http://i.imgur.com/EadCjcQm.jpg", "http://i.imgur.com/s1r7GDBm.jpg"].cycle
+
   (joblisting_count - Joblisting.count).times do
     issue = ['Installation', 'Repair', 'Replace'].sample
     description = 'description'
@@ -97,6 +98,16 @@ if Joblisting.count < joblisting_count + 1
       invoice_ref = "CoolJoe_INV_#{Faker::Number.number(6)}"
       
       Invoice.create(provider_id: provider_id, joblisting_id: joblisting_id, job_description: job_description, status: invoice_status, price: price, invoice_ref: invoice_ref)
+    end
+
+    # Create Job_attaches
+    job_attaches_count = Faker::Number.between(1, 3)
+    job_attaches_count.times do
+      image = image_arr.next
+      title = 'title'
+      job_listing_id = joblisting.id
+    
+      JobAttach.create(joblisting_id: job_listing_id, title: title, remote_image_url: image)
     end
   end
 end
