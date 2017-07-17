@@ -92,7 +92,9 @@
     </div>
     
     <% if @joblisting.job_attaches.empty? %>
-      <div class='col-xs-2 col-xs-offset-3 '><h3>No image</h3></div>
+      <div class='col-xs-2 col-xs-offset-3 default-job-img'>
+        <%= image_tag 'default-job-image.png' %>
+      </div>
     <% else %>
       <div class='image-section col-xs-7 carousel slide'id="myCarousel" data-ride="carousel">
         <ol class="carousel-indicators">
