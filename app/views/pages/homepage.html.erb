@@ -33,6 +33,12 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
+                    <li>
+                        <%= link_to "User Login", new_user_session_path, class: "page-scroll" %>
+                    </li>
+                    <li>
+                        <%= link_to "Provider Login", new_provider_session_path, class: "page-scroll" %>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -78,7 +84,7 @@
                     <div class="service-box">
                         <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
                         <h3>Licensed Electricans</h3>
-                        <p class="text-muted">Every single one of our Electricians are licensed to ensure that you only have the best to attend to your issues</p>
+                        <p class="text-muted">All Electricians are licensed to ensure that you have the best</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
@@ -106,7 +112,7 @@
         </div>
     <div class="container">
       <div class="row">
-        <div class="col-xs-4 col-xs-offset-4 text-center">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
           <a href="#contact" class="btn btn-primary btn-xl page-scroll">Get Started Now!</a>
         </div>
       </div>
@@ -124,18 +130,21 @@
               </div>
 
               <div class="row">
-                <div class="col-xs-4 col-xs-offset-4 text-center">
+                <div class="col-xs-5 col-xs-offset-1 text-center">
                     <%= link_to "User", new_user_session_path, class:"btn btn-primary btn-xl page-scroll", id: "user-home-button" %>
+                </div>
 
+                <div class="col-xs-5 text-center">
                     <%= link_to "Provider", new_provider_session_path, class:"btn btn-primary btn-xl page-scroll", id: "provider-home-button"%>
                 </div>
               </div>
+            </br>
               <div class="row">
-                <div class="col-xs-4 col-xs-offset-4 text-center" id:"contact-home">
+                <div class="col-xs-4 col-xs-offset-4 text-center col-sm-3 col-sm-offset-3" id:"contact-home">
                   <i class="fa fa-phone fa-3x sr-contact"></i>
                   <p>+65-9229-2455</p>
                 </div>
-                <div class="col-lg-4 col-xs-offset-4 text-center">
+                <div class="col-xs-4 col-xs-offset-4 text-center col-sm-3 col-sm-offset-0">
                   <i class="fa fa-envelope-o fa-3x sr-contact"></i>
                   <p><a href="mailto:admin@cooljoe.com">admin@cooljoe.com</a></p>
                 </div>

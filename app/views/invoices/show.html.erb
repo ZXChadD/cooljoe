@@ -1,5 +1,26 @@
-<h1>Invoice Number: <%= @invoice.invoice_ref %></h1>
-<hr>
-<p>Current Status: <%= @invoice.status %></p>
-<br>
-<p>Total Amount: <%= @invoice.price %></p>
+<div class="container index">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <table class="table table-bordered">
+        <th>
+          Invoice Number
+        </th>
+        <th>
+          Current Status
+        </th>
+        <th>
+          Total Amount
+        </th>
+        <th>
+          Joblisting
+        </th>
+        <tr>
+          <td><%= @invoice.invoice_ref %></td>
+          <td><%= @invoice.status %></td>
+          <td>$<%= @invoice.price %></td>
+          <td><%= link_to "View joblisting", joblisting_path(Joblisting.find(@invoice.joblisting.id)) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
