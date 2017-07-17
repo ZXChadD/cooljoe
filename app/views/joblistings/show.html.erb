@@ -1,8 +1,16 @@
 <div class="container paper">
+  <head>
+    <title>Job Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
   <div class="row">
     <div class='col-xs-4'>
       <div>
-        <div class="panel panel-default show-body">
+        <div class="panel panel-default product-show-summary">
           <div class="panel-heading"><h3>Summary</h3></div>
             <ul class="list-group">
               <li class="list-group-item"></li>             
@@ -10,57 +18,76 @@
             </ul>
         </div>
 
-        <div class="panel panel-default show-body">
-          <div class="panel-heading"><h3>Job Scopes</h3></div>
-            <ul class="list-group">
-              <li class="list-group-item"></li>  
-              <li class="list-group-item">Issue: <%= @joblisting.issue.capitalize %></li>
-              <li class="list-group-item">Fixture: <%= @joblisting.fixture.capitalize %></li>
-              <li class="list-group-item">Number of fixture: <%= @joblisting.num_fixture %> </li>
-              <li class="list-group-item">Preferred starting date: <%= @joblisting.date %></li>
-              <li class="list-group-item">Preferred timing: <%= @joblisting.time %></li>    
+        <body>
+          <div class="container">
+            <ul class="nav nav-tabs product-show">
+              <li class="active"><a data-toggle="tab" href="#menu1">Job Scopes</a></li>
+              <li><a data-toggle="tab" href="#menu2">Contact details</a></li>
+              <li><a data-toggle="tab" href="#menu3">Status details</a></li>       
             </ul>
-        </div>
 
-        <div class="panel panel-default show-body">
-          <div class="panel-heading"><h3>Contact details</h3></div>
-            <ul class="list-group">
-              <li class="list-group-item"></li>              
-              <li class="list-group-item">Job address: <%= @joblisting.job_address.capitalize %> </li>
-              <li class="list-group-item">User name: <%= @joblisting.user.firstname.capitalize %> </li>  <li class="list-group-item">User email: <%= @joblisting.user.email %> </li>
-              <% if @joblisting.provider_id %>
-                <li class="list-group-item">Provider name: <%= Provider.find(@joblisting.provider_id).firstname.capitalize %> </li>
-                <li class="list-group-item">Provider contact: <%= Provider.find(@joblisting.provider_id).tel_num %> </li>
-              <% else %>
-                <li class="list-group-item">Provider name: No provider booked </li>
-                <li class="list-group-item">Provider contact: No provider booked </li>
-              <% end  %>
-            </ul>
-        </div>        
+            <div class="tab-content dashboard-form">
+              <div id="menu1" class="tab-pane fade in active">
+                <div class="panel panel-default show-body">
+                  <div class="panel-heading"><h3>Job Scopes</h3></div>
+                    <ul class="list-group">
+                      <li class="list-group-item"></li>  
+                      <li class="list-group-item">Issue: <%= @joblisting.issue.capitalize %></li>
+                      <li class="list-group-item">Fixture: <%= @joblisting.fixture.capitalize %></li>
+                      <li class="list-group-item">Number of fixture: <%= @joblisting.num_fixture %> </li>
+                      <li class="list-group-item">Preferred starting date: <%= @joblisting.date %></li>
+                      <li class="list-group-item">Preferred timing: <%= @joblisting.time %></li> 
+                    </ul>
+                </div>
+              </div>
 
-        <div class="panel panel-default show-body">
-          <div class="panel-heading"><h3>Status details</h3></div>
-            <ul class="list-group">
-              <li class="list-group-item"></li>              
-              <li class="list-group-item">Job status: <%= @joblisting.status.capitalize %> </li>
-              <% if @joblisting.invoice %>
-                <li class="list-group-item">Invoice ref: <%= @joblisting.invoice.invoice_ref %> </li>
-                <li class="list-group-item">Invoice status: <%= @joblisting.invoice.status %> </li>
-              <% else %>
-                <li class="list-group-item">Invoice ref: No invoice </li>
-                <li class="list-group-item">Invoice status: No invoice </li>
-              <% end  %>
-            </ul>
-        </div>        
+              <div id="menu2" class="tab-pane fade">
+                <div class="panel panel-default show-body">
+                  <div class="panel-heading"><h3>Contact details</h3></div>
+                    <ul class="list-group">
+                      <li class="list-group-item"></li>              
+                      <li class="list-group-item">Job address: <%= @joblisting.job_address.capitalize %> </li>
+                      <li class="list-group-item">User name: <%= @joblisting.user.firstname.capitalize %> </li>  <li class="list-group-item">User email: <%= @joblisting.user.email %> </li>
+                      <% if @joblisting.provider_id %>
+                        <li class="list-group-item">Provider name: <%= Provider.find(@joblisting.provider_id).firstname.capitalize %> </li>
+                        <li class="list-group-item">Provider contact: <%= Provider.find(@joblisting.provider_id).tel_num %> </li>
+                      <% else %>
+                        <li class="list-group-item">Provider name: No provider booked </li>
+                        <li class="list-group-item">Provider contact: No provider booked </li>
+                      <% end  %>
+                    </ul>
+                </div>
+              </div>
+
+              <div id="menu3" class="tab-pane fade">
+                <div class="panel panel-default show-body">
+                  <div class="panel-heading"><h3>Status details</h3></div>
+                    <ul class="list-group">
+                      <li class="list-group-item"></li>              
+                      <li class="list-group-item">Job status: <%= @joblisting.status.capitalize %> </li>
+                      <% if @joblisting.invoice %>
+                        <li class="list-group-item">Invoice ref: <%= @joblisting.invoice.invoice_ref %> </li>
+                        <li class="list-group-item">Invoice status: <%= @joblisting.invoice.status %> </li>
+                      <% else %>
+                        <li class="list-group-item">Invoice ref: No invoice </li>
+                        <li class="list-group-item">Invoice status: No invoice </li>
+                      <% end  %>
+                    </ul>
+                </div>
+              </div>        
+            </div>
+          </div>
 
         <ul class="list-group date-data">
           <li>Created on: <%= @joblisting.created_at.strftime("%F") %></li>
           <li>Last updated on : <%= @joblisting.updated_at.strftime("%F") %></li>
         </ul>
 
-        <div>
-          <%= link_to "Edit", edit_joblisting_path(@joblisting), class:'btn'%>
-        </div>
+        <% unless current_user == nil || @joblisting.user_id != current_user.id %>
+          <div>
+            <%= link_to "Edit", edit_joblisting_path(@joblisting), class:'btn'%>
+          </div>
+        <% end %>
       </div>
     </div>
     
