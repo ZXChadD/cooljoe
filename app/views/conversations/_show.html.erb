@@ -10,27 +10,16 @@
   <% end %>
 </div>
 
-<button class="btn btn-primary btn-shadow btn-rounded w-md" data-toggle="modal" data-target="#myModal">Create Message</button>
+<%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), :method => 'post', html: {class: "white-pink"}, remote: true  do |f| %>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <div class="media-form">
-      <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), :method => 'post', html: {class: "white-pink"}, remote: true  do |f| %>
-
-      <div class="field">
-        <%= f.text_area :body, autofocus: true, placeholder: 'Message' %>
-      </div>
-
-      <%= f.hidden_field :conversation_id, :value => @conversation.id %>
-      <%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
-      <%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
-      <%= f.hidden_field :userticks, :value =>  'blue' %>
-      <%= f.submit :data => { :dismiss => 'modal' },  :class => "submit-btn" %>
-
-      <% end %>
-
-    </div>
-  </div>
+<div class="field">
+  <%= f.text_area :body, autofocus: true, placeholder: 'Message' %>
 </div>
+
+<%= f.hidden_field :conversation_id, :value => @conversation.id %>
+<%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
+<%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
+<%= f.hidden_field :userticks, :value =>  'blue' %>
+<%= f.submit "New Message" %>
+
+<% end %>
