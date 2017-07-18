@@ -1,7 +1,7 @@
 #joblisting-index {
   position: relative;
   // width: auto;
-  margin: 25px auto 25px auto;  
+  margin: 25px auto 25px auto;
   text-align: center;
   // padding-top: 5px;
   // padding-bottom: 5px;
@@ -18,4 +18,21 @@
 .last-row {
   background: #91bed4;
   height: 30px;
+}
+
+#job-heading {
+  text-align: center;
+  background: #304269;
+}
+
+.form-padding {
+  padding: 20px;
+}
+
+#whole-form {
+  margin: 20px 0px 20px 0px;
+}
+
+.question {
+  color: #304269;
 }

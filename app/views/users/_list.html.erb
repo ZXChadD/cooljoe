@@ -4,6 +4,7 @@
       <div class="panel-heading">
         <h3 id='list-title', class="panel-title"><%= electrician.firstname.capitalize %></h3>
       </div>
+
       <div class="panel-body">
         <div class='row'>
           <div class="col-xs-4">
@@ -14,22 +15,22 @@
             <p>Experience: &nbsp<%= electrician.experience %></p>
             <p>Telephone number: &nbsp<%= electrician.tel_num %></p>
             <p>Email: &nbsp<%= link_to electrician.email, provider_path(electrician) %></p>
-          </div>     
+          </div>
           <div class="col-xs-3">
             <% unless electrician.likes.find_by(user_id: current_user.id).present? %>
-              <button><%= link_to 'Like', like_provider_path(electrician), method: :post %></button>
+              <%= link_to 'Like', like_provider_path(electrician),class: "btn btn-success", method: :post %>
             <% else %>
-              <button><%= link_to 'Unlike', unlike_provider_path(electrician), method: :delete %></button>
+              <%= link_to 'Unlike', unlike_provider_path(electrician),class: "btn btn-success", method: :delete %>
             <% end %>
             <% if @page == 'standard_job' %>
               <% if @joblisting.provider_id.nil? %>
-                  <button><%= link_to 'Book', book_provider_path(electrician, joblisting_id: @joblisting.id), method: :put %></button>
+                <%= link_to 'Book', book_provider_path(electrician, joblisting_id: @joblisting.id),class: "btn btn-success", method: :put %>
               <% else %>
               <% end %>
             <% end %>
           </div>
-        </div>  
+        </div>
       </div>
     </div>
-  </div>  
+  </div>
 <% end %>

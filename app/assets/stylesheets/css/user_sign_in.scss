@@ -4,10 +4,11 @@
 
 .btn-success {
   background: #f26101;
-  border-radius:0;
+  border-radius:5px;
   border: 2px solid #f26101;
   webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
   transition: all 400ms cubic-bezier(.4,0,.2,1);
+  background-color: #f26101;
 }
 
 #sign-box {
@@ -15,7 +16,7 @@
 }
 
 .btn-success:hover,.btn-success:focus {
-  background: rgba(26, 161, 157, 0);
+  background: rgba(242, 97, 1, 0);
   border: 2px solid #f26101;
   webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
   transition: all 400ms cubic-bezier(.4,0,.2,1);
