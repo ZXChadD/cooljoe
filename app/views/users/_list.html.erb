@@ -7,16 +7,16 @@
 
       <div class="panel-body">
         <div class='row'>
-          <div class="col-xs-4">
+          <div class="col-sm-4">
             <%= image_tag electrician.avatar, class:"provider_avatar"  %>
           </div>
-          <div class="col-xs-5">
+          <div class="col-sm-5">
             <p>License number: &nbsp<%= electrician.license_num %></p>
             <p>Experience: &nbsp<%= electrician.experience %></p>
             <p>Telephone number: &nbsp<%= electrician.tel_num %></p>
             <p>Email: &nbsp<%= link_to electrician.email, provider_path(electrician) %></p>
           </div>
-          <div class="col-xs-3">
+          <div class="col-sm-3">
             <% unless electrician.likes.find_by(user_id: current_user.id).present? %>
               <%= link_to 'Like', like_provider_path(electrician),class: "btn btn-success", method: :post %>
             <% else %>

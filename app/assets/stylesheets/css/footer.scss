@@ -42,14 +42,14 @@
 
 
 @media screen and (min-width: 860px) {
+  .footer-copyright {
+    text-align: right;
+  }
+  .footer-links {
+    text-align: left;
+  }
     #myFooter {
         text-align: center;
-        // .footer-copyright {
-        //   margin-left: 15em;
-        // }
-        // .foot-links {
-        //   margin-right: 15em;
-        // }
     }
 }
 
