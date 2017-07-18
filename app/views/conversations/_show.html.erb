@@ -4,22 +4,24 @@
   <% if @messages.present? %>
     <ul class="mail-list">
       <% @messages.each do |message| %>
-            <li><%= message.body.html_safe %></li>
+            <li><%= message.body.html_safe %> <small class="pull-right time"><i class="fa fa-clock-o"></i> <%= message.created_at %></small></li>
       <% end %>
     </ul>
   <% end %>
 </div>
 
-<%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), :method => 'post', html: {class: "white-pink"}, remote: true  do |f| %>
+<div class="message-form">
+  <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), :method => 'post', remote: true  do |f| %>
 
-<div class="field">
-  <%= f.text_area :body, autofocus: true, placeholder: 'Message' %>
+  <div class="field">
+    <%= f.text_area :body, autofocus: true, placeholder: 'Message', id: "message_field", :cols => 40, :rows => 4  %>
+  </div>
+
+  <%= f.hidden_field :conversation_id, :value => @conversation.id %>
+  <%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
+  <%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
+  <%= f.hidden_field :userticks, :value =>  'blue' %>
+  <%= f.submit "New Message", id: 'submit' %>
+
+  <% end %>
 </div>
-
-<%= f.hidden_field :conversation_id, :value => @conversation.id %>
-<%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
-<%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
-<%= f.hidden_field :userticks, :value =>  'blue' %>
-<%= f.submit "New Message" %>
-
-<% end %>

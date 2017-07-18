@@ -1,2 +1,3 @@
-]$('.show-message').html('<%= j (render(partial: 'conversations/show')) %>')
-$('#message_body').val('')
+$('.modal-backdrop').remove();
+$('.show-message').html('<%= j (render(partial: 'conversations/show')) %>')
+$('#message_field').val("")
