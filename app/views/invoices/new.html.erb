@@ -1,15 +1,47 @@
-<div class="row">
-  <div class="col-xs-6 col-xs-offset-3">
-    <h1> Create Invoice </h1>
-    <%= bootstrap_form_for @invoice do |f| %>
-    <%= f.text_area :job_description %>
-    <br>
-    <%= f.text_field :price %>
-    <br>
-    <%= f.hidden_field :invoice_ref, value: @invoice_number %>
-    <br>
-    <%= f.hidden_field :joblisting_id, value: @joblisting.id%>
-    <%= f.submit %>
-    <% end %>
-  </div>
+<div class="container">
+	<div class="row" id="invoice-top">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h4>Send Invoice: Customer <%= @joblisting.user.firstname %></h4>
+            <%= form_for @invoice do |f| %>
+            <div class="panel panel-default">
+                <div class="panel-body form-horizontal payment-form">
+                    <div class="form-group">
+                        <label for="concept" class="col-sm-3 control-label">Invoice Number</label>
+                        <div class="col-sm-9 control-label">
+                        <p> #<%= @invoice_number %></p>
+                        <%= f.hidden_field :invoice_ref, value: @invoice_number%>
+                        <input type="hidden" value= "<%= @invoice_number%>" class= "form-control" id="concept" name="concept">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="date" class="col-sm-3 control-label">Job Date</label>
+                      <div class="col-sm-9 control-label">
+                        <p><%= @joblisting.created_at.strftime("%F")%> </p>
+                        <input type="hidden" value= "<%= @joblisting.created_at.strftime("%F")%>" class= "form-control" id="date" name="date">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="concept" class="col-sm-3 control-label">Job Description</label>
+                        <div class="col-sm-9">
+                          <%= f.text_area :job_description, class: "form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount" class="col-sm-3 control-label">Amount</label>
+                        <div class="col-sm-9">
+                          <%= f.text_field :price, class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 text-right">
+                          <%= f.hidden_field :joblisting_id, value: @joblisting.id%>
+                          <%= f.submit "Send Invoice", class: "btn btn-success btn-block"%>
+                          <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+	</div>
 </div>

@@ -1,45 +1,51 @@
 <div class='container'>
-  <div>
-    <h3>Transaction Details</h3>
-    <table class='payment-show-table'>
-      <tbody>
-        <tr>
-          <th>Transaction ID:</th>
-          <td><%= @transaction.id %></td>
-        </tr>
-        <tr>
-          <th>Amount:</th>
-          <td><%= @transaction.amount %></td>
-        </tr>
-        <tr>
-          <th>Status:</th>
-          <td><%= @transaction.status %></td>
-        </tr>
-        <tr>
-          <th>Created at:</th>
-          <td><%= @transaction.created_at %></td>
-        </tr>
-        <tr>
-          <th>Updated at:</th>
-          <td><%= @transaction.updated_at %></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div>
-    <% if @result %>
+  <div class="row">
+    <div class="col-xs-4 payment-show">
+      <div class="panel panel-success">
+        <div class="panel-heading"><h3>Transaction Details</h3></div>
+        <table class='payment-show-table'>
+          <tbody>
+            <tr>
+              <th>Transaction ID:</th>
+              <td><%= @transaction.id %></td>
+            </tr>
+            <tr>
+              <th>Amount:</th>
+              <td><%= @transaction.amount %></td>
+            </tr>
+            <tr>
+              <th>Status:</th>
+              <td><%= @transaction.status %></td>
+            </tr>
+            <tr>
+              <th>Created at:</th>
+              <td><%= @transaction.created_at %></td>
+            </tr>
+            <tr>
+              <th>Updated at:</th>
+              <td><%= @transaction.updated_at %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-xs-7">
+
+      <% if @result %>
       <h1><%= @result[:header] %></h1>
+      <%= image_tag "success-icon-mobile-2x.png" %>
       <section>
         <p><%= @result[:message] %></p>
-    <% else %>
-      <section>
-        <p>Your transaction has failed.Please try again.</p>
-      </section>
-    <% end %>
-    <div>
-      <a class="button primary back" href="/users/">
-        <span>Back to Dashboard</span>
-      </a>
+        <% else %>
+        <section>
+          <p>Your transaction has failed.Please try again.</p>
+        </section>
+        <% end %>
+        <div>
+          <a class="button primary back" href="/users/">
+            <span>Return to Dashboard</span>
+          </a>
+        </div>
     </div>
   </div>
 </div>

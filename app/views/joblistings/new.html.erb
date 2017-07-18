@@ -1,83 +1,87 @@
-<div id="request">
-  <%= form_for @joblisting, html: {multipart: true, class: "white-pink"}, method: :post do |f| %>
+<div class="row" id="whole-form">
+  <div class="col-xs-6 col-xs-offset-3">
+    <%= bootstrap_form_for @joblisting, html: {multipart: true, class: "panel panel-primary"}, method: :post do |f| %>
+    <div class="panel-heading" id="job-heading"><h4>New Job Request </h4> </div>
+    <div class="form-padding">
+      <div class='field'>
+        <h4 class="question">What needs to be done?</h4>
+        <%= label_tag 'issue_install', 'Installation' %>
+        <%= check_box_tag 'joblisting[issue][]', 'Installation', checked_i('Installation'), id: 'issue_install' %>
 
-  <div class='field'>
-    <p>What needs to be done?</p>
-    <%= label_tag 'issue_install', 'Installation' %>
-    <%= check_box_tag 'joblisting[issue][]', 'Installation', checked_i('Installation'), id: 'issue_install' %>
+        <%= label_tag 'issue_repair', 'Repair' %>
+        <%= check_box_tag 'joblisting[issue][]', 'Repair', checked_i('Repair'), id: 'issue_repair' %>
 
-    <%= label_tag 'issue_repair', 'Repair' %>
-    <%= check_box_tag 'joblisting[issue][]', 'Repair', checked_i('Repair'), id: 'issue_repair' %>
+        <%= label_tag 'issue_replace', 'Replace' %>
+        <%= check_box_tag 'joblisting[issue][]', 'Replace', checked_i('Replace'), id: 'issue_replace' %>
+      </div>
 
-    <%= label_tag 'issue_replace', 'Replace' %>
-    <%= check_box_tag 'joblisting[issue][]', 'Replace', checked_i('Replace'), id: 'issue_replace' %>
+      <br/>
+
+      <div class='field'>
+        <h4 class="question">What type of fixtures do you require?</h4>
+        <%= label_tag 'fixture_wiring', 'Wiring' %>
+        <%= check_box_tag 'joblisting[fixture][]', 'Wiring', checked_f('Wiring'), id: 'fixture_wiring' %>
+
+        <%= label_tag 'fixture_light', 'Lights' %>
+        <%= check_box_tag 'joblisting[fixture][]', 'Lights', checked_f('Lights'), id: 'fixture_light' %>
+
+        <%= label_tag 'fixture_switch', 'Switches' %>
+        <%= check_box_tag 'joblisting[fixture][]', 'Switches', checked_f('Switches'), id: 'fixture_switch' %>
+      </div>
+
+      <br/>
+
+      <div class="field">
+        <h4 class="question"><%= f.label :number_of_fixtures_required %></h4>
+        <%= f.select :num_fixture, ['1','2','3','4'] %>
+      </div>
+
+      <br/>
+
+      <div class='field'>
+        <h4 class="question">When does it need to be done?</h4>
+        <%= f.select :date, ['Within 5 days', 'Within 2 weeks', 'Within 1 month'] %>
+      </div>
+
+      <br/>
+
+      <div class="field">
+        <%= f.select :time, ['Morning','Afternoon','Evening'] %>
+      </div>
+
+      <br/>
+
+      <div class='field'>
+        <h4 class="question">What type of property do you stay in?</h4>
+        <%= f.select :housing, ['HDBs', 'Condo', 'Landed'] %>
+      </div>
+
+      <br>
+      <h4 class="question">Upload Job Image</h4>
+      <div class="job_attaches">
+        <%= f.fields_for :job_attaches do |job_attach| %>
+        <%= render'partials/job_attachment', f: job_attach %>
+        <% end %>
+        <%= link_to_add_association 'Add Image', f, :job_attaches, partial: 'partials/job_attachment' %>
+
+      </div>
+      <br>
+
+      <div class="field">
+        <%= f.text_area :description, autofocus: true, placeholder: 'Description' %>
+      </div>
+
+      <div class="field">
+        <%= f.text_area :job_address, autofocus: true, placeholder: 'Job Address' %>
+      </div>
+
+      <div class='actions'>
+        <%= f.submit "Create Job", class:"btn btn-success btn-block" %>
+      </div>
+
+      <% end %>
+
+    </div>
+
   </div>
-
-  <br/>
-
-  <div class='field'>
-    <p>What type of fixtures do you require?</p>
-    <%= label_tag 'fixture_wiring', 'Wiring' %>
-    <%= check_box_tag 'joblisting[fixture][]', 'Wiring', checked_f('Wiring'), id: 'fixture_wiring' %>
-
-    <%= label_tag 'fixture_light', 'Lights' %>
-    <%= check_box_tag 'joblisting[fixture][]', 'Lights', checked_f('Lights'), id: 'fixture_light' %>
-
-    <%= label_tag 'fixture_switch', 'Switches' %>
-    <%= check_box_tag 'joblisting[fixture][]', 'Switches', checked_f('Switches'), id: 'fixture_switch' %>
-  </div>
-
-  <br/>
-
-  <div class="field">
-    <%= f.label :number_of_fixtures_required %>
-    <%= f.select :num_fixture, ['1','2','3','4'] %>
-  </div>
-
-  <br/>
-
-  <div class='field'>
-    <p>When does it need to be done?</p>
-    <%= f.label :desired_date %>
-    <%= f.select :date, ['Within 5 days', 'Within 2 weeks', 'Within 1 month'] %>
-  </div>
-
-  <br/>
-
-  <div class="field">
-    <%= f.label :desired_timing %>
-    <%= f.select :time, ['Morning','Afternoon','Evening'] %>
-  </div>
-
-  <br/>
-
-  <div class='field'>
-    <p>What type of property do you stay in?</p>
-    <%= f.label :housing %>
-    <%= f.select :housing, ['HDBs', 'Condo', 'Landed'] %>
-  </div>
-
-  <br>
-  <div class="job_attaches">
-    <%= f.fields_for :job_attaches do |job_attach| %>
-    <%= render 'partials/job_attachment', f: job_attach %>
-    <% end %>
-    <%= link_to_add_association 'Add Image', f, :job_attaches, partial: 'partials/job_attachment' %>
-
-  </div>
-  <br>
-
-  <div class="field">
-    <%= f.text_area :description, autofocus: true, placeholder: 'Description' %>
-  </div>
-
-  <div class="field">
-    <%= f.text_area :job_address, autofocus: true, placeholder: 'Job Address' %>
-  </div>
-
-  <div class='actions'>
-    <%= f.submit %>
-  </div>
-
-  <% end %>
 </div>
