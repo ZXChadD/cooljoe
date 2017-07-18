@@ -2,14 +2,11 @@
 
 <div class="media">
   <% if @messages.present? %>
-  <% @messages.each do |message| %>
-  <div class="media-body">
-    <small class="pull-right time">
-      <i class="fa fa-clock-o"></i>
-      <%= message.created_at %></small>
-    <%= message.body.html_safe %>
-  </div>
-  <% end %>
+    <ul class="mail-list">
+      <% @messages.each do |message| %>
+            <li><%= message.body.html_safe %></li>
+      <% end %>
+    </ul>
   <% end %>
 </div>
 
@@ -20,7 +17,7 @@
   <div class="modal-dialog">
 
     <div class="media-form">
-      <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), html: {class: "white-pink"}, remote: true  do |f| %>
+      <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), :method => 'post', html: {class: "white-pink"}, remote: true  do |f| %>
 
       <div class="field">
         <%= f.text_area :body, autofocus: true, placeholder: 'Message' %>
@@ -30,7 +27,7 @@
       <%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
       <%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
       <%= f.hidden_field :userticks, :value =>  'blue' %>
-      <%= f.submit %>
+      <%= f.submit :data => { :dismiss => 'modal' },  :class => "submit-btn" %>
 
       <% end %>
 
