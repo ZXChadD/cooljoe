@@ -7,8 +7,6 @@ class Provider < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
-
   has_many :likes
   has_many :invoices
   has_many :provider_attaches
@@ -17,10 +15,8 @@ class Provider < ApplicationRecord
   has_many :conversations
   has_many :messages
   has_many :comments
-  
-  accepts_nested_attributes_for :provider_attaches, reject_if: :all_blank, allow_destroy: true
-  
 
+  accepts_nested_attributes_for :provider_attaches, reject_if: :all_blank, allow_destroy: true
 
   scope :sort_exp, -> { order('experience DESC') }
 
