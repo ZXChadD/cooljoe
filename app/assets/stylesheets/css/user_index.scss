@@ -67,3 +67,15 @@ div.bhoechie-tab-content{
 div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   display: none;
 }
+
+
+@media only screen and (max-width: 845px) {
+  div.bhoechie-tab-content{
+    background-color: #ffffff;
+    padding: 0px;
+  }
+  .bhoechie-tab-container {
+    margin-top: 1em;
+  }
+
+}
