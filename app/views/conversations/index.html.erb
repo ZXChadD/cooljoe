@@ -25,11 +25,12 @@
     </div>
       <% if @conversations.present? %>
         <div class="col-xs-12 col-sm-8 show-message">
-          <span class="badge badge-default"><h5>Click on the provider's name to view your conversation.</h5></span>
+          <span><h5>Click on the provider's name to view your conversation.</h5></span>
         </div>
       <% else %>
-        <div class="col-xs-12 show-message">
-          <span class="badge badge-default"><h4>You have no conversations</h4></span>
+      <div class="alert alert-danger alert-dismissable fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <span><h4>You have no conversations</h4></span>
         </div>
       <% end %>
     </div>

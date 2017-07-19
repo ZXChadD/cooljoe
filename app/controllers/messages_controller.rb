@@ -20,8 +20,10 @@ class MessagesController < ApplicationController
       end
     end
     @conversation = Conversation.find(@message.conversation_id)
-    if @conversation.messages.present?
+    if @conversation.messages.present? && current_user
       @messages = @conversation.messages.update(userticks: 'blue')
+    else @conversation.messages.present? && current_provider
+      @messages = @conversation.messages.update(providerticks: 'blue')
     end
   end
 

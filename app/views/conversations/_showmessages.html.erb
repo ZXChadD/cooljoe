@@ -1,36 +1,27 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 <div class="media">
-    <% if @messages.present? %>
+  <% if @messages.present? %>
+    <ul class="mail-list">
       <% @messages.each do |message| %>
-      <div class="media-body">
-        <small class="pull-right time"><i class="fa fa-clock-o"></i> <%= message.created_at %></small>
-        <%= message.body.html_safe %>
-      </div>
+            <li><%= message.body.html_safe %> <small class="pull-right time"><i class="fa fa-clock-o"></i> <%= message.created_at %></small></li>
       <% end %>
-    <% end %>
+    </ul>
+  <% end %>
 </div>
 
-<button class="btn btn-primary btn-shadow btn-rounded w-md" data-toggle="modal" data-target="#myModal">Create Message</button>
+<div class="message-form">
+  <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), :method => 'post', remote: true  do |f| %>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <div class="media-form">
-      <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create'), html: {class: "white-pink"}, remote: true  do |f| %>
-
-      <div class="field">
-        <%= f.text_area :body, autofocus: true, placeholder: 'Message' %>
-      </div>
-
-      <%= f.hidden_field :conversation_id, :value => @conversation.id %>
-      <%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
-      <%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
-      <span><%= f.submit id: 'submit' %></span>
-
-      <% end %>
-
-    </div>
+  <div class="field">
+    <%= f.text_area :body, autofocus: true, placeholder: 'Message', id: "message_field", :cols => 40, :rows => 4  %>
   </div>
+
+  <%= f.hidden_field :conversation_id, :value => @conversation.id %>
+  <%= f.hidden_field :provider_id, :value => @conversation.provider_id %>
+  <%= f.hidden_field :user_id, :value =>  @conversation.user_id %>
+  <%= f.hidden_field :providerticks, :value =>  'blue' %>
+  <%= f.submit "New Message", id: 'submit' %>
+
+  <% end %>  
 </div>

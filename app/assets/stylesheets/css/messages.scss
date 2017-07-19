@@ -32,12 +32,6 @@
   height: 3em;
 }
 
-.media-body {
-  display: block;
-  height: 3em;
-  line-height: 3em;
-}
-
 #submit {
   -moz-box-shadow:inset 0px 1px 0px 0px #fbafe3;
   -webkit-box-shadow:inset 0px 1px 0px 0px #fbafe3;
@@ -63,13 +57,29 @@
   text-shadow:1px 1px 0px #c70067;
 }
 
-.media-form {
-  padding-right: 2em;
+ul.mail-list{
+    padding:0;
+    margin:0;
+    list-style:none;
+    margin-bottom:30px;
+}
+ul.mail-list li {
+    display:block;
+    border-bottom:1px dotted #CFCFCF;
+    padding:20px;
+    text-decoration:none;
+}
+ul.mail-list li:last-child a{
+    border-bottom:none;
+}
+ul.mail-list li a:hover{
+    background-color:#DBF9FF;
+}
+ul.mail-list li span{
+    display:block;
 }
 
-.show-message {
-  margin-top: 1em;
-  img {
-    display: block;
-  }
+.message-form {
+  margin-left: 1em;
+  margin-bottom: 1em;
 }

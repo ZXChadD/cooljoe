@@ -1,2 +1,3 @@
 $('.modal-backdrop').remove();
-$('.show-message').html('<%= j (render(partial: 'messages/aftercreate')) %>')
+$('.show-message').html('<%= j (render(partial: 'conversations/show')) %>')
+$('#message_field').val("")
