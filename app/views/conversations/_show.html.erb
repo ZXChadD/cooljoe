@@ -4,7 +4,7 @@
   <% if @messages.present? %>
     <ul class="mail-list">
       <% @messages.each do |message| %>
-            <li><%= message.body.html_safe %> <small class="pull-right time"><i class="fa fa-clock-o"></i> <%= message.created_at %></small></li>
+            <li><%= message.body.html_safe %> <small class="pull-right time"><i class="fa fa-clock-o"></i> <%= message.created_at.strftime("%F %T") %></small></li>
       <% end %>
     </ul>
   <% end %>
